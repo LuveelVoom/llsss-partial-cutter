@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LLSSS grid workbench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E9EEF2; --panel:#FFFFFF; --ink:#16202A; --muted:#566573; --rule:#C7D1DA;
+  --cell:#F7F9FB; --live:#23306E; --unk:#E1A01A; --root:#0F7E6E; --wild:#8B3FA1; --blank:#DCE3E9; --hatch:#C3CDD6;
+  --accent:#2B3FBF; --accent-ink:#FFFFFF; --ok:#2E7D4F; --warn:#A86300; --err:#B3261E; --sel:rgba(43,63,191,.18);
+  --ui:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161C; --panel:#18212A; --ink:#E4EBF1; --muted:#9AA9B6; --rule:#2C3945;
+    --cell:#1E2832; --live:#C8D3FF; --unk:#E9AE33; --root:#2FB39E; --wild:#C57BDA; --blank:#141B22; --hatch:#26323D;
+    --accent:#8C9BFF; --accent-ink:#0E1330; --ok:#5CC08A; --warn:#E3A142; --err:#F07A70; --sel:rgba(140,155,255,.22);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161C; --panel:#18212A; --ink:#E4EBF1; --muted:#9AA9B6; --rule:#2C3945;
+  --cell:#1E2832; --live:#C8D3FF; --unk:#E9AE33; --root:#2FB39E; --wild:#C57BDA; --blank:#141B22; --hatch:#26323D;
+  --accent:#8C9BFF; --accent-ink:#0E1330; --ok:#5CC08A; --warn:#E3A142; --err:#F07A70; --sel:rgba(140,155,255,.22);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:15px/1.45 var(--ui)}
+button,input,select,textarea{font:inherit;color:inherit}
+.app{display:grid;grid-template-columns:232px minmax(0,1fr) 360px;grid-template-rows:auto minmax(0,1fr);height:100%}
+header{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--panel);flex-wrap:wrap}
+header h1{font-size:17px;margin:0;font-weight:700;letter-spacing:.01em}
+header .dims{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+header .spacer{flex:1}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:7px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:5px 11px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.rail,.insp{background:var(--panel);overflow:auto;min-height:0}
+.rail{border-right:1px solid var(--rule);padding:12px}
+.insp{border-left:1px solid var(--rule);display:flex;flex-direction:column}
+.stage{position:relative;overflow:auto;min-height:0;min-width:0}
+.stage canvas{display:block;touch-action:none;cursor:crosshair}
+.readout{position:sticky;left:0;bottom:0;display:inline-block;margin:0;padding:4px 10px;font-family:var(--mono);font-size:12px;background:var(--panel);border-top:1px solid var(--rule);border-right:1px solid var(--rule)}
+h2{font-size:13px;font-weight:700;margin:16px 0 7px;color:var(--muted)}
+h2:first-child{margin-top:2px}
+.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.btn{border:1px solid var(--rule);background:var(--panel);border-radius:6px;padding:4px 9px;cursor:pointer;font-size:13.5px}
+.btn:hover{border-color:var(--accent)}
+.rail .row .btn{flex:1 1 44%}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible,.seg button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=number]{width:58px}
+input[type=text],input[type=number],select,textarea{border:1px solid var(--rule);background:var(--cell);border-radius:5px;padding:3px 6px}
+label.inline{display:inline-flex;gap:5px;align-items:center;font-size:13.5px}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.chip{border:1px solid var(--rule);border-radius:6px;padding:6px 0;text-align:center;cursor:pointer;background:var(--panel);font-family:var(--mono);font-size:13px}
+.chip[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:0}
+.chip .sw{display:block;width:18px;height:18px;margin:0 auto 3px;border-radius:3px;border:1px solid var(--rule)}
+.hint{font-size:12.5px;color:var(--muted);margin:4px 0 8px}
+.tabs{display:flex;border-bottom:1px solid var(--rule)}
+.tabs button{flex:1;border:0;background:transparent;padding:10px 4px;cursor:pointer;border-bottom:2px solid transparent;font-weight:700;font-size:14px;color:var(--muted)}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.pane{padding:12px 14px;overflow:auto;flex:1}
+.pane[hidden]{display:none}
+.check{display:grid;grid-template-columns:18px 1fr;gap:6px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:13.5px}
+.check:last-child{border-bottom:0}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:5px}
+.dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.err{background:var(--err)}.dot.info{background:var(--muted)}
+.check .fix{margin-top:5px}
+textarea{width:100%;min-height:170px;font-family:var(--mono);font-size:12px;line-height:1.35;white-space:pre;overflow:auto;resize:vertical}
+pre.cmd{background:var(--cell);border:1px solid var(--rule);border-radius:6px;padding:9px;font-family:var(--mono);font-size:12px;white-space:pre-wrap;word-break:break-all;margin:6px 0}
+.form{display:grid;grid-template-columns:118px 1fr;gap:6px 8px;align-items:center;font-size:13.5px}
+.form input[type=text]{width:100%}
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--panel);padding:7px 14px;border-radius:7px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+.empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:var(--muted)}
+.empty[hidden]{display:none}
+.axisres{font-family:var(--mono);font-size:12.5px}
+@media (max-width:980px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 60vh auto;height:auto}
+  .rail{border-right:0;border-bottom:1px solid var(--rule)}
+  .insp{border-left:0;border-top:1px solid var(--rule)}
+}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
+.unsupported{margin:12px 0 4px;border:2px solid var(--err);border-radius:10px;padding:10px 16px 8px;background:color-mix(in srgb,var(--err) 9%,transparent)}
+.unsupported .u-title{margin:0 0 6px;font-weight:800;font-size:15px;color:var(--err);letter-spacing:.01em}
+.unsupported ul{margin:0;padding-left:20px;font-size:13.5px;line-height:1.5}
+.unsupported li{margin:2px 0}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>LLSSS grid workbench</h1>
+    <span class="dims" id="dims">no grid</span>
+    <span class="spacer"></span>
+    <label class="inline" title="Which view the grid is in. Shape checks (rectangles, ? suffix) only apply in UWI view.">View
+      <span class="seg" role="group" aria-label="Grid view">
+        <button id="vXYT" aria-pressed="false">XYT</button><button id="vUWI" aria-pressed="true">UWI</button>
+      </span></label>
+    <label class="inline">Search
+      <span class="seg" role="group" aria-label="Search type">
+        <button id="mFixed" aria-pressed="false">Fixed board</button><button id="mRC" aria-pressed="true">Recentering</button>
+      </span></label>
+    <button class="btn" id="undo" title="Undo (Ctrl+Z)">Undo</button>
+    <button class="btn" id="redo" title="Redo (Ctrl+Shift+Z)">Redo</button>
+    <label class="inline">Zoom <input type="range" id="zoom" min="3" max="28" value="12" aria-label="Cell size"></label>
+  <div class="about" role="note" aria-label="About this tool" style="background:#3A3320;border:1px solid #6E5F2C;border-left:5px solid #F2A900;color:#EDEDED;padding:12px 18px 10px;margin:12px 0 4px;font-size:15px;line-height:1.55">
+  <p style="margin:0 0 6px;font-weight:800;font-size:16px">About this tool</p>
+  <p style="margin:0">A separate program by LuveelVoom, not part of rlife or LLSSS. It was written largely with an AI model (Claude) and is probably buggy, so check what it produces before relying on it. Questions and problems go to the partial cutter thread on the ConwayLife forums; say which tool you used and include its inputs and outputs.</p>
+</div>
+</header>
+
+  <aside class="rail" aria-label="Tools">
+    <h2>Tool</h2>
+    <div class="seg" role="group" aria-label="Tool" style="margin-bottom:8px">
+      <button data-tool="paint" aria-pressed="true" title="P">Paint</button><button data-tool="toggle" aria-pressed="false" title="T">Toggle</button><button data-tool="select" aria-pressed="false" title="S">Select</button>
+    </div>
+    <div class="chips" id="brushes">
+      <button class="chip" data-ch="*" aria-pressed="true" title="1: live"><span class="sw" style="background:var(--live)"></span>*</button>
+      <button class="chip" data-ch="." aria-pressed="false" title="2: dead"><span class="sw" style="background:var(--cell)"></span>.</button>
+      <button class="chip" data-ch="?" aria-pressed="false" title="3: search hole"><span class="sw" style="background:var(--unk)"></span>?</button>
+      <button class="chip" data-ch=" " aria-pressed="false" title="4: off-board"><span class="sw" style="background:var(--blank)"></span>blank</button>
+    </div>
+    <div class="row" style="margin-top:6px"><label class="inline">Other char <input type="text" id="customCh" maxlength="1" style="width:34px" aria-label="Custom brush character"></label><button class="btn" id="useCustom">Use</button></div>
+    <label class="inline"><input type="checkbox" id="mirror" checked> Apply to all sections</label>
+    <p class="hint">UWI edits must match in every section, so this stays on unless you are fixing one generation in XYT view.</p>
+
+    <h2>Selection</h2>
+    <div class="row">
+      <button class="btn sel" id="selFill">Fill brush</button>
+      <button class="btn sel" id="selQ">? to bottom</button>
+      <button class="btn sel" id="selDot">Clear to .</button>
+    </div>
+    <div class="row">
+      <button class="btn sel" id="selDelRows">Delete rows</button>
+      <button class="btn sel" id="selDelCols">Delete cols</button>
+    </div>
+
+    <h2>Shape</h2>
+    <div class="row"><label class="inline">N <input type="number" id="nShape" value="1" min="1" aria-label="Count"></label></div>
+    <div class="row">
+      <button class="btn" data-shape="addTop">+ rows top</button><button class="btn" data-shape="addBottom">+ rows bottom</button>
+      <button class="btn" data-shape="delTop">− rows top</button><button class="btn" data-shape="delBottom">− rows bottom</button>
+    </div>
+    <div class="row">
+      <button class="btn" data-shape="addLeft">+ cols left</button><button class="btn" data-shape="addRight">+ cols right</button>
+      <button class="btn" data-shape="delLeft">− cols left</button><button class="btn" data-shape="delRight">− cols right</button>
+    </div>
+    <div class="row"><button class="btn" data-shape="addSec">+ section</button><button class="btn" data-shape="delSec">− last section</button></div>
+    <div class="row"><button class="btn" id="ensureClear">Ensure blank columns</button><label class="inline">≥ <input type="number" id="af2" value="3" min="1" aria-label="Minimum blank columns (AF2)"></label></div>
+
+    <h2>Root markers</h2>
+    <div class="row">
+      <label class="inline">L <input type="text" id="rL" value="L" maxlength="1" style="width:30px"></label>
+      <label class="inline">mid <input type="text" id="rM" value="u" maxlength="1" style="width:30px"></label>
+      <label class="inline">R <input type="text" id="rR" value="R" maxlength="1" style="width:30px"></label>
+    </div>
+    <div class="row"><button class="btn" id="rootAuto">Set from pattern</button><button class="btn" id="rootDel">Remove</button></div>
+    <p class="hint">Labels blank columns left of the pattern L, right of it R, the rest u (a symmetric edge gets no L/R run). Do this in UWI view, where the row of root markers is simply the top row of every section. Recentering inputs only.</p>
+
+    <h2>Symmetry (orthogonal)</h2>
+    <div class="row"><button class="btn" id="findAxis">Find axis</button></div>
+    <div id="axisOut" class="axisres"></div>
+  </aside>
+
+  <main class="stage" id="stage">
+    <canvas id="cv" aria-label="Grid editor canvas"></canvas>
+    <div class="empty" id="empty"><div><p><strong>No grid loaded.</strong></p><p>Paste a grid, a log excerpt or an RLE in <em>Import</em>, or start a blank grid there.</p></div></div>
+    <p class="readout" id="readout">—</p>
+  </main>
+
+  <section class="insp" aria-label="Inspector">
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="io">Import</button>
+      <button role="tab" aria-selected="false" data-tab="checks">Checks <span id="checkBadge"></span></button>
+      <button role="tab" aria-selected="false" data-tab="run">Run</button>
+    </div>
+
+    <div class="pane" data-pane="io">
+      <h2>Paste</h2>
+      <textarea id="io" spellcheck="false" placeholder="| ...*.. | ..*... |&#10;| ..**.. | .***.. |&#10;&#10;Pipe grids, search-log excerpts (timestamps are stripped) or RLE all work."></textarea>
+      <div class="row" style="margin-top:6px">
+        <button class="btn primary" id="load">Load</button>
+        <label class="inline" title="For a plain RLE holding several generations side by side at equal spacing">RLE gens side by side <input type="number" id="rleGens" value="1" min="1"></label>
+      </div>
+      <div class="row"><button class="btn" id="example" title="A made-up grid for trying the tools, not a real partial">Load toy example</button></div>
+      <h2>New blank grid</h2>
+      <div class="row">
+        <label class="inline">sections <input type="number" id="nS" value="1" min="1"></label>
+        <label class="inline">cols <input type="number" id="nW" value="20" min="1"></label>
+        <label class="inline">rows <input type="number" id="nH" value="30" min="1"></label>
+      </div>
+      <div class="row"><button class="btn" id="newGrid">Create</button></div>
+      <h2>Export</h2>
+      <div class="row">
+        <button class="btn" id="expGrid">Grid text</button>
+        <button class="btn" id="expRle">RLE of section</button><input type="number" id="rleSec" value="1" min="1" aria-label="Section number for RLE export">
+        <button class="btn" id="expLH">LifeHistory RLE</button>
+      </div>
+      <div class="row"><button class="btn" id="copy">Copy</button><button class="btn" id="save" hidden>Save file</button><input type="text" id="fname" value="p1.uwi.txt" aria-label="File name" hidden></div>
+      <p class="hint">Export writes into the box above. Saved files end in .txt because only common extensions are allowed here; rename to <code>p1.in</code> / <code>p1.rle</code> after saving (<code>@yolo_1gp</code> requires <code>.rle</code>).</p>
+    </div>
+
+    <div class="pane" data-pane="checks" hidden>
+      <div id="checks"></div>
+    </div>
+
+    <div class="pane" data-pane="run" hidden>
+      <div class="form">
+        <label for="bin">Binary</label><input type="text" id="bin" value="./rlife">
+        <label for="sub">Subcommand</label>
+        <select id="sub"><option>llsss</option><option selected>llsss-recentering</option><option>llsss-recentering-wao</option></select>
+        <label for="rule">Rule</label><input type="text" id="rule" value="B3/S23">
+        <label for="geom">Geometry</label><input type="text" id="geom" value="3c7-f2b" list="geoms">
+        <label for="start">Start from</label>
+        <select id="start"><option value="file" selected>this grid (file)</option><option value="yolo">@yolo_1gp(RLE)</option><option value="bg">@bg (from scratch)</option></select>
+        <label for="inName">Input file</label><input type="text" id="inName" value="p1.in">
+        <label for="uwiStep">Edited in UWI</label><label class="inline"><input type="checkbox" id="uwiStep" checked> add from-uwi step</label>
+        <label for="yL">yolo pads L/R</label><span><input type="number" id="yL" value="0" min="0"> <input type="number" id="yR" value="0" min="0"></span>
+        <label for="bgW">@bg width</label><input type="number" id="bgW" value="9" min="2">
+        <label for="mid">mid_steps</label><input type="text" id="mid" value="07" style="width:70px">
+        <label for="le">Left edge</label><select id="le"><option>bg</option><option>even</option><option>odd</option><option>gutter</option><option>gse</option><option>gso</option></select>
+        <label for="re">Right edge</label><select id="re"><option>bg</option><option>even</option><option>odd</option><option>gutter</option><option>gse</option><option>gso</option></select>
+        <label for="agar">Background</label><select id="agar"><option>zero</option><option>b0</option><option>blocks</option><option>horizontal-stripes</option><option>vertical-stripes</option><option>one</option></select>
+        <label>Pads L/R/top</label><span><input type="number" id="pL" min="0" placeholder="–"> <input type="number" id="pR" min="0" placeholder="–"> <input type="number" id="pT" min="0" placeholder="–"></span>
+        <label>Fuzzy edges</label><span><label class="inline"><input type="checkbox" id="fzL"> left</label> <label class="inline"><input type="checkbox" id="fzR"> right</label></span>
+        <label>Filters</label><span><label class="inline"><input type="checkbox" id="fBcaf"> bcaf</label> <label class="inline"><input type="checkbox" id="fWcaf"> wcaf</label></span>
+        <label for="ends">Ends</label><input type="text" id="ends" placeholder="e.g. [even, odd, bg]">
+        <label for="halts">Halt at depth</label><input type="number" id="halts" min="1" placeholder="–">
+        <label for="state">State file</label><input type="text" id="state" placeholder="optional, e.g. s.bin">
+        <label>Stop at first end</label><label class="inline"><input type="checkbox" id="hoe" checked> LLSSS_HALT_ON_ENDS</label>
+        <label for="out">Output</label><input type="text" id="out" value="out.txt">
+      </div>
+      <datalist id="geoms"><option value="c2-f2b"><option value="c3-f2b"><option value="c4-f2b"><option value="2c5-f2b"><option value="2c7-f2b"><option value="3c7-f2b"><option value="c4d-f2b"><option value="c5d-f2b"><option value="c7d-f2b"><option value="c3k-1"><option value="c6k-1"></datalist>
+      <h2>Commands</h2>
+      <pre class="cmd" id="cmd"></pre>
+      <div class="row"><button class="btn" id="copyCmd">Copy commands</button></div>
+      <div id="runWarn"></div>
+    </div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+/* ---------- model ---------- */
+let S = null;          // array of sections: S[s][r][c] = char
+let W = 0, H = 0;      // uniform width / height
+let view = "UWI", mode = "RC";
+let tool = "paint", brush = "*";
+let sel = null;        // {s, r0, c0, r1, c1}
+let importNotes = [];
+const hist = [], fut = [];
+const CELL = new Set([".", "*", "?", " "]);
+const WILDS = new Set(["W","2","3","4","5","6","7","8","9","!"]);
+const $ = id => document.getElementById(id);
+
+function clone(){ return JSON.stringify({S, W, H}); }
+function restore(j){ const o = JSON.parse(j); S = o.S; W = o.W; H = o.H; }
+function snap(){ if (!S) return; hist.push(clone()); if (hist.length > 80) hist.shift(); fut.length = 0; }
+function undo(){ if (!hist.length) return; fut.push(clone()); restore(hist.pop()); changed(); }
+function redo(){ if (!fut.length) return; hist.push(clone()); restore(fut.pop()); changed(); }
+
+function makeGrid(ns, w, h, ch){ S = []; for (let s = 0; s < ns; s++){ const sec = []; for (let r = 0; r < h; r++) sec.push(Array(w).fill(ch)); S.push(sec); } W = w; H = h; }
+
+/* ---------- parsing ---------- */
+function parseGridText(text){
+  const warn = [];
+  let nb = 0;
+  text = text.replace(/\u00A0/g, () => { nb++; return " "; });
+  if (nb) warn.push(nb + " no-break space(s) replaced with normal spaces (these break LLSSS's parser).");
+  if (/\t/.test(text)){ warn.push("Tabs replaced with single spaces; check alignment."); text = text.replace(/\t/g, " "); }
+  const lines = text.split(/\r?\n/);
+  const blocks = []; let cur = null;
+  for (const ln of lines){
+    const a = ln.indexOf("|"), b = ln.lastIndexOf("|");
+    if (a >= 0 && b > a){ (cur || (cur = [], blocks.push(cur), cur)).push(ln.slice(a + 1, b)); }
+    else cur = null;
+  }
+  if (!blocks.length) return null;
+  if (blocks.length > 1) warn.push("Found " + blocks.length + " separate grids; loaded the first. Paste one grid at a time.");
+  const rows = blocks[0].map(inner => inner.split("|").map(ch => {
+    if (ch.startsWith(" ")) ch = ch.slice(1);
+    if (ch.endsWith(" ")) ch = ch.slice(0, -1);
+    return ch;
+  }));
+  const ns = Math.max(...rows.map(r => r.length));
+  let w = 0; rows.forEach(r => r.forEach(c => { w = Math.max(w, c.length); }));
+  const secs = [];
+  for (let s = 0; s < ns; s++){
+    secs.push(rows.map(r => { const t = (r[s] || ""); return (t + " ".repeat(w)).slice(0, w).split(""); }));
+  }
+  const odd = new Set();
+  secs.forEach(sec => sec.forEach(row => row.forEach(ch => { if (ch.charCodeAt(0) > 126 || ch.charCodeAt(0) < 32) odd.add(ch); })));
+  if (odd.size) warn.push("Non-ASCII characters present: " + [...odd].map(c => "U+" + c.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")).join(", "));
+  return { S: secs, W: w, H: rows.length, warn };
+}
+
+function parseRLE(text, gens){
+  const lines = text.split(/\r?\n/);
+  let i = lines.findIndex(l => /^\s*x\s*=\s*\d+/.test(l));
+  if (i < 0) return null;
+  const hdr = lines[i];
+  const x = +(/x\s*=\s*(\d+)/.exec(hdr) || [0, 0])[1];
+  const y = +(/y\s*=\s*(\d+)/.exec(hdr) || [0, 0])[1];
+  const rule = ((/rule\s*=\s*([^\s,]+)/i.exec(hdr) || [])[1] || "");
+  const body = lines.slice(i + 1).filter(l => !l.startsWith("#")).join("").split("!")[0];
+  const multi = /history/i.test(rule) || /[A-X.]/.test(body.replace(/[0-9$bo\s]/g, ""));
+  const rows = [[]]; let n = "";
+  const re = /(\d*)([p-y]?[A-X]|[a-z.$])/g; let m;
+  const tokens = body.replace(/\s+/g, "");
+  while ((m = re.exec(tokens))){
+    const cnt = m[1] ? +m[1] : 1, tag = m[2];
+    if (tag === "$"){ for (let k = 0; k < cnt; k++) rows.push([]); continue; }
+    let st;
+    if (multi){
+      if (tag === ".") st = 0;
+      else if (tag.length === 2) st = 24 * (tag.charCodeAt(0) - 111) + (tag.charCodeAt(1) - 64);
+      else if (/[A-X]/.test(tag)) st = tag.charCodeAt(0) - 64;
+      else st = tag === "b" ? 0 : 1;
+    } else st = (tag === "b" || tag === ".") ? 0 : 1;
+    const row = rows[rows.length - 1];
+    for (let k = 0; k < cnt; k++) row.push(st);
+  }
+  const h = Math.max(y, rows.length), w = Math.max(x, ...rows.map(r => r.length));
+  const grid = []; for (let r = 0; r < h; r++){ const src = rows[r] || []; const out = []; for (let c = 0; c < w; c++) out.push(src[c] || 0); grid.push(out); }
+  const warn = [];
+  if (multi){
+    const map = {0: " ", 1: "*", 2: ".", 3: "*", 4: ".", 5: "*", 6: "|"};
+    const txt = grid.map(r => r.map(v => map[v] ?? ".").join("")).join("\n");
+    if (!/\|/.test(txt)){
+      warn.push("LifeHistory RLE without state-6 separators: loaded as one section.");
+      const sec = grid.map(r => r.map(v => (v === 1 || v === 3 || v === 5) ? "*" : (v === 0 ? " " : ".")));
+      return { S: [sec], W: w, H: h, warn, rule };
+    }
+    const g = parseGridText(txt); if (!g) return null;
+    g.warn = warn.concat(g.warn); g.rule = rule; return g;
+  }
+  gens = Math.max(1, gens | 0);
+  const cw = Math.ceil(w / gens);
+  const secs = [];
+  for (let s = 0; s < gens; s++) secs.push(grid.map(r => { const o = []; for (let c = 0; c < cw; c++){ const v = r[s * cw + c]; o.push(v ? "*" : "."); } return o; }));
+  if (gens > 1 && w % gens) warn.push("RLE width " + w + " is not a multiple of " + gens + "; the last section was padded.");
+  warn.push("Single-state RLE loaded as " + gens + " section(s). One generation cannot become a search input without the other generations: use @yolo_1gp or mgp-tool, or paste all generations.");
+  return { S: secs, W: cw, H: h, warn, rule };
+}
+
+/* ---------- serialisation ---------- */
+function gridText(){
+  if (!S) return "";
+  const out = [];
+  for (let r = 0; r < H; r++) out.push("| " + S.map(sec => sec[r].join("")).join(" | ") + " |");
+  return out.join("\n") + "\n";
+}
+function rleEncode(rows, rule, multi){
+  // rows: arrays of tag chars (single char each); returns RLE body lines wrapped at 70
+  const toks = [];
+  rows.forEach((row, ri) => {
+    let line = row.slice();
+    const dead = multi ? "." : "b";
+    while (line.length && line[line.length - 1] === dead) line.pop();
+    let i = 0;
+    while (i < line.length){ let j = i; while (j < line.length && line[j] === line[i]) j++; const n = j - i; toks.push((n > 1 ? n : "") + line[i]); i = j; }
+    if (ri < rows.length - 1) toks.push("$");
+  });
+  // merge consecutive $
+  const merged = []; for (const t of toks){ if (t === "$" && merged.length && /^\d*\$$/.test(merged[merged.length - 1])){ const p = merged.pop(); const n = (parseInt(p) || 1) + 1; merged.push(n + "$"); } else merged.push(t); }
+  while (merged.length && /\$$/.test(merged[merged.length - 1])) merged.pop();
+  let body = "", line = "";
+  for (const t of merged.concat(["!"])){ if (line.length + t.length > 70){ body += line + "\n"; line = ""; } line += t; }
+  body += line;
+  return body;
+}
+function rleOfSection(s, rule){
+  const rows = S[s].map(r => r.map(ch => ch === "*" ? "o" : "b"));
+  const lost = S[s].flat().filter(ch => !(ch === "*" || ch === "." || ch === " ")).length;
+  return { text: "x = " + W + ", y = " + H + ", rule = " + (rule || "B3/S23") + "\n" + rleEncode(rows, rule, false) + "\n", lost };
+}
+function lifeHistory(){
+  const txt = gridText().trimEnd().split("\n");
+  let lost = 0;
+  const map = ch => ch === "|" ? "F" : ch === " " ? "." : ch === "*" ? "A" : ch === "." ? "B" : (lost++, "B");
+  const rows = txt.map(l => l.split("").map(map));
+  const w = Math.max(...rows.map(r => r.length));
+  return { text: "x = " + w + ", y = " + rows.length + ", rule = LifeHistory\n" + rleEncode(rows, "LifeHistory", true) + "\n", lost };
+}
+
+/* ---------- analysis ---------- */
+function isRootRow(r){
+  let label = 0;
+  for (const sec of S) for (const ch of sec[r]){ if (ch === "." || ch === "*" || ch === "?") return false; if (ch !== " ") label++; }
+  return label > 0;
+}
+function rootRowIndex(){ if (!S || !H) return -1; for (let r = 0; r < H; r++){ let blank = true; for (const sec of S) if (sec[r].some(c => c !== " ")){ blank = false; break; } if (!blank) return isRootRow(r) ? r : -1; } return -1; }
+function extents(skipRow, liveOnly){
+  let min = Infinity, max = -Infinity;
+  for (const sec of S) for (let r = 0; r < H; r++){ if (r === skipRow) continue; for (let c = 0; c < W; c++){ const ch = sec[r][c]; if (ch === "*" || (!liveOnly && (ch === "?" || !CELL.has(ch)))){ if (c < min) min = c; if (c > max) max = c; } } }
+  return { min, max };
+}
+
+function runChecks(){
+  const out = [];
+  if (!S){ return [{ lvl: "info", msg: "Load or create a grid to see checks." }]; }
+  const rr = rootRowIndex();
+  const hasBlank = S.some(sec => sec.some(row => row.includes(" ")));
+  const af2 = Math.max(1, +$("af2").value || 3);
+  // blanks
+  if (view === "UWI"){
+    if (hasBlank){
+      let first = -1; for (let r = 0; r < H && first < 0; r++) if (S.some(sec => sec[r].includes(" ") && !(r === rr))) first = r;
+      out.push({ lvl: "err", msg: "Blank (off-board) cells in UWI view, first at row " + (first + 1) + ". Every section must be a full rectangle.", fix: [["Round up to .", fixBlanks], ["Trim blank rows", trimBlankRows]] });
+    } else out.push({ lvl: "ok", msg: "Every section is a full " + W + "×" + H + " rectangle." });
+  } else {
+    out.push({ lvl: "info", msg: "XYT view: staggered blanks are expected. Convert with grid-tool to-uwi and switch the view to UWI to check shape." });
+  }
+  // question marks
+  const qRows = []; for (let r = 0; r < H; r++) if (S.some(sec => sec[r].includes("?"))) qRows.push(r);
+  if (mode === "Fixed" && !qRows.length) out.push({ lvl: "err", msg: "Fixed-board input has no ? cells, so there is nothing to search." });
+  if (qRows.length && view === "UWI"){
+    const q0 = qRows[0];
+    const key = sec => r => sec[r].map(ch => ch === "?" ? 1 : 0).join("");
+    const ref = key(S[0])(H - 1);
+    let bad = [];
+    for (let r = q0; r < H; r++) for (let s = 0; s < S.length; s++) if (key(S[s])(r) !== ref) { bad.push(r + 1); break; }
+    if (bad.length) out.push({ lvl: "err", msg: "? cells are not one block from row " + (q0 + 1) + " to the bottom with identical columns in every section (mismatch at row" + (bad.length > 1 ? "s " : " ") + bad.slice(0, 6).join(", ") + (bad.length > 6 ? "…" : "") + ").", fix: [["Round up ? block", fixQ]] });
+    else out.push({ lvl: "ok", msg: "? cells form a suffix block: rows " + (q0 + 1) + "–" + H + ", " + ref.split("").filter(x => x === "1").length + " columns." });
+  } else if (qRows.length) out.push({ lvl: "info", msg: "? present in rows " + (qRows[0] + 1) + "–" + (qRows[qRows.length - 1] + 1) + ". Their W-suffix shape can only be checked in UWI view." });
+  // roots
+  const extraLabelRows = []; for (let r = 0; r < H; r++) if (r !== rr && isRootRow(r)) extraLabelRows.push(r + 1);
+  if (mode === "RC"){
+    if (rr < 0 && !qRows.length) out.push({ lvl: "err", msg: "Recentering input without a row of root markers (and no ? picture). Add one row of root markers above the pattern.", fix: [["Set row of root markers", rootAuto]] });
+    else if (rr < 0) out.push({ lvl: "warn", msg: "No row of root markers. Recentering accepts ? picture inputs, but amling's partial-extension inputs carry roots too.", fix: [["Set row of root markers", rootAuto]] });
+    else {
+      const lab = S[0][rr].join("").trim();
+      const l = lab[0], rch = lab[lab.length - 1];
+      if (l === rch && $("le").value === "bg" && $("re").value === "bg") out.push({ lvl: "err", msg: "Left and right root markers are both '" + l + "'. Use distinct labels or all-zero rows count as a result." });
+      else out.push({ lvl: "ok", msg: "One row of root markers (row " + (rr + 1) + "), left '" + l + "', right '" + rch + "'." });
+      const run = m => (m && m[1] !== ($("rM").value || "u")) ? m[0].length : 0;
+      const cleanL = run(lab.match(/^(.)\1*/)), cleanR = run(lab.match(/(.)\1*$/));
+      if ($("le").value === "bg" && cleanL < af2) out.push({ lvl: "warn", msg: "Only " + cleanL + " left root column(s); " + af2 + " needed for the pattern to grow left.", fix: [["Ensure margin", ensureClear]] });
+      if ($("re").value === "bg" && cleanR < af2) out.push({ lvl: "warn", msg: "Only " + cleanR + " right root column(s); " + af2 + " needed for the pattern to grow right.", fix: [["Ensure margin", ensureClear]] });
+      if (S.length > 1){ const ref = S[0][rr].join(""); if (S.some(sec => sec[rr].join("") !== ref && sec[rr].join("").trim() !== "")) out.push({ lvl: "warn", msg: "The row of root markers differs between sections. Usually every section carries the same labels in UWI view." }); }
+    }
+  } else if (rr >= 0) out.push({ lvl: "warn", msg: "A row of root markers is present in a fixed-board input. Fixed board uses implicit roots; remove it unless you know you need it.", fix: [["Remove row of root markers", rootDel]] });
+  if (extraLabelRows.length) out.push({ lvl: "err", msg: "Label-only rows below the first row: " + extraLabelRows.slice(0, 6).join(", ") + ". Exactly one row of root markers, at the top." });
+  // margins (live cells only: a ? block may run into the edge label run, which is how open edges are made)
+  const ex = extents(rr, true);
+  if (isFinite(ex.min)){
+    const lm = ex.min, rm = W - 1 - ex.max;
+    const needL = $("le").value === "bg", needR = $("re").value === "bg";
+    const want = mode === "Fixed" ? af2 - 1 : af2;
+    if ((needL && lm < want) || (needR && rm < want)) out.push({ lvl: "warn", msg: "Blank margin: " + lm + " left, " + rm + " right (want ≥ " + want + " on open bg edges" + (mode === "Fixed" ? "; fixed boards lose AF2−1 edge columns" : "") + ").", fix: [["Ensure margin", ensureClear]] });
+    else out.push({ lvl: "ok", msg: "Blank margin: " + lm + " left, " + rm + " right." });
+  }
+  // odd chars
+  const others = new Set(); S.forEach(sec => sec.forEach((row, r) => { if (r === rr) return; row.forEach(ch => { if (!CELL.has(ch)) others.add(ch); }); }));
+  if (others.size){ const w = [...others].filter(c => WILDS.has(c)), u = [...others].filter(c => !WILDS.has(c)); if (w.length) out.push({ lvl: "info", msg: "Wildcards in the pattern: " + w.join(" ") + ". Keep LLSSS_INIT_CA_CHECKS=true; wao does not support wildcards." }); if (u.length) out.push({ lvl: "warn", msg: "Unrecognised characters in pattern rows: " + u.map(c => JSON.stringify(c)).join(" ") + "." }); }
+  return out;
+}
+
+/* ---------- fixes & operations ---------- */
+function fixBlanks(){ snap(); const rr = rootRowIndex(); S.forEach(sec => sec.forEach((row, r) => { if (r === rr) return; for (let c = 0; c < W; c++) if (row[c] === " ") row[c] = "."; })); changed(); }
+function trimBlankRows(){ snap(); const blank = r => S.every(sec => sec[r].every(c => c === " ")); let a = 0, b = H - 1; while (a <= b && blank(a)) a++; while (b >= a && blank(b)) b--; S = S.map(sec => sec.slice(a, b + 1)); H = b - a + 1; changed(); }
+function fixQ(){ snap(); let q0 = H, cmin = W, cmax = -1; S.forEach(sec => sec.forEach((row, r) => row.forEach((ch, c) => { if (ch === "?"){ q0 = Math.min(q0, r); cmin = Math.min(cmin, c); cmax = Math.max(cmax, c); } }))); if (cmax < 0) return; S.forEach(sec => { for (let r = q0; r < H; r++) for (let c = cmin; c <= cmax; c++) sec[r][c] = "?"; }); changed(); toast("? block now spans rows " + (q0 + 1) + "–" + H + ", columns " + (cmin + 1) + "–" + (cmax + 1)); }
+function shape(op, n){
+  if (!S) return; snap();
+  const rr = rootRowIndex();
+  const row = () => Array(W).fill(".");
+  const edge = (r, ri, side) => ri === rr ? r[side === "L" ? 0 : r.length - 1] : (r[side === "L" ? 0 : r.length - 1] === " " ? " " : ".");
+  switch (op){
+    case "addTop": { const at = rr >= 0 ? rr + 1 : 0; S.forEach(sec => { for (let k = 0; k < n; k++) sec.splice(at, 0, row()); }); H += n; break; }
+    case "addBottom": S.forEach(sec => { const last = sec[H - 1]; for (let k = 0; k < n; k++) sec.push(last.map(ch => ch === "?" ? "?" : ch === " " ? " " : ".")); }); H += n; break;
+    case "delTop": { const at = rr >= 0 ? rr + 1 : 0; n = Math.min(n, H - 1 - at); if (n > 0){ S.forEach(sec => sec.splice(at, n)); H -= n; } break; }
+    case "delBottom": n = Math.min(n, H - 1); S.forEach(sec => sec.splice(H - n, n)); H -= n; break;
+    case "addLeft": S.forEach(sec => sec.forEach((r, ri) => { const e = edge(r, ri, "L"); for (let k = 0; k < n; k++) r.unshift(e); })); W += n; break;
+    case "addRight": S.forEach(sec => sec.forEach((r, ri) => { const e = edge(r, ri, "R"); for (let k = 0; k < n; k++) r.push(e); })); W += n; break;
+    case "delLeft": n = Math.min(n, W - 1); S.forEach(sec => sec.forEach(r => r.splice(0, n))); W -= n; break;
+    case "delRight": n = Math.min(n, W - 1); S.forEach(sec => sec.forEach(r => r.splice(W - n, n))); W -= n; break;
+    case "addSec": S.push(S[S.length - 1].map(r => r.slice())); break;
+    case "delSec": if (S.length > 1) S.pop(); break;
+  }
+  sel = null; changed();
+}
+function ensureClear(){
+  if (!S) return;
+  const af2 = Math.max(1, +$("af2").value || 3), rr = rootRowIndex(), ex = extents(rr);
+  if (!isFinite(ex.min)) return;
+  const needL = $("le").value === "bg" ? Math.max(0, af2 - ex.min) : 0, needR = $("re").value === "bg" ? Math.max(0, af2 - (W - 1 - ex.max)) : 0;
+  if (!needL && !needR){ toast("Blank columns already ≥ " + af2); return; }
+  snap();
+  if (needL){ S.forEach(sec => sec.forEach((r, ri) => { for (let k = 0; k < needL; k++) r.unshift(ri === rr ? r[0] : (r[0] === " " ? " " : ".")); })); W += needL; }
+  if (needR){ S.forEach(sec => sec.forEach((r, ri) => { for (let k = 0; k < needR; k++) r.push(ri === rr ? r[r.length - 1] : (r[r.length - 1] === " " ? " " : ".")); })); W += needR; }
+  if (rr >= 0) labelRoots(rr);
+  changed(); toast("Added " + needL + " left, " + needR + " right column(s)" + (rr >= 0 ? "; row of root markers relabelled" : ""));
+}
+function labelRoots(rr){
+  const L = $("rL").value || "L", M = $("rM").value || "u", R = $("rR").value || "R";
+  const ex = extents(rr);
+  const openL = $("le").value === "bg", openR = $("re").value === "bg";
+  const lo = openL && isFinite(ex.min) ? ex.min : 0, hi = openR && isFinite(ex.max) ? ex.max : W - 1;
+  const lab = []; for (let c = 0; c < W; c++) lab.push(c < lo ? L : c > hi ? R : M);
+  S.forEach(sec => { sec[rr] = lab.slice(); });
+}
+function rootAuto(){
+  if (!S) return;
+  if (($("rL").value || "L") === ($("rR").value || "R")){ toast("Left and right labels must differ"); return; }
+  snap();
+  let rr = rootRowIndex();
+  if (rr < 0){ S.forEach(sec => sec.unshift(Array(W).fill(" "))); H++; rr = 0; }
+  labelRoots(rr);
+  changed();
+}
+function rootDel(){ const rr = rootRowIndex(); if (rr < 0){ toast("No row of root markers"); return; } snap(); S.forEach(sec => sec.splice(rr, 1)); H--; changed(); }
+function findAxis(){
+  const out = $("axisOut"); out.innerHTML = "";
+  if (!S) return;
+  const rr = rootRowIndex(), ex = extents(rr);
+  if (!isFinite(ex.min)){ out.textContent = "No live or ? cells to mirror."; return; }
+  const v = ch => ch === "*" ? 1 : (ch === "?" ? 2 : 0);
+  // mirror of column x about axis position a (a = c for odd, c + .5 for even)
+  const miss = a => { let n = 0; S.forEach(sec => sec.forEach((row, r) => { if (r === rr) return; for (let x = ex.min; x <= ex.max; x++){ const m = Math.round(2 * a - x); const mv = (m >= 0 && m < W) ? v(row[m]) : 0; if (v(row[x]) !== mv) n++; } })); return n / 2; };
+  const res = [];
+  for (let c = ex.min; c <= ex.max; c++){
+    res.push({ type: "odd", c, n: miss(c) });
+    if (c < ex.max) res.push({ type: "even", c, n: miss(c + .5) });
+  }
+  res.sort((p, q) => p.n - q.n);
+  const best = res.slice(0, 3).filter(a => a.n <= Math.max(4, res[0].n));
+  best.forEach(a => {
+    const d = document.createElement("div"); d.className = "row";
+    const t = document.createElement("span");
+    t.textContent = (a.type === "odd" ? "odd, on col " + (a.c + 1) : "even, cols " + (a.c + 1) + "|" + (a.c + 2)) + (a.n ? " · " + a.n + " cell pair(s) differ" : " · exact");
+    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "Crop " + a.c + " left cols";
+    btn.title = a.type === "odd" ? "Keeps the axis column as the new first column (--left-edge odd)" : "Keeps one mirrored duplicate column first (--left-edge even)";
+    btn.onclick = () => { shape("delLeft", a.c); $("le").value = a.type; buildCmd(); renderChecks(); toast("Cropped; left edge set to " + a.type); out.innerHTML = ""; };
+    d.append(t, btn); out.append(d);
+  });
+  if (best.length && best[0].n) { const h = document.createElement("p"); h.className = "hint"; h.textContent = "No exact axis. Differences often mean a sibling branch or a torn back end; check before cropping."; out.append(h); }
+}
+
+/* ---------- selection ops ---------- */
+function selRect(){ if (!sel) return null; return { r0: Math.min(sel.r0, sel.r1), r1: Math.max(sel.r0, sel.r1), c0: Math.min(sel.c0, sel.c1), c1: Math.max(sel.c0, sel.c1) }; }
+function secsFor(s){ return $("mirror").checked ? S.map((_, i) => i) : [s]; }
+function selApply(ch, toBottom){
+  const R = selRect(); if (!R) return; snap();
+  const r1 = toBottom ? H - 1 : R.r1;
+  secsFor(sel.s).forEach(s => { for (let r = R.r0; r <= r1; r++) for (let c = R.c0; c <= R.c1; c++) S[s][r][c] = ch; });
+  changed();
+}
+function selDelRows(){ const R = selRect(); if (!R) return; snap(); const n = R.r1 - R.r0 + 1; if (n >= H) return; S.forEach(sec => sec.splice(R.r0, n)); H -= n; sel = null; changed(); }
+function selDelCols(){ const R = selRect(); if (!R) return; snap(); const n = R.c1 - R.c0 + 1; if (n >= W) return; S.forEach(sec => sec.forEach(r => r.splice(R.c0, n))); W -= n; sel = null; changed(); }
+
+/* ---------- canvas ---------- */
+const cv = $("cv"), ctx = cv.getContext("2d");
+let cs = 12;
+const GUT = 34, TOP = 20;
+function colors(){ const g = getComputedStyle(document.documentElement); const k = n => g.getPropertyValue(n).trim(); return { cell: k("--cell"), live: k("--live"), unk: k("--unk"), root: k("--root"), wild: k("--wild"), blank: k("--blank"), hatch: k("--hatch"), rule: k("--rule"), muted: k("--muted"), panel: k("--panel"), sel: k("--sel"), accent: k("--accent"), ink: k("--ink") }; }
+function secX(s){ return GUT + s * (W * cs + Math.max(8, cs)); }
+function draw(){
+  $("empty").hidden = !!S;
+  if (!S){ cv.width = 0; cv.height = 0; return; }
+  let dpr = window.devicePixelRatio || 1;
+  const wpx = secX(S.length) + 8, hpx = TOP + H * cs + 8;
+  dpr = Math.min(dpr, 16000 / Math.max(wpx, hpx));
+  cv.style.width = wpx + "px"; cv.style.height = hpx + "px";
+  cv.width = Math.round(wpx * dpr); cv.height = Math.round(hpx * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const C = colors(), rr = rootRowIndex();
+  ctx.clearRect(0, 0, wpx, hpx);
+  ctx.font = "600 " + Math.max(8, Math.min(cs - 2, 14)) + "px " + getComputedStyle(document.body).getPropertyValue("--mono");
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  // headers
+  ctx.fillStyle = C.muted; ctx.font = "11px " + getComputedStyle(document.documentElement).getPropertyValue("--mono");
+  S.forEach((_, s) => { ctx.textAlign = "left"; ctx.fillText((view === "XYT" ? "gen " : "sec ") + (s + 1), secX(s), TOP / 2); });
+  const step = cs >= 10 ? 1 : cs >= 6 ? 5 : 10;
+  ctx.textAlign = "right";
+  for (let r = 0; r < H; r++) if ((r + 1) % step === 0 || r === 0 || r === rr) ctx.fillText(String(r + 1), GUT - 5, TOP + r * cs + cs / 2);
+  const glyph = cs >= 10;
+  const gf = "600 " + Math.max(8, Math.min(cs - 3, 14)) + "px " + getComputedStyle(document.documentElement).getPropertyValue("--mono");
+  ctx.font = gf; ctx.textAlign = "center";
+  for (let s = 0; s < S.length; s++){
+    const x0 = secX(s);
+    for (let r = 0; r < H; r++){
+      const y = TOP + r * cs, row = S[s][r];
+      for (let c = 0; c < W; c++){
+        const ch = row[c], x = x0 + c * cs;
+        let bg, fg = null;
+        if (ch === ".") bg = C.cell;
+        else if (ch === "*") bg = C.live;
+        else if (ch === "?") { bg = C.unk; fg = "?"; }
+        else if (ch === " ") bg = C.blank;
+        else if (r === rr) { bg = C.root; fg = ch; }
+        else { bg = C.wild; fg = ch; }
+        ctx.fillStyle = bg; ctx.fillRect(x, y, cs, cs);
+        if (ch === " " && cs >= 6){ ctx.strokeStyle = C.hatch; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, y + cs); ctx.lineTo(x + cs, y); ctx.stroke(); }
+        if (fg && glyph){ ctx.fillStyle = ch === "?" ? "#1b1400" : "#fff"; ctx.fillText(fg, x + cs / 2, y + cs / 2 + 1); }
+      }
+    }
+    if (cs >= 6){
+      ctx.strokeStyle = C.rule; ctx.lineWidth = 1; ctx.globalAlpha = .55; ctx.beginPath();
+      for (let c = 0; c <= W; c++){ ctx.moveTo(x0 + c * cs + .5, TOP); ctx.lineTo(x0 + c * cs + .5, TOP + H * cs); }
+      for (let r = 0; r <= H; r++){ ctx.moveTo(x0, TOP + r * cs + .5); ctx.lineTo(x0 + W * cs, TOP + r * cs + .5); }
+      ctx.stroke(); ctx.globalAlpha = 1;
+    }
+    ctx.strokeStyle = C.muted; ctx.lineWidth = 1; ctx.strokeRect(x0 - .5, TOP - .5, W * cs + 1, H * cs + 1);
+  }
+  const R = selRect();
+  if (R){
+    secsFor(sel.s).forEach(s => { const x = secX(s) + R.c0 * cs, y = TOP + R.r0 * cs, w = (R.c1 - R.c0 + 1) * cs, h = (R.r1 - R.r0 + 1) * cs; ctx.fillStyle = C.sel; ctx.fillRect(x, y, w, h); ctx.strokeStyle = C.accent; ctx.lineWidth = 2; ctx.strokeRect(x + 1, y + 1, w - 2, h - 2); });
+  }
+}
+function hit(ev){
+  const b = cv.getBoundingClientRect(), x = ev.clientX - b.left, y = ev.clientY - b.top;
+  const r = Math.floor((y - TOP) / cs); if (r < 0 || r >= H) return null;
+  for (let s = 0; s < S.length; s++){ const x0 = secX(s); if (x >= x0 && x < x0 + W * cs) return { s, r, c: Math.floor((x - x0) / cs) }; }
+  return null;
+}
+let drag = null;
+cv.addEventListener("pointerdown", ev => {
+  if (!S) return; const h = hit(ev); if (!h) return;
+  cv.setPointerCapture(ev.pointerId);
+  if (tool === "select"){ sel = { s: h.s, r0: h.r, c0: h.c, r1: h.r, c1: h.c }; drag = { sel: true }; draw(); updSelBtns(); return; }
+  snap();
+  const cur = S[h.s][h.r][h.c];
+  const ch = tool === "toggle" ? (cur === "*" ? "." : "*") : brush;
+  drag = { ch, last: null }; paintAt(h);
+});
+cv.addEventListener("pointermove", ev => {
+  if (!S) return; const h = hit(ev);
+  $("readout").textContent = h ? ((view === "XYT" ? "gen " : "sec ") + (h.s + 1) + " · row " + (h.r + 1) + " · col " + (h.c + 1) + " · " + JSON.stringify(S[h.s][h.r][h.c])) : "—";
+  if (!drag || !h) return;
+  if (drag.sel){ if (h.s === sel.s){ sel.r1 = h.r; sel.c1 = h.c; draw(); } return; }
+  paintAt(h);
+});
+cv.addEventListener("pointerup", () => { if (drag && !drag.sel) changed(true); drag = null; });
+cv.addEventListener("pointercancel", () => { drag = null; });
+function paintAt(h){
+  const key = h.s + ":" + h.r + ":" + h.c; if (drag.last === key) return; drag.last = key;
+  secsFor(h.s).forEach(s => { S[s][h.r][h.c] = drag.ch; });
+  draw();
+}
+
+/* ---------- UI plumbing ---------- */
+function changed(quiet){
+  $("dims").textContent = S ? (S.length + " section" + (S.length > 1 ? "s" : "") + " · " + W + " cols · " + H + " rows") : "no grid";
+  draw(); renderChecks(); buildCmd(); updSelBtns();
+  $("undo").disabled = !hist.length; $("redo").disabled = !fut.length;
+  try { if (S) localStorage.setItem("llsss-wb-grid", JSON.stringify({ S, W, H, view, mode })); } catch (e) {}
+}
+function renderChecks(){
+  const list = importNotes.map(t => ({ lvl: "warn", msg: "Import: " + t })).concat(runChecks()), box = $("checks"); box.innerHTML = "";
+  let errs = 0, warns = 0;
+  list.forEach(it => {
+    if (it.lvl === "err") errs++; if (it.lvl === "warn") warns++;
+    const d = document.createElement("div"); d.className = "check";
+    const dot = document.createElement("span"); dot.className = "dot " + it.lvl;
+    const m = document.createElement("div"); m.textContent = it.msg;
+    if (it.fix){ const f = document.createElement("div"); f.className = "row fix"; it.fix.forEach(([lab, fn]) => { const b = document.createElement("button"); b.className = "btn"; b.textContent = lab; b.onclick = fn; f.append(b); }); m.append(f); }
+    d.append(dot, m); box.append(d);
+  });
+  $("checkBadge").textContent = errs ? "(" + errs + ")" : warns ? "(" + warns + "!)" : "";
+}
+function updSelBtns(){ document.querySelectorAll(".btn.sel").forEach(b => b.disabled = !sel); }
+function toast(t){ const e = $("toast"); e.textContent = t; e.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove("show"), 2200); }
+function setView(v){ view = v; $("vXYT").setAttribute("aria-pressed", v === "XYT"); $("vUWI").setAttribute("aria-pressed", v === "UWI"); $("uwiStep").checked = v === "UWI"; changed(true); }
+function setMode(m){ mode = m; $("mFixed").setAttribute("aria-pressed", m === "Fixed"); $("mRC").setAttribute("aria-pressed", m === "RC"); if (m === "Fixed" && $("sub").value !== "llsss") $("sub").value = "llsss"; if (m === "RC" && $("sub").value === "llsss") $("sub").value = "llsss-recentering"; changed(true); }
+function setTool(t){ tool = t; document.querySelectorAll("[data-tool]").forEach(b => b.setAttribute("aria-pressed", b.dataset.tool === t)); cv.style.cursor = t === "select" ? "cell" : "crosshair"; }
+function setBrush(ch){ brush = ch; document.querySelectorAll("#brushes .chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.ch === ch)); if (tool === "toggle") setTool("paint"); }
+
+$("vXYT").onclick = () => setView("XYT"); $("vUWI").onclick = () => setView("UWI");
+$("mFixed").onclick = () => setMode("Fixed"); $("mRC").onclick = () => setMode("RC");
+document.querySelectorAll("[data-tool]").forEach(b => b.onclick = () => setTool(b.dataset.tool));
+document.querySelectorAll("#brushes .chip").forEach(b => b.onclick = () => setBrush(b.dataset.ch));
+$("useCustom").onclick = () => { const c = $("customCh").value; if (!c || c === "|"){ toast(c === "|" ? "| is the section separator" : "Type a character first"); return; } setBrush(c); document.querySelectorAll("#brushes .chip").forEach(b => b.setAttribute("aria-pressed", "false")); toast("Brush: " + JSON.stringify(c)); };
+$("zoom").oninput = e => { cs = +e.target.value; draw(); };
+$("undo").onclick = undo; $("redo").onclick = redo;
+$("selFill").onclick = () => selApply(brush, false);
+$("selQ").onclick = () => selApply("?", true);
+$("selDot").onclick = () => selApply(".", false);
+$("selDelRows").onclick = selDelRows; $("selDelCols").onclick = selDelCols;
+document.querySelectorAll("[data-shape]").forEach(b => b.onclick = () => shape(b.dataset.shape, Math.max(1, +$("nShape").value || 1)));
+$("ensureClear").onclick = ensureClear;
+$("rootAuto").onclick = rootAuto; $("rootDel").onclick = rootDel;
+$("findAxis").onclick = findAxis;
+document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".tabs button").forEach(x => x.setAttribute("aria-selected", x === b));
+  document.querySelectorAll(".pane").forEach(p => p.hidden = p.dataset.pane !== b.dataset.tab);
+});
+
+function loadObj(g, msg){
+  snap(); S = g.S; W = g.W; H = g.H; sel = null; importNotes = [];
+  if (g.rule) $("rule").value = g.rule.replace(/History$/i, "") || $("rule").value;
+  // guess view: blanks present -> probably XYT
+  const blanks = S.some(sec => sec.some(r => r.includes(" ")));
+  if (S.length > 1 && blanks) setView("XYT");
+  if (!S[0].length) { toast("Empty grid"); return; }
+  const fit = Math.floor(Math.min(24, Math.max(3, ($("stage").clientWidth - GUT - 20) / (S.length * (W + 1)))));
+  cs = fit; $("zoom").value = fit;
+  changed();
+  importNotes = (g.warn || []).slice();
+  renderChecks();
+  toast(msg + (importNotes.length ? " — " + importNotes.length + " import note(s) in Checks" : ""));
+}
+$("load").onclick = () => {
+  const t = $("io").value; if (!t.trim()){ toast("Paste something first"); return; }
+  const g = /^\s*x\s*=\s*\d+\s*,\s*y\s*=/m.test(t) ? parseRLE(t, +$("rleGens").value) : parseGridText(t);
+  if (!g){ toast("No grid rows (lines with | … |) or RLE header found"); return; }
+  loadObj(g, "Loaded " + g.S.length + " × " + g.W + " × " + g.H);
+};
+$("example").onclick = () => {
+  $("io").value = "| LLLuuuuuuuuuRRR | LLLuuuuuuuuuRRR |\n| ............... | ............... |\n| ......*........ | .....***....... |\n| .....***....... | ....*...*...... |\n| ....**.**...... | ....*.*.*...... |\n| .....*.*....... | .....***....... |\n| ....*...*...... | ......*........ |\n| .....***....... | ....*...*...... |\n| ......*..*..... | .....*.*.*..... |\n| ....*.*..**.... | ....**..*...... |\n";
+  $("load").click(); setView("UWI"); setMode("RC");
+};
+$("newGrid").onclick = () => { snap(); importNotes = []; makeGrid(Math.max(1, +$("nS").value || 1), Math.max(1, +$("nW").value || 1), Math.max(1, +$("nH").value || 1), "."); sel = null; changed(); toast("Blank grid created"); };
+
+let lastExt = "uwi";
+$("expGrid").onclick = () => { if (!S) return; $("io").value = gridText(); lastExt = view === "UWI" ? "uwi" : "in"; $("fname").value = "p1." + lastExt + ".txt"; toast("Grid text in the box"); };
+$("expRle").onclick = () => { if (!S) return; const s = Math.min(S.length, Math.max(1, +$("rleSec").value || 1)) - 1; const o = rleOfSection(s, $("rule").value); $("io").value = o.text; $("fname").value = "p1.rle.txt"; toast(o.lost ? o.lost + " non-cell char(s) exported as dead" : "RLE of section " + (s + 1)); };
+$("expLH").onclick = () => { if (!S) return; const o = lifeHistory(); $("io").value = o.text; $("fname").value = "p1-lh.rle.txt"; toast(o.lost ? o.lost + " ?/label cell(s) exported as state 2 (not representable)" : "LifeHistory RLE in the box"); };
+async function copyText(t){
+  try { await navigator.clipboard.writeText(t); toast("Copied"); }
+  catch (e){ const ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.append(ta); ta.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (e2) {} ta.remove(); toast(ok ? "Copied" : "Copy blocked here; select the text and copy manually"); }
+}
+$("copy").onclick = () => copyText($("io").value);
+$("copyCmd").onclick = () => copyText($("cmd").textContent);
+
+// downloads capability (optional)
+let downloads = null;
+(async () => { try { if (window.claude && window.claude.use){ downloads = await window.claude.use("downloads"); if (downloads){ $("save").hidden = false; $("fname").hidden = false; } } } catch (e) {} })();
+$("save").onclick = async () => {
+  if (!downloads) return; const data = $("io").value; if (!data.trim()){ toast("Export something first"); return; }
+  let fn = $("fname").value.trim() || "grid.txt"; if (!/\.txt$/i.test(fn)) fn += ".txt";
+  try { await downloads.save({ filename: fn, data }); toast("Saved " + fn); }
+  catch (e){ toast(e && e.code === "declined" ? "Save cancelled" : "Save unavailable (" + (e && e.code || "error") + ")"); if (e && (e.code === "unavailable" || e.code === "not_granted")) $("save").hidden = true; }
+};
+
+/* ---------- command builder ---------- */
+const runIds = ["bin","sub","rule","geom","start","inName","uwiStep","yL","yR","bgW","mid","le","re","agar","pL","pR","pT","fzL","fzR","fBcaf","fWcaf","ends","halts","state","hoe","out"];
+runIds.forEach(id => { const e = $(id); e.addEventListener("input", () => { if (id === "le" || id === "re") renderChecks(); buildCmd(); }); e.addEventListener("change", buildCmd); });
+function q(s){ return "'" + String(s).replace(/'/g, "'\\''") + "'"; }
+function buildCmd(){
+  const v = id => $(id).value.trim(), on = id => $(id).checked;
+  const bin = v("bin") || "./rlife", sub = v("sub"), geom = v("geom") || "GEOM", fixed = sub === "llsss", wao = sub === "llsss-recentering-wao";
+  const lines = [], warn = [];
+  if (on("hoe")) lines.push("export LLSSS_HALT_ON_ENDS=true");
+  const inName = v("inName") || "p1.in";
+  let start;
+  if (v("start") === "file"){
+    if (on("uwiStep")){
+      const uwi = inName.replace(/\.in$/, "") + ".uwi";
+      lines.push("# made the UWI file with: " + bin + " grid-tool to-uwi " + geom + " < p1.xyt > " + uwi);
+      lines.push(bin + " grid-tool from-uwi " + geom + " < " + uwi + " > " + inName);
+    }
+    start = inName;
+    const rr = S ? rootRowIndex() : -1;
+    if (S && fixed && rr >= 0) warn.push("The grid has a row of root markers but the subcommand is fixed board.");
+    if (S && !fixed && rr < 0 && !S.some(sec => sec.some(r => r.includes("?")))) warn.push("Recentering input has neither roots nor ?.");
+    if (S && fixed && !S.some(sec => sec.some(r => r.includes("?")))) warn.push("Fixed board input has no ? cells.");
+    if (wao && S && S.some(sec => sec.some(r => r.some(ch => WILDS.has(ch))))) warn.push("wao does not support wildcards.");
+  } else if (v("start") === "yolo"){
+    const rle = inName.endsWith(".rle") ? inName : "p1.rle";
+    const L = +v("yL") || 0, R = +v("yR") || 0;
+    start = q('@yolo_1gp("' + rle + '"' + (fixed && (L || R) ? ", " + L + ", " + R : "") + ")");
+    if (!inName.endsWith(".rle")) warn.push("@yolo_1gp reads a single-generation .rle file; using p1.rle.");
+    if (v("le") !== "bg" || v("re") !== "bg") warn.push("@yolo_1gp does not understand symmetry; cut and edit manually instead.");
+  } else {
+    start = fixed ? q("@bg(" + (+v("bgW") || 9) + ")") : q("@bg");
+  }
+  const o = [];
+  if (v("rule")) o.push("--rule " + q(v("rule")));
+  if (v("agar") !== "zero") o.push("--bg-agar " + v("agar"));
+  const sym = e => e !== "bg";
+  if (v("le") !== "bg") o.push("--left-edge " + v("le"));
+  if (v("re") !== "bg") o.push("--right-edge " + v("re"));
+  if (wao && sym(v("le"))) o.push("--wao-left-edge-errors");
+  if (wao && sym(v("re"))) o.push("--wao-right-edge-errors");
+  const pad = (id, flag) => { const n = v(id); if (n !== "") o.push(flag + " " + String(n).padStart(2, "0")); };
+  pad("pL", "--left-pad"); pad("pR", "--right-pad"); pad("pT", "--top-pad");
+  if (on("fzL")) { o.push("--fuzzy-left-edge"); if (v("pL") === "") warn.push("--fuzzy-left-edge ranges up to --left-pad; set a left pad."); }
+  if (on("fzR")) { o.push("--fuzzy-right-edge"); if (v("pR") === "") warn.push("--fuzzy-right-edge ranges up to --right-pad; set a right pad."); }
+  if (fixed && (on("fzL") || on("fzR"))) warn.push("Fuzzy edges were described for recentering searches.");
+  const f = []; if (on("fBcaf")) f.push("bcaf"); if (on("fWcaf")) f.push("wcaf");
+  if (f.length === 1) o.push("--filters " + f[0]); else if (f.length > 1) o.push("--filters " + q("[" + f.join(", ") + "]"));
+  if (wao && f.length) warn.push("wao forces a live first row itself; filters are usually unnecessary.");
+  if (fixed && v("start") === "bg" && !f.length) warn.push("From-scratch fixed-board searches usually want --filters bcaf so they stop when no ship exists.");
+  if (v("ends")) o.push("--ends " + q(v("ends")));
+  if (v("halts")) o.push("--halts " + q("w_pos(" + v("halts") + ")"));
+  if (v("state")) o.push("--state-file " + q(v("state")));
+  let cmd = bin + " " + sub + (o.length ? " " + o.join(" ") : "") + " " + geom + " " + start;
+  if (!fixed){ const m = v("mid") || "07"; cmd += " " + m; if (!/^(\d+|XX)$/.test(m)) warn.push("mid_steps should be a number or XX."); }
+  if (v("out")) cmd += " > " + v("out");
+  lines.push(cmd);
+  $("cmd").textContent = lines.join("\n");
+  ["mid"].forEach(id => $(id).disabled = fixed);
+  $("bgW").disabled = !(fixed && v("start") === "bg");
+  $("yL").disabled = $("yR").disabled = !(fixed && v("start") === "yolo");
+  $("uwiStep").disabled = v("start") !== "file";
+  const wb = $("runWarn"); wb.innerHTML = "";
+  warn.forEach(t => { const d = document.createElement("div"); d.className = "check"; d.innerHTML = '<span class="dot warn"></span>'; const m = document.createElement("div"); m.textContent = t; d.append(m); wb.append(d); });
+}
+
+/* ---------- keys ---------- */
+document.addEventListener("keydown", e => {
+  if (e.target.matches("input,textarea,select")) return;
+  const k = e.key.toLowerCase();
+  if ((e.ctrlKey || e.metaKey) && k === "z"){ e.preventDefault(); e.shiftKey ? redo() : undo(); return; }
+  if ((e.ctrlKey || e.metaKey) && k === "y"){ e.preventDefault(); redo(); return; }
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (k === "1") setBrush("*"); else if (k === "2") setBrush("."); else if (k === "3") setBrush("?"); else if (k === "4") setBrush(" ");
+  else if (k === "p") setTool("paint"); else if (k === "t") setTool("toggle"); else if (k === "s") setTool("select");
+  else if ((k === "delete" || k === "backspace") && sel){ e.preventDefault(); selApply(".", false); }
+  else if (k === "escape"){ sel = null; draw(); updSelBtns(); }
+});
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", draw);
+
+/* ---------- boot ---------- */
+try { const saved = JSON.parse(localStorage.getItem("llsss-wb-grid") || "null"); if (saved && saved.S){ S = saved.S; W = saved.W; H = saved.H; view = saved.view || "UWI"; mode = saved.mode || "RC"; } } catch (e) {}
+setView(view); setMode(mode); setTool("paint"); setBrush("*"); changed();
+</script>
+</body>
+</html>

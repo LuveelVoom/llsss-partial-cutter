@@ -1,0 +1,141 @@
+# Handoff: LLSSS partial cutter project (LuveelVoom)
+
+Give this whole zip to a new Claude chat and say: "Read 00-READ-ME-FIRST.md, then llsss-notes.md, and continue the project."
+
+Last updated: 17 October 2026.
+
+---
+
+## 1. What the project is
+
+**LuveelVoom** designs a browser tool, the **LLSSS partial cutter**. Claude writes all the code.
+
+- **What it does:** it takes a Game of Life–family spaceship *partial* (a ship whose front is valid but whose back is unfinished). It writes a start file and the exact command for **amling's rlife / LLSSS** search program (`rlife llsss` and `rlife llsss-recentering`), so users can continue the search.
+- **What it doesn't do:** it doesn't run searches. rlife runs on the user's own machine.
+- **Community:** the ConwayLife forums thread "amling search program principles discussion / brain dump". **amling** is rlife's author.
+- **The user's goal:** GUI "wrapper" tools that make CA search programs accessible. The cutter is the first. Future wrappers for other programs are planned.
+- **Support plan, agreed with amling:**
+  - one "About this tool" box;
+  - a separate "scripts thread" for the user's tools;
+  - simple questions go to the in-app Q&A tab;
+  - complex issues come back to Claude as detailed reports.
+- **Thread link:** not set yet. It goes in `SUPPORT_URL` near the end of the page script.
+
+## 2. Files in this zip
+
+| Path | What it is |
+|---|---|
+| `tool/llsss-partial-builder-offline.html` | **The current tool**, one self-contained HTML file. This is the source of truth. |
+| `tool/llsss-partial-builder.html` | Same tool, online build. It differs only in fonts and the save code: the online copy adds `.txt` to saved files. |
+| `tool/core.js` | The cutter's logic, extracted from the HTML so Node can run it: `const C = require('./core.js')`. |
+| `docs/llsss-notes.md` | **Full development record:** amling's statements with sources, terminology decisions, every test round and result, bugs fixed, the plan, open questions. Read it second. |
+| `docs/partial-cutter-text.md` | Every piece of user-facing text in the program, labelled by where it appears (`<header>`, card 2, `TASK_HINT`, `banner()`, `throw new Error`, etc.). |
+| `docs/new-text.md`, `docs/tests-to-run.md` | Text added after the user's rewrite, and a prioritised bug-test list (20 tests). |
+| `test-packs/` | Every test pack sent to the user, with READMEs: diagonal tests, region test, known-answer copperhead test, next-tests, sprayer back-only files, and others. |
+| `latest-work/` | The most recent task: a 3c/8 B3678/S34678 partial (`p.rle`) cut at its neck (`narrow.in`). |
+| `user-uploads/` | Everything the user uploaded: rlife source (`rlife-master.zip`), forum thread pages 22–24, the user's rlife logs (in the archives and `attachment-*.txt`), partials, and the user's rewritten text (`partial-cutter-text.md`). |
+| `archive/` | The paused grid workbench (development stopped on request). |
+
+**rlife source:** `user-uploads/rlife-master.zip`. Key files:
+- `src/llsss/edge.rs`: symmetry edges;
+- `src/llsss/wildcards.rs`: constraint files;
+- `src/llsss/cli/common.rs`: constraint and picture handling;
+- `src/lat/geom.rs`: geometries and `split_picture`;
+- `src/gol/ff.rs`: the RLE reader;
+- `src/utils/mgp_tool.rs`: `@yolo_1gp` and `ingest-1gp`;
+- `src/llsss/cli/recentering.rs`: `--fuzzy-left-edge`.
+
+A previous session built rlife with cargo and ran tests directly. A new environment may need to build it again (`cargo build --release`, Rust 2024 edition).
+
+## 3. How the tool is organised (current state)
+
+**Page layout**
+- **Header:** amber "About this tool" box. Text is the user's: "designed by LuveelVoom and the code was written by Claude… likely to have bugs."
+- **Tabs:** Build, Guide (WIP), Q&A (empty).
+- **Switch "Use rlife commands"** at the top. **Off by default.** When on, rlife builds the start file via `@yolo_1gp`. It has failed in every test, and it is never offered for diagonal ships.
+- **Card 1:** rule and pattern. Accepts an RLE (all generations side by side, or one generation) or a grid copied from an rlife log. The rule is taken from the RLE header.
+- **Card 2 picker, four main choices:**
+  1. Recentering from the first error (default)
+  2. Fixed width
+  3. Extend one branch beside its sibling (fuzzy left edge)
+  4. Back only
+- **"More options"** (collapsed):
+  - cut along a drawn line;
+  - re-search a marked region;
+  - search a marked part alone;
+  - Split: keep the axis column empty;
+  - Split: keep the columns beside the axis empty (with a Symmetric / Single-branch edge menu).
+- **Right panel "Where to cut"** (Recentering, Fixed width, Back only): shows the partial with errors as red dots. Click or drag to move the cut, and Backtrack is set automatically. On diagonal ships the cut is drawn as a staircase.
+- **Hidden state:** the old mode radios (`name=goal`) still exist as hidden internal state. The new picker (`name=pick`) drives them.
+
+**Internal mode names:** `rc`, `fixed`, `outer`, `tail`, `line`, `region`, `alone`, `axis`, `branch`.
+
+**Geometries supported:**
+- orthogonal `Nc{N}-f2b` (plus s2s and b2f for orthogonal ships only);
+- knightwise `c{N}k-1` / `simple_vv`;
+- diagonal `c{N}d-f2b`.
+
+**Symmetry:**
+- Symmetric partials are searched as a half, with `--left-edge odd` or `even`.
+- For `even`, rlife's axis lies between file columns 0 and 1, which are copies of each other.
+- Diagonal ships use `odd` only; rlife refuses `even`, which is confirmed.
+
+**Constraint-file modes** (`region`, `line`, `axis`, `branch`): a constraint file must have the start file's exact width and root markers. Columns sharing a root letter (L, R) must be identical, in both the start file and the constraint file. rlife panics otherwise, and this caused two bugs, both fixed.
+
+**mid_steps suggestions:**
+- recentering: the board width plus 2, kept between 6 and 8;
+- region mode: about two-thirds of the board width.
+
+What was observed: too small, and the search dies in its first row; too large, and memory blows up.
+
+## 4. Key confirmed results (from real rlife runs)
+
+- **Diagonal files run:** symmetric (odd) and asymmetric. `--left-edge even` on a diagonal is refused, as predicted.
+- **Back only works.** The sprayer (c6k-1) search finished in seconds at about 100 MB, where full width blew up past 30 GB.
+- **Re-search a marked region works.** A copperhead with two damaged cells was repaired using a tight box, strict fixing and mid_steps 11–12. The user's (2,1)c/5 B3/S234w ship could not be repaired: every box died 11–13 lines in.
+- **`@yolo_1gp` failed every time:** 0 for 3 (two diagonal partials, one knightwise). rlife's own `mgp-tool` pipeline gave dead searches on cut partials too, so this is not a cutter bug. A draft report for amling is in `test-packs/diag-tests/report-for-amling-draft.txt`.
+- **"Search a marked part alone"** gives junk when the part touches the ship. It now warns if the rest of the ship comes within 3 cells.
+
+## 5. Terminology (amling's usage; keep to it)
+
+- **Partial cutter:** the tool's name. Not "builder".
+- **XYT chart:** pipe-separated generations. **UWI chart:** the same cells in rlife's internal row order. **Start file:** an input chart.
+- **UVW prism:** the shape every start file must be.
+- **Errors:** the first error is where the partial breaks the rule. "CA discontinuity" was dropped; amling used it only once.
+- **Generations, root markers (L/u/R), question marks, search window, picture mode, symmetry edge, the back, ends, jcol/bcol.**
+- **Percentages on `Completed` lines:** `200·(next−prev)/(prev+next)`.
+
+The full list and sources are in `llsss-notes.md`.
+
+## 6. Open items and next steps
+
+- **User-written text has known factual errors**, reviewed but not changed, per the user's wish. The list was given in chat; it is also covered by `docs/partial-cutter-text.md` plus the notes. The main ones:
+  - mode hints calling Back only and the drawn line "BUGGY" (untested is not buggy);
+  - the fuzzy-left-edge hint suggests you can choose which branch;
+  - the axis-column hint overstates what it does;
+  - the fixed-board banner lost its context;
+  - the "weirdo" constraint checkbox is on by default.
+- **The user writes the mode descriptions and the final guide.** Claude gives tips only.
+- **Not yet run in rlife:** cut along a drawn line; the axis split modes; Symmetric edge with empty axis columns.
+- **Not built yet:**
+  - region / alone / line modes for diagonal ships;
+  - glide-symmetric diagonal ships (rlife `gsodd`/`gseven`);
+  - preview combining start and constraint files in region mode (offered, not done).
+- **Minstrel partial (c6k-1):** the user's region search found nothing. The likely causes were mid_steps too small (10–16 on a 47-column board) and "grow outside the box" ticked. Suggested: untick it, use a tight box, mid_steps of 24 or more.
+- **Latest task (3c/8 partial, `latest-work/`):** cut at the 4-cell neck (Recentering, Backtrack about 90, `--left-edge even`, mid_steps 08). Not yet run.
+- **Thread link:** `SUPPORT_URL` is still empty.
+- **Grid workbench:** paused. **Partial stitcher:** discontinued.
+
+## 7. How to work with this user
+
+- **Answers:** concise and non-repetitive, with no padding.
+- **Certainty:** say how sure you are (high / moderate / low) and what the source is.
+- **Disagreement:** don't agree just to agree. When corrected, weigh both sides.
+- **Separate chats:** don't carry context from other chats.
+- **Mode descriptions and the guide** are the user's to write.
+- **Test before shipping:**
+  - run the regression and validator checks;
+  - check the page in a headless browser;
+  - keep all copies of the tool in sync (online, offline, zip);
+  - update `llsss-notes.md` after each change.
+- **Running rlife:** when a local rlife build is available, run tests directly instead of sending test packs to the user.

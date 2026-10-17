@@ -1,0 +1,18 @@
+20261002 11:06:44 [INFO] Start: compile step LlsssMonitorSpineStats
+20261002 11:06:44 [INFO] Finish: compile step LlsssMonitorSpineStats -> took 143.541µs
+20261002 11:06:44 [INFO] Start: compile step LlsssMonitorColStats
+20261002 11:06:44 [INFO] Finish: compile step LlsssMonitorColStats -> took 3.166µs
+20261002 11:06:44 [INFO] Start: compile step LlsssMonitorUniquePartial
+20261002 11:06:44 [INFO] Finish: compile step LlsssMonitorUniquePartial -> took 11.167µs
+20261002 11:06:44 [INFO] Start: compile step LlsssMonitorDefaultPartial
+20261002 11:06:44 [INFO] Finish: compile step LlsssMonitorDefaultPartial -> took 10.875µs
+20261002 11:06:44 [INFO] Start: compile step LlsssMonitorRandomPartial
+20261002 11:06:44 [INFO] Finish: compile step LlsssMonitorRandomPartial -> took 2.084µs
+20261002 11:06:44 [INFO] Start: compile step LlsssMonitorRctl
+20261002 11:06:44 [INFO] Finish: compile step LlsssMonitorRctl -> took 5.292µs
+20261002 11:06:44 [INFO] Start: compile step LlsssStepExpandRecentering
+20261002 11:06:44 [INFO] Finish: compile step LlsssStepExpandRecentering -> took 37.041µs
+Error: LlsssEdgeReflect(Even) is not compatible with geometry c5d-f2b
+
+Context:
+    0: While compiling step LlsssStepExpandRecentering

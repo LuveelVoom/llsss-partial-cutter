@@ -1,0 +1,65 @@
+20261002 11:13:27 [INFO] Start: compile step LlsssMonitorSpineStats
+20261002 11:13:27 [INFO] Finish: compile step LlsssMonitorSpineStats -> took 131.083µs
+20261002 11:13:27 [INFO] Start: compile step LlsssMonitorColStats
+20261002 11:13:27 [INFO] Finish: compile step LlsssMonitorColStats -> took 3.208µs
+20261002 11:13:27 [INFO] Start: compile step LlsssMonitorUniquePartial
+20261002 11:13:27 [INFO] Finish: compile step LlsssMonitorUniquePartial -> took 10.666µs
+20261002 11:13:27 [INFO] Start: compile step LlsssMonitorDefaultPartial
+20261002 11:13:27 [INFO] Finish: compile step LlsssMonitorDefaultPartial -> took 6.417µs
+20261002 11:13:27 [INFO] Start: compile step LlsssMonitorRandomPartial
+20261002 11:13:27 [INFO] Finish: compile step LlsssMonitorRandomPartial -> took 2.042µs
+20261002 11:13:27 [INFO] Start: compile step LlsssMonitorRctl
+20261002 11:13:27 [INFO] Finish: compile step LlsssMonitorRctl -> took 2.666µs
+20261002 11:13:27 [INFO] Start: compile step LlsssStepExpandRecentering
+20261002 11:13:27 [INFO] Start: compile tables
+20261002 11:13:27 [INFO] Compiling [checks3 1/2] table of 17 + 3 = 20 bits
+20261002 11:13:27 [INFO] Compiling [checks3 2/2] table of 14 + 3 = 17 bits
+20261002 11:13:27 [INFO] Finish: compile tables -> took 4.746208ms
+20261002 11:13:27 [INFO] Start: compile tables
+20261002 11:13:27 [INFO] Compiling [checks3 1/2] table of 17 + 3 = 20 bits
+20261002 11:13:27 [INFO] Compiling [checks3 2/2] table of 15 + 3 = 18 bits
+20261002 11:13:27 [INFO] Finish: compile tables -> took 4.677792ms
+20261002 11:13:27 [INFO] Finish: compile step LlsssStepExpandRecentering -> took 9.984209ms
+20261002 11:13:27 [INFO] Start: compile step LlsssEndsAgar
+20261002 11:13:27 [INFO] Finish: compile step LlsssEndsAgar -> took 20.708µs
+20261002 11:13:27 [INFO] Start: search proper
+20261002 11:13:27 [DEBUG] Memory: total 5.25 KB (ss.old_gens 5.00 KB, ss.cur_gen 256 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261002 11:13:27 [DEBUG] Memory: total 5.25 KB (ss.old_gens 5.00 KB, ss.cur_gen 256 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261002 11:13:27 [INFO] Cols sizes hash: 0xD1FBA762150C532C (15130871412783076140)
+20261002 11:13:27 [INFO] LlsssStepExpandRecentering: max pre-reify estimated mem: 0 B
+20261002 11:13:27 [INFO] Finish: search proper -> took 51.625µs
+20261002 11:13:27 [INFO] state init: 1 calls, 48.054167ms own time, 48.700334ms total time
+20261002 11:13:27 [INFO] precompile/step LlsssStepExpandRecentering: 1 calls, 9.982375ms own time, 9.982375ms total time
+20261002 11:13:27 [INFO] state init/filter_clean/l2r_reachable: 1 calls, 233.292µs own time, 233.292µs total time
+20261002 11:13:27 [INFO] state init/filter_clean/r2l_reachable: 1 calls, 226.375µs own time, 226.375µs total time
+20261002 11:13:27 [INFO] precompile: 1 calls, 177.374µs own time, 10.2ms total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1/col filt1: 1 calls, 62.417µs own time, 62.417µs total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1/filter bcol: 1 calls, 37.542µs own time, 37.542µs total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1/keep_sl1: 1 calls, 34.25µs own time, 34.25µs total time
+20261002 11:13:27 [INFO] search: 1 calls, 26.625µs own time, 26.625µs total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1/keep_sl2: 1 calls, 18.708µs own time, 18.708µs total time
+20261002 11:13:27 [INFO] precompile/step LlsssEndsAgar: 1 calls, 17.584µs own time, 17.584µs total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol: 1 calls, 10.25µs own time, 14.791µs total time
+20261002 11:13:27 [INFO] destruct/step LlsssEndsAgar: 1 calls, 9.834µs own time, 9.834µs total time
+20261002 11:13:27 [INFO] precompile/step LlsssMonitorSpineStats: 1 calls, 8.792µs own time, 8.792µs total time
+20261002 11:13:27 [INFO] precompile/step LlsssMonitorUniquePartial: 1 calls, 8.375µs own time, 8.375µs total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1/filter right_edge: 1 calls, 7.541µs own time, 7.541µs total time
+20261002 11:13:27 [INFO] state init/filter_clean: 1 calls, 6.25µs own time, 646.167µs total time
+20261002 11:13:27 [INFO] destruct/step LlsssStepExpandRecentering: 1 calls, 5.583µs own time, 5.583µs total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol/xmap: 2 calls, 4.541µs own time, 4.541µs total time
+20261002 11:13:27 [INFO] precompile/step LlsssMonitorDefaultPartial: 1 calls, 4.208µs own time, 4.208µs total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1: 1 calls, 4.125µs own time, 180.25µs total time
+20261002 11:13:27 [INFO] destruct: 1 calls, 2.542µs own time, 21.959µs total time
+20261002 11:13:27 [INFO] destruct/step LlsssMonitorColStats: 1 calls, 2.459µs own time, 2.459µs total time
+20261002 11:13:27 [INFO] precompile/step LlsssMonitorRctl: 1 calls, 750ns own time, 750ns total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1/filter left_edge: 1 calls, 667ns own time, 667ns total time
+20261002 11:13:27 [INFO] destruct/step LlsssMonitorSpineStats: 1 calls, 666ns own time, 666ns total time
+20261002 11:13:27 [INFO] destruct/step LlsssMonitorRctl: 1 calls, 292ns own time, 292ns total time
+20261002 11:13:27 [INFO] destruct/step LlsssMonitorDefaultPartial: 1 calls, 292ns own time, 292ns total time
+20261002 11:13:27 [INFO] precompile/step LlsssMonitorColStats: 1 calls, 292ns own time, 292ns total time
+20261002 11:13:27 [INFO] precompile/step LlsssMonitorRandomPartial: 1 calls, 250ns own time, 250ns total time
+20261002 11:13:27 [INFO] state init/filter_clean/filter_x1/col filt_rewrite: 1 calls, 209ns own time, 15µs total time
+20261002 11:13:27 [INFO] destruct/step LlsssMonitorRandomPartial: 1 calls, 166ns own time, 166ns total time
+20261002 11:13:27 [INFO] destruct/step LlsssMonitorUniquePartial: 1 calls, 125ns own time, 125ns total time
+20261002 11:13:27 [INFO] Total: 77.485875ms
+20261002 11:13:27 [INFO] Done

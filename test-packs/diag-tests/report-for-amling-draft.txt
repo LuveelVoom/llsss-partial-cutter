@@ -1,0 +1,31 @@
+DRAFT for LuveelVoom to post (or not) on the LLSSS thread. Uses only rlife's own tools; the partial cutter is not
+involved except that the 1gp RLE was cut by hand from a known ship.
+
+----------------------------------------------------------------------------------------------------------------
+Recentering search from mgp-tool output starts with no states (diagonal, B3/S23)
+
+I took a known c/5 diagonal spaceship (B3/S23), removed the back 30% of one generation by hand, and ran it through
+mgp-tool and llsss-recentering:
+
+  ./rlife mgp-tool ingest-1gp c5d-f2b --rule 'B3/S23' ship1-partial-1gen.rle ship1-ingested.in
+  ./rlife mgp-tool to-rc-input c5d-f2b ship1-ingested.in ship1-rc.in
+  ./rlife llsss-recentering --rule 'B3/S23' c5d-f2b ship1-rc.in 08 > out-1e.txt 2>&1
+
+Both mgp-tool steps succeed, but the search finishes immediately with nothing in its state:
+
+  [DEBUG] Memory: total 8.58 KB (ss.old_gens 8.30 KB, ss.cur_gen 288 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+  [INFO] Cols sizes hash: 0xD1FBA762150C532C (15130871412783076140)
+  [INFO] Finish: search proper -> took 68.291µs
+
+The same happens with '@yolo_1gp("ship1.rle")' directly, and for a second ship (c/6 diagonal, c6d-f2b). On a
+knightwise partial ((2,1)c/5, B3/S23-a5, c5k-1), '@yolo_1gp(...)' does start but loses every partial in its first
+row ("Completed w_pos 25[0]: 0 B"), while a start file cut two rows earlier searches seven rows before finishing.
+
+What I checked: ship1-rc.in follows B3/S23 everywhere (every cell whose neighbourhood and child are in the file).
+A start file built by hand from the same partial, ending 8 W rows earlier and with one blank row under the root
+markers, does start and searches normally. So my guess is that the last rows kept by ingest-1gp (it cuts right at
+the first CA discontinuity) are consistent but have no valid continuation, because the real continuation was cut
+away. I don't know whether that's expected behaviour for a partial like this.
+
+Attached: ship1-partial-1gen.rle, ship1-ingested.in, ship1-rc.in, out-1e.txt.
+----------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,9 @@
+.DS_Store
+__MACOSX/
+# zipped uploads: rlife source (amling's code, see its own repo) and saved forum pages;
+# the user's own rlife logs from the numbered archives are unpacked in user-uploads/rlife-logs-*
+user-uploads/*.zip
+# saved forum pages and copied forum/message text
+user-uploads/*ConwayLife*
+user-uploads/attachment-1a2d9a14.txt
+user-uploads/attachment-e60de3d5.txt

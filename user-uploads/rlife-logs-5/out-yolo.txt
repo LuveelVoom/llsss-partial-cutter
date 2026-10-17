@@ -1,0 +1,305 @@
+20261002 11:27:54 [INFO] Start file magic grid generated:
+20261002 11:27:54 [INFO] |                         |                         |                         | LLLuuuuuuuuuuuuuuuuuRRR | LLLuuuuuuuuuuuuuuuuuRRR |
+20261002 11:27:54 [INFO] | LLLuuuuuuuuuuuuuuuuuRRR | LLLuuuuuuuuuuuuuuuuuRRR | LLLuuuuuuuuuuuuuuuuuRRR | ....................... | ....................... |
+20261002 11:27:54 [INFO] | ....................... | ....................... | ....................... | ....................... | ....................... |
+20261002 11:27:54 [INFO] | ....................... | ....................... | ....................... | ....................... | ....................... |
+20261002 11:27:54 [INFO] | ....................... | ....................... | ........*.............. | .......*.*............. | ......***.............. |
+20261002 11:27:54 [INFO] | ........*.............. | .......***............. | ......*.*.*............ | .....**.*.............. | .....**.*.*............ |
+20261002 11:27:54 [INFO] | ......**.**............ | ......*****............ | .....**..*............. | ......*..**............ | ......*.***............ |
+20261002 11:27:54 [INFO] | ......*....*........... | .....***.*.*........... | ....*.*....*...*....... | ....*.*..*.*..*........ | ...**.***....***....... |
+20261002 11:27:54 [INFO] | .....*....**...*....... | ....**....**..***...... | ....*....*****.*....... | ...**.*..*****.**...... | ...*..*.******..*...... |
+20261002 11:27:54 [INFO] | ....**.*.*....***...... | .....*.**....****...... | ....***...**.***....... | ....**...*....**....... | .........*....*........ |
+20261002 11:27:54 [INFO] | ....****...***......... | ...........*.*......... | .............*......... | ....*.......**.*....... | ....**..*......*....... |
+20261002 11:27:54 [INFO] | .....**.*...*****...... | ....*......*...**...... | .....*.*......*........ | .......**...**......... | ....**.......*......... |
+20261002 11:27:54 [INFO] | ...............*....... | ....*.***....*......... | .....*.**..**.......... | ....**.....***.*....... | ....***.**.*..*........ |
+20261002 11:27:54 [INFO] | ....**..***....*....... | ........****..***...... | .....**.****..*.*...... | .....*...****.......... | .....**....***......... |
+20261002 11:27:54 [INFO] | ........*..**..*....... | .....*......****....... | .......*............... | .....*.....*....*...... | .....*...*.*........... |
+20261002 11:27:54 [INFO] | ......*.***.*.*........ | .......****.****....... | ......**.*..*..**...... | ......**..*.*.......... | .....**...*.**.*....... |
+20261002 11:27:54 [INFO] | .....*.........*....... | .....*..****.***....... | .....*...*.*.*......... | .....*.....*.**.*...... | .....*.....*.*.*....... |
+20261002 11:27:54 [INFO] | .....***...*..*........ | .....**.......*........ | .....******.*.*.*...... | .....*.******...*...... | ....**.*..**..*.**..... |
+20261002 11:27:54 [INFO] | ..............*.*...... | .......*.....**.**..... | ......*......******.... | .....**.**.***..*...... | .....*..*..**...*...... |
+20261002 11:27:54 [INFO] | .....**....*..**.**.... | .................**.... | ............*.*.***.... | .......*....*.*.*.**... | ......***.*...*.*...... |
+20261002 11:27:54 [INFO] | .....**..*...**..*..... | ........*.*.**......... | .......**.***....**.... | ...........***..*...... | .......**..***.*.*..... |
+20261002 11:27:54 [INFO] | .......**..*...*.**.... | .......***.*...*..*.... | ....................... | .......**.............. | ...........*..*........ |
+20261002 11:27:54 [INFO] | .......*..*****.**..... | .......****.***...*.... | ........*.*****........ | ............***........ | .......***.****........ |
+20261002 11:27:54 [INFO] | ..........*.....*...... | ....................... | ........*.**..*........ | ........*.**..*........ | .........**...*........ |
+20261002 11:27:54 [INFO] | .........**.**.**...... | ..........*...*..*..... | .........*.*........... | .........*.**..**...... | .......*...*...*.*..... |
+20261002 11:27:54 [INFO] | ........*.*....**...... | .......**.*.*..*....... | ...........*...***..... | .......**.**.*****..... | ......***.*..**.**..... |
+20261002 11:27:54 [INFO] | .......**...*.*.*.*.... | .......**....**.*.*.... | ......***...***.*...... |                         |                         |
+20261002 11:27:54 [INFO] Start: compile step LlsssMonitorSpineStats
+20261002 11:27:54 [INFO] Finish: compile step LlsssMonitorSpineStats -> took 47.542µs
+20261002 11:27:54 [INFO] Start: compile step LlsssMonitorColStats
+20261002 11:27:54 [INFO] Finish: compile step LlsssMonitorColStats -> took 2.542µs
+20261002 11:27:54 [INFO] Start: compile step LlsssMonitorUniquePartial
+20261002 11:27:54 [INFO] Finish: compile step LlsssMonitorUniquePartial -> took 10.333µs
+20261002 11:27:54 [INFO] Start: compile step LlsssMonitorDefaultPartial
+20261002 11:27:54 [INFO] Finish: compile step LlsssMonitorDefaultPartial -> took 10.542µs
+20261002 11:27:54 [INFO] Start: compile step LlsssMonitorRandomPartial
+20261002 11:27:54 [INFO] Finish: compile step LlsssMonitorRandomPartial -> took 1.75µs
+20261002 11:27:54 [INFO] Start: compile step LlsssMonitorRctl
+20261002 11:27:54 [INFO] Finish: compile step LlsssMonitorRctl -> took 2.292µs
+20261002 11:27:54 [INFO] Start: compile step LlsssStepExpandRecentering
+20261002 11:27:54 [INFO] Start: compile tables
+20261002 11:27:54 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261002 11:27:54 [INFO] Finish: compile tables -> took 1.858292ms
+20261002 11:27:54 [INFO] Start: compile tables
+20261002 11:27:54 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261002 11:27:54 [INFO] Finish: compile tables -> took 1.823042ms
+20261002 11:27:54 [INFO] Start: compile tables
+20261002 11:27:54 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261002 11:27:54 [INFO] Finish: compile tables -> took 1.900042ms
+20261002 11:27:54 [INFO] Start: compile tables
+20261002 11:27:54 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261002 11:27:54 [INFO] Finish: compile tables -> took 1.932042ms
+20261002 11:27:54 [INFO] Start: compile tables
+20261002 11:27:54 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261002 11:27:54 [INFO] Finish: compile tables -> took 1.873208ms
+20261002 11:27:54 [INFO] Finish: compile step LlsssStepExpandRecentering -> took 10.590167ms
+20261002 11:27:54 [INFO] Start: compile step LlsssEndsAgar
+20261002 11:27:54 [INFO] Finish: compile step LlsssEndsAgar -> took 20.5µs
+20261002 11:27:54 [INFO] Start: search proper
+20261002 11:27:54 [DEBUG] Memory: total 2.86 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B)
+20261002 11:27:54 [INFO] Spine store sizes: old_gens [19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19], cur_gen 19
+20261002 11:27:54 [INFO] Cols sizes: 20 / 21
+20261002 11:27:54 [INFO] Unique:
+20261002 11:27:54 [INFO] |                   |                   |                   | ................. | ................. |
+20261002 11:27:54 [INFO] | ................. | ................. | ................. | ................. | ................. |
+20261002 11:27:54 [INFO] | ................. | ................. | ................. | ................. | ................. |
+20261002 11:27:54 [INFO] | ................. | ................. | .....*........... | ....*.*.......... | ...***........... |
+20261002 11:27:54 [INFO] | .....*........... | ....***.......... | ...*.*.*......... | ..**.*........... | ..**.*.*......... |
+20261002 11:27:54 [INFO] | ...**.**......... | ...*****......... | ..**..*.......... | ...*..**......... | ...*.***......... |
+20261002 11:27:54 [INFO] | ...*....*........ | ..***.*.*........ | .*.*....*...*.... | .*.*..*.*..*..... | **.***....***.... |
+20261002 11:27:54 [INFO] | ..*....**...*.... | .**....**..***... | .*....*****.*.... | **.*..*****.**... | *..*.******..*... |
+20261002 11:27:54 [INFO] | .**.*.*....***... | ..*.**....****... | .***...**.***.... | .**...*....**.... | ......*....*..... |
+20261002 11:27:54 [INFO] | .****...***...... | ........*.*...... | ..........*...... | .*.......**.*.... | .**..*......*.... |
+20261002 11:27:54 [INFO] | ..**.*...*****... | .*......*...**... | ..*.*......*..... | ....**...**...... | .**.......*...... |
+20261002 11:27:54 [INFO] | ............*.... | .*.***....*...... | ..*.**..**....... | .**.....***.*.... | .***.**.*..*..... |
+20261002 11:27:54 [INFO] | .**..***....*.... | .....****..***... | ..**.****..*.*... | ..*...****....... | ..**....***...... |
+20261002 11:27:54 [INFO] | .....*..**..*.... | ..*......****.... | ....*............ | ..*.....*....*... | ..*...*.*........ |
+20261002 11:27:54 [INFO] | ...*.***.*.*..... | ....****.****.... | ...**.*..*..**... | ...**..*.*....... | ..**...*.**.*.... |
+20261002 11:27:54 [INFO] | ..*.........*.... | ..*..****.***.... | ..*...*.*.*...... | ..*.....*.**.*... | ..*.....*.*.*.... |
+20261002 11:27:54 [INFO] | ..***...*..*..... | ..**.......*..... | ..******.*.*.*... | ..*.******...*... | .**.*..**..*.**.. |
+20261002 11:27:54 [INFO] | ...........*.*... | ....*.....**.**.. | ...*......******. | ..**.**.***..*... | ..*..*..**...*... |
+20261002 11:27:54 [INFO] | ..**....*..**.**. | ..............**. | .........*.*.***. | ....*....*.*.*.** | ...***.*...*.*... |
+20261002 11:27:54 [INFO] | ..**..*...**..*.. | .....*.*.**...... | ....**.***....**. | ........***..*... | ....**..***.*.*.. |
+20261002 11:27:54 [INFO] | ....**..*...*.**. | ....***.*...*..*. | ................. | ....**........... | ........*..*..... |
+20261002 11:27:54 [INFO] | ....*..*****.**.. | ....****.***...*. | .....*.*****..... | .........***..... | ....***.****..... |
+20261002 11:27:54 [INFO] | .......*.....*... | ................. | .....*.**..*..... | .....*.**..*..... | ......**...*..... |
+20261002 11:27:54 [INFO] | ......**.**.**... | .......*...*..*.. | ......*.*........ | ......*.**..**... | ....*...*...*.*.. |
+20261002 11:27:54 [INFO] | .....*.*....**... | ....**.*.*..*.... | ........*...***.. | ....**.**.*****.. | ...***.*..**.**.. |
+20261002 11:27:54 [INFO] | ....**...*.*.*.*. | ....**....**.*.*. | ...***...***.*... |                   |                   |
+20261002 11:27:54 [INFO] Thinnest partial:
+20261002 11:27:54 [INFO] |                       |                       |                       | LLuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuRR |
+20261002 11:27:54 [INFO] | LLuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuRR | ..................... | ..................... |
+20261002 11:27:54 [INFO] | ..................... | ..................... | ..................... | ..................... | ..................... |
+20261002 11:27:54 [INFO] | ..................... | ..................... | ..................... | ..................... | ..................... |
+20261002 11:27:54 [INFO] | ..................... | ..................... | .......*............. | ......*.*............ | .....***............. |
+20261002 11:27:54 [INFO] | .......*............. | ......***............ | .....*.*.*........... | ....**.*............. | ....**.*.*........... |
+20261002 11:27:54 [INFO] | .....**.**........... | .....*****........... | ....**..*............ | .....*..**........... | .....*.***........... |
+20261002 11:27:54 [INFO] | .....*....*.......... | ....***.*.*.......... | ...*.*....*...*...... | ...*.*..*.*..*....... | ..**.***....***...... |
+20261002 11:27:54 [INFO] | ....*....**...*...... | ...**....**..***..... | ...*....*****.*...... | ..**.*..*****.**..... | ..*..*.******..*..... |
+20261002 11:27:54 [INFO] | ...**.*.*....***..... | ....*.**....****..... | ...***...**.***...... | ...**...*....**...... | ........*....*....... |
+20261002 11:27:54 [INFO] | ...****...***........ | ..........*.*........ | ............*........ | ...*.......**.*...... | ...**..*......*...... |
+20261002 11:27:54 [INFO] | ....**.*...*****..... | ...*......*...**..... | ....*.*......*....... | ......**...**........ | ...**.......*........ |
+20261002 11:27:54 [INFO] | ..............*...... | ...*.***....*........ | ....*.**..**......... | ...**.....***.*...... | ...***.**.*..*....... |
+20261002 11:27:54 [INFO] | ...**..***....*...... | .......****..***..... | ....**.****..*.*..... | ....*...****......... | ....**....***........ |
+20261002 11:27:54 [INFO] | .......*..**..*...... | ....*......****...... | ......*.............. | ....*.....*....*..... | ....*...*.*.......... |
+20261002 11:27:54 [INFO] | .....*.***.*.*....... | ......****.****...... | .....**.*..*..**..... | .....**..*.*......... | ....**...*.**.*...... |
+20261002 11:27:54 [INFO] | ....*.........*...... | ....*..****.***...... | ....*...*.*.*........ | ....*.....*.**.*..... | ....*.....*.*.*...... |
+20261002 11:27:54 [INFO] | ....***...*..*....... | ....**.......*....... | ....******.*.*.*..... | ....*.******...*..... | ...**.*..**..*.**.... |
+20261002 11:27:54 [INFO] | .............*.*..... | ......*.....**.**.... | .....*......******... | ....**.**.***..*..... | ....*..*..**...*..... |
+20261002 11:27:54 [INFO] | ....**....*..**.**... | ................**... | ...........*.*.***... | ......*....*.*.*.**.. | .....***.*...*.*..... |
+20261002 11:27:54 [INFO] | ....**..*...**..*.... | .......*.*.**........ | ......**.***....**... | ..........***..*..... | ......**..***.*.*.... |
+20261002 11:27:54 [INFO] | ......**..*...*.**... | ......***.*...*..*... | ..................... | ......**............. | ..........*..*....... |
+20261002 11:27:54 [INFO] | ......*..*****.**.... | ......****.***...*... | .......*.*****....... | ...........***....... | ......***.****....... |
+20261002 11:27:54 [INFO] | .........*.....*..... | ..................... | .......*.**..*....... | .......*.**..*....... | ........**...*....... |
+20261002 11:27:54 [INFO] | ........**.**.**..... | .........*...*..*.... | ........*.*.......... | ........*.**..**..... | ......*...*...*.*.... |
+20261002 11:27:54 [INFO] | .......*.*....**..... | ......**.*.*..*...... | ..........*...***.... | ......**.**.*****.... | .....***.*..**.**.... |
+20261002 11:27:54 [INFO] | ......**...*.*.*.*... | ......**....**.*.*... | .....***...***.*..... |                       |                       |
+20261002 11:27:54 [INFO] Random[ish] partial:
+20261002 11:27:54 [INFO] |                       |                       |                       |                   SS  |                   SS  |
+20261002 11:27:54 [INFO] |                   SS  |                   SS  |                   SS  | LLuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuRR |
+20261002 11:27:54 [INFO] | LLuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuRR | ..................... | ..................... |
+20261002 11:27:54 [INFO] | ..................... | ..................... | ..................... | ..................... | ..................... |
+20261002 11:27:54 [INFO] | ..................... | ..................... | ..................... | ..................... | ..................... |
+20261002 11:27:54 [INFO] | ..................... | ..................... | .......*............. | ......*.*............ | .....***............. |
+20261002 11:27:54 [INFO] | .......*............. | ......***............ | .....*.*.*........... | ....**.*............. | ....**.*.*........... |
+20261002 11:27:54 [INFO] | .....**.**........... | .....*****........... | ....**..*............ | .....*..**........... | .....*.***........... |
+20261002 11:27:54 [INFO] | .....*....*.......... | ....***.*.*.......... | ...*.*....*...*...... | ...*.*..*.*..*....... | ..**.***....***...... |
+20261002 11:27:54 [INFO] | ....*....**...*...... | ...**....**..***..... | ...*....*****.*...... | ..**.*..*****.**..... | ..*..*.******..*..... |
+20261002 11:27:54 [INFO] | ...**.*.*....***..... | ....*.**....****..... | ...***...**.***...... | ...**...*....**...... | ........*....*....... |
+20261002 11:27:54 [INFO] | ...****...***........ | ..........*.*........ | ............*........ | ...*.......**.*...... | ...**..*......*...... |
+20261002 11:27:54 [INFO] | ....**.*...*****..... | ...*......*...**..... | ....*.*......*....... | ......**...**........ | ...**.......*........ |
+20261002 11:27:54 [INFO] | ..............*...... | ...*.***....*........ | ....*.**..**......... | ...**.....***.*...... | ...***.**.*..*....... |
+20261002 11:27:54 [INFO] | ...**..***....*...... | .......****..***..... | ....**.****..*.*..... | ....*...****......... | ....**....***........ |
+20261002 11:27:54 [INFO] | .......*..**..*...... | ....*......****...... | ......*.............. | ....*.....*....*..... | ....*...*.*.......... |
+20261002 11:27:54 [INFO] | .....*.***.*.*....... | ......****.****...... | .....**.*..*..**..... | .....**..*.*......... | ....**...*.**.*...... |
+20261002 11:27:54 [INFO] | ....*.........*...... | ....*..****.***...... | ....*...*.*.*........ | ....*.....*.**.*..... | ....*.....*.*.*...... |
+20261002 11:27:54 [INFO] | ....***...*..*....... | ....**.......*....... | ....******.*.*.*..... | ....*.******...*..... | ...**.*..**..*.**.... |
+20261002 11:27:54 [INFO] | .............*.*..... | ......*.....**.**.... | .....*......******... | ....**.**.***..*..... | ....*..*..**...*..... |
+20261002 11:27:54 [INFO] | ....**....*..**.**... | ................**... | ...........*.*.***... | ......*....*.*.*.**.. | .....***.*...*.*..... |
+20261002 11:27:54 [INFO] | ....**..*...**..*.... | .......*.*.**........ | ......**.***....**... | ..........***..*..... | ......**..***.*.*.... |
+20261002 11:27:54 [INFO] | ......**..*...*.**... | ......***.*...*..*... | ..................... | ......**............. | ..........*..*....... |
+20261002 11:27:54 [INFO] | ......*..*****.**.... | ......****.***...*... | .......*.*****....... | ...........***....... | ......***.****....... |
+20261002 11:27:54 [INFO] | .........*.....*..... | ..................... | .......*.**..*....... | .......*.**..*....... | ........**...*....... |
+20261002 11:27:54 [INFO] | ........**.**.**..... | .........*...*..*.... | ........*.*.......... | ........*.**..**..... | ......*...*...*.*.... |
+20261002 11:27:54 [INFO] | .......*.*....**..... | ......**.*.*..*...... | ..........*...***.... | ......**.**.*****.... | .....***.*..**.**.... |
+20261002 11:27:54 [INFO] | ......**...*.*.*.*... | ......**....**.*.*... | .....***...***.*..... |                       |                       |
+20261002 11:27:54 [DEBUG] Memory: total 2.86 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.02 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.34 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, rcol.heads 160 B, rcol.nexts 168 B)
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] left edge: 1 -> 1
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] closure [l2r]: bcol 1 -> 4, col 0 -> 4
+20261002 11:27:54 [DEBUG] Memory: total 3.39 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, rcol.heads 160 B, rcol.nexts 168 B, left_edge_long 8 B, left_bcol_long 16 B, left_col_long 24 B)
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] right edge: 1 -> 1
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] closure [r2l]: bcol 1 -> 2, col 0 -> 2
+20261002 11:27:54 [DEBUG] Memory: total 3.44 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, rcol.heads 160 B, rcol.nexts 168 B, left_edge_long 8 B, right_edge_long 8 B, left_bcol_long 16 B, right_bcol_long 16 B, left_col_long 24 B, right_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.53 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, rcol.heads 160 B, rcol.nexts 168 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, left_bcol_long 16 B, right_bcol_long 16 B, left_frontier.inner 16 B, left_frontier.aggregate.inner 8 B, left_frontier.aggregate.levels 8 B, right_frontier.inner 16 B, right_frontier.aggregate.inner 8 B, right_frontier.aggregate.levels 8 B, left_col_long 24 B, right_col_long 24 B)
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 2 -> 6, frontier 2 -> 4, col 2 -> 6
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 6 -> 12, frontier 4 -> 6, col 6 -> 12
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [l2r]: bcol 4 -> 10, frontier 4 -> 6, col 4 -> 10
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 12 -> 16, frontier 6 -> 4, col 12 -> 23
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 16 -> 19, frontier 4 -> 3, col 23 -> 29
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 19 -> 25, frontier 3 -> 6, col 29 -> 35
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 25 -> 31, frontier 6 -> 6, col 35 -> 44
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 31 -> 34, frontier 6 -> 3, col 44 -> 51
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 34 -> 37, frontier 3 -> 3, col 51 -> 55
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 37 -> 40, frontier 3 -> 3, col 55 -> 58
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 40 -> 44, frontier 3 -> 4, col 58 -> 62
+20261002 11:27:54 [DEBUG] Expanded w_pos 25[0] window [r2l]: bcol 44 -> 48, frontier 4 -> 4, col 62 -> 69
+20261002 11:27:54 [DEBUG] Memory: total 3.47 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, rcol.heads 160 B, rcol.nexts 168 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, left_bcol_long 16 B, right_bcol_long 16 B, left_col_long 24 B, right_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.49 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, rcol.heads 160 B, rcol.nexts 168 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, left_bcol_long 16 B, right_bcol_long 16 B, left_col_long 24 B, middle_col_long 24 B, right_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.46 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, rcol.heads 160 B, rcol.nexts 168 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, left_col_long 24 B, middle_col_long 24 B, right_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.50 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, rcol.heads 160 B, rcol.nexts 168 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, left2_bcol_long 16 B, left_col_long 24 B, left2_col_long 24 B, middle_col_long 24 B, right_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.16 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, left2_bcol_long 16 B, middle_col_long 24 B, left2_col_long 24 B, right_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.20 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, lcol 168 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, left2_bcol_long 16 B, right2_bcol_long 16 B, middle_col_long 24 B, left2_col_long 24 B, right_col_long 24 B, right2_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.01 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, left2_bcol_long 16 B, right2_bcol_long 16 B, middle_col_long 24 B, left2_col_long 24 B, right2_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.02 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, left2_bcol_long 16 B, right2_bcol_long 16 B, final_bcol_long 16 B, middle_col_long 24 B, left2_col_long 24 B, right2_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 2.99 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, final_bcol_long 16 B, middle_col_long 24 B, left2_col_long 24 B, right2_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.02 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, final_bcol_long 16 B, middle_col_long 24 B, left2_col_long 24 B, right2_col_long 24 B, final_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 2.95 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 16 B, closure_right_bcol_long 16 B, final_bcol_long 16 B, final_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 2.91 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 16 B, final_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 3.08 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 168 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 16 B, final_bcol_xmap 168 B, final_col_long 24 B)
+20261002 11:27:54 [DEBUG] Memory: total 2.89 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 16 B, final_bcol_xmap 168 B)
+20261002 11:27:54 [DEBUG] Memory: total 2.89 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 16 B, final_bcol_xmap 168 B)
+20261002 11:27:54 [DEBUG] Memory: total 2.88 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 0 B, left_edge 0 B, right_edge 8 B, right_edge_long 8 B, final_bcol_long 16 B, final_bcol_xmap 168 B)
+20261002 11:27:54 [DEBUG] Memory: total 2.86 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 16 B, final_bcol_xmap 168 B)
+20261002 11:27:54 [DEBUG] Memory: total 2.70 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 16 B)
+20261002 11:27:54 [DEBUG] Memory: total 2.70 KB (ss.old_gens 2.23 KB, ss.cur_gen 304 B, bcol 160 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_next_gen 8 B, final_bcol_long 16 B)
+20261002 11:27:54 [DEBUG] Memory: total 200 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 160 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 8 B, ss_rewrite.next_gen_acc 16 B, final_bcol_long 16 B)
+20261002 11:27:54 [DEBUG] Memory: total 24 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 8 B, ss_rewrite.next_gen_acc 16 B)
+20261002 11:27:54 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261002 11:27:54 [INFO] Results: 0 normal
+20261002 11:27:54 [INFO] Completed w_pos 25[0]: 0 B, 5.761083ms
+20261002 11:27:54 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261002 11:27:54 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261002 11:27:54 [INFO] Cols sizes hash: 0x5AE57593FD21E50F (6549770511547753743)
+20261002 11:27:54 [INFO] Last thinnest partial RLE:
+x = 121, y = 26, rule = B3/S23-a5History
+F23.F23.F23.F.21B.F.21B.F$F.21B.F.21B.F.21B.F.21B.F.21B.F$F.21B.F.21B
+.F.21B.F.21B.F.21B.F$F.21B.F.21B.F.7BA13B.F.6BABA12B.F.5B3A13B.F$F.7B
+A13B.F.6B3A12B.F.5BABABA11B.F.4B2ABA13B.F.4B2ABABA11B.F$F.5B2AB2A11B.
+F.5B5A11B.F.4B2A2BA12B.F.5BA2B2A11B.F.5BAB3A11B.F$F.5BA4BA10B.F.4B3AB
+ABA10B.F.3BABA4BA3BA6B.F.3BABA2BABA2BA7B.F.2B2AB3A4B3A6B.F$F.4BA4B2A
+3BA6B.F.3B2A4B2A2B3A5B.F.3BA4B5ABA6B.F.2B2ABA2B5AB2A5B.F.2BA2BAB6A2BA
+5B.F$F.3B2ABABA4B3A5B.F.4BAB2A4B4A5B.F.3B3A3B2AB3A6B.F.3B2A3BA4B2A6B.
+F.8BA4BA7B.F$F.3B4A3B3A8B.F.10BABA8B.F.12BA8B.F.3BA7B2ABA6B.F.3B2A2BA
+6BA6B.F$F.4B2ABA3B5A5B.F.3BA6BA3B2A5B.F.4BABA6BA7B.F.6B2A3B2A8B.F.3B
+2A7BA8B.F$F.14BA6B.F.3BAB3A4BA8B.F.4BAB2A2B2A9B.F.3B2A5B3ABA6B.F.3B3A
+B2ABA2BA7B.F$F.3B2A2B3A4BA6B.F.7B4A2B3A5B.F.4B2AB4A2BABA5B.F.4BA3B4A
+9B.F.4B2A4B3A8B.F$F.7BA2B2A2BA6B.F.4BA6B4A6B.F.6BA14B.F.4BA5BA4BA5B.F
+.4BA3BABA10B.F$F.5BAB3ABABA7B.F.6B4AB4A6B.F.5B2ABA2BA2B2A5B.F.5B2A2BA
+BA9B.F.4B2A3BAB2ABA6B.F$F.4BA9BA6B.F.4BA2B4AB3A6B.F.4BA3BABABA8B.F.4B
+A5BAB2ABA5B.F.4BA5BABABA6B.F$F.4B3A3BA2BA7B.F.4B2A7BA7B.F.4B6ABABABA
+5B.F.4BAB6A3BA5B.F.3B2ABA2B2A2BAB2A4B.F$F.13BABA5B.F.6BA5B2AB2A4B.F.
+5BA6B6A3B.F.4B2AB2AB3A2BA5B.F.4BA2BA2B2A3BA5B.F$F.4B2A4BA2B2AB2A3B.F.
+16B2A3B.F.11BABAB3A3B.F.6BA4BABABAB2A2B.F.5B3ABA3BABA5B.F$F.4B2A2BA3B
+2A2BA4B.F.7BABAB2A8B.F.6B2AB3A4B2A3B.F.10B3A2BA5B.F.6B2A2B3ABABA4B.F$
+F.6B2A2BA3BAB2A3B.F.6B3ABA3BA2BA3B.F.21B.F.6B2A13B.F.10BA2BA7B.F$F.6B
+A2B5AB2A4B.F.6B4AB3A3BA3B.F.7BAB5A7B.F.11B3A7B.F.6B3AB4A7B.F$F.9BA5BA
+5B.F.21B.F.7BAB2A2BA7B.F.7BAB2A2BA7B.F.8B2A3BA7B.F$F.8B2AB2AB2A5B.F.
+9BA3BA2BA4B.F.8BABA10B.F.8BAB2A2B2A5B.F.6BA3BA3BABA4B.F$F.7BABA4B2A5B
+.F.6B2ABABA2BA6B.F.10BA3B3A4B.F.6B2AB2AB5A4B.F.5B3ABA2B2AB2A4B.F$F.6B
+2A3BABABABA3B.F.6B2A4B2ABABA3B.F.5B3A3B3ABA5B.F23.F23.F!
+20261002 11:27:54 [INFO] LlsssStepExpandRecentering: max pre-reify estimated mem: 0 B
+20261002 11:27:54 [INFO] Finish: search proper -> took 17.910541ms
+20261002 11:27:54 [INFO] state init: 1 calls, 30.05925ms own time, 31.632959ms total time
+20261002 11:27:54 [INFO] destruct/step LlsssMonitorDefaultPartial: 1 calls, 12.123834ms own time, 12.123834ms total time
+20261002 11:27:54 [INFO] precompile/step LlsssStepExpandRecentering: 1 calls, 10.588208ms own time, 10.588208ms total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorUniquePartial: 1 calls, 956.625µs own time, 956.625µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/step: 19 calls, 809.626µs own time, 809.626µs total time
+20261002 11:27:54 [INFO] state init/filter_clean/l2r_reachable: 1 calls, 584.875µs own time, 584.875µs total time
+20261002 11:27:54 [INFO] state init/filter_clean/r2l_reachable: 1 calls, 538.125µs own time, 538.125µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering: 1 calls, 429.414µs own time, 2.349333ms total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorDefaultPartial: 1 calls, 416.584µs own time, 1.377542ms total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/step: 18 calls, 373.75µs own time, 373.75µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/left closure: 1 calls, 340.209µs own time, 340.209µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRandomPartial: 1 calls, 315.625µs own time, 1.019333ms total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/left expand2: 1 calls, 234.042µs own time, 234.042µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/construct rcol: 1 calls, 227.25µs own time, 227.25µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/middle expand r2l: 11 calls, 192.084µs own time, 192.084µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/right expand2: 1 calls, 184.25µs own time, 184.25µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2: 1 calls, 149.707µs own time, 224.166µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/right closure: 1 calls, 148.583µs own time, 148.583µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path: 1 calls, 141.957µs own time, 960.958µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/construct lcol: 1 calls, 136.667µs own time, 136.667µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/middle expand center: 1 calls, 134.667µs own time, 134.667µs total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol: 1 calls, 128.5µs own time, 129.458µs total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1/filter bcol: 1 calls, 127.625µs own time, 127.625µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1: 1 calls, 104.917µs own time, 479.542µs total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1/col filt1: 1 calls, 90.792µs own time, 90.792µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/reify_col: 1 calls, 88.625µs own time, 88.625µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/step: 1 calls, 74µs own time, 74µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol1: 1 calls, 73.75µs own time, 73.75µs total time
+20261002 11:27:54 [INFO] precompile: 1 calls, 72.126µs own time, 10.71675ms total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1/keep_sl1: 1 calls, 53.5µs own time, 53.5µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/ss step: 1 calls, 39.542µs own time, 39.542µs total time
+20261002 11:27:54 [INFO] search: 1 calls, 33.251µs own time, 5.771333ms total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/assemble final bcol: 1 calls, 25.333µs own time, 25.333µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssEndsAgar: 1 calls, 21.958µs own time, 21.958µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/ss mark: 1 calls, 21.375µs own time, 21.375µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/assemble final col: 1 calls, 20.875µs own time, 20.875µs total time
+20261002 11:27:54 [INFO] precompile/step LlsssMonitorSpineStats: 1 calls, 20.208µs own time, 20.208µs total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1/filter left_edge: 1 calls, 18.5µs own time, 18.5µs total time
+20261002 11:27:54 [INFO] precompile/step LlsssEndsAgar: 1 calls, 18.042µs own time, 18.042µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/middle expand l2r: 1 calls, 17.917µs own time, 17.917µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/left edge expand: 1 calls, 16.792µs own time, 16.792µs total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1/keep_sl2: 1 calls, 15.292µs own time, 15.292µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/right edge expand: 1 calls, 14.583µs own time, 14.583µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorSpineStats: 1 calls, 11.25µs own time, 11.25µs total time
+20261002 11:27:54 [INFO] state init/filter_clean: 1 calls, 10.667µs own time, 1.573709ms total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/s1_bv: 1 calls, 8.625µs own time, 8.625µs total time
+20261002 11:27:54 [INFO] precompile/step LlsssMonitorDefaultPartial: 1 calls, 8.583µs own time, 8.583µs total time
+20261002 11:27:54 [INFO] precompile/step LlsssMonitorUniquePartial: 1 calls, 8.459µs own time, 8.459µs total time
+20261002 11:27:54 [INFO] destruct/step LlsssStepExpandRecentering: 1 calls, 7.416µs own time, 7.416µs total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1: 1 calls, 4.001µs own time, 440.042µs total time
+20261002 11:27:54 [INFO] destruct/step LlsssMonitorColStats: 1 calls, 1.875µs own time, 1.875µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorColStats: 1 calls, 1.666µs own time, 1.666µs total time
+20261002 11:27:54 [INFO] destruct: 1 calls, 1.417µs own time, 12.136958ms total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2: 1 calls, 959ns own time, 2.5µs total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol/xmap: 2 calls, 958ns own time, 958ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/init: 1 calls, 750ns own time, 750ns total time
+20261002 11:27:54 [INFO] destruct/step LlsssMonitorSpineStats: 1 calls, 666ns own time, 666ns total time
+20261002 11:27:54 [INFO] precompile/step LlsssMonitorRctl: 1 calls, 666ns own time, 666ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s1: 1 calls, 625ns own time, 625ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s3: 1 calls, 625ns own time, 625ns total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1/filter right_edge: 1 calls, 541ns own time, 541ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/pre_reify: 1 calls, 500ns own time, 500ns total time
+20261002 11:27:54 [INFO] destruct/step LlsssMonitorUniquePartial: 1 calls, 500ns own time, 500ns total time
+20261002 11:27:54 [INFO] destruct/step LlsssEndsAgar: 1 calls, 458ns own time, 458ns total time
+20261002 11:27:54 [INFO] destruct/step LlsssMonitorRandomPartial: 1 calls, 458ns own time, 458ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/init: 1 calls, 458ns own time, 458ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/s1_bv: 1 calls, 417ns own time, 417ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRctl: 1 calls, 375ns own time, 375ns total time
+20261002 11:27:54 [INFO] destruct/step LlsssMonitorRctl: 1 calls, 334ns own time, 334ns total time
+20261002 11:27:54 [INFO] state init/filter_clean/filter_x1/col filt_rewrite: 1 calls, 333ns own time, 129.791µs total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/s1_bv: 1 calls, 292ns own time, 292ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s2: 1 calls, 291ns own time, 291ns total time
+20261002 11:27:54 [INFO] precompile/step LlsssMonitorColStats: 1 calls, 250ns own time, 250ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/prune left_edge_long: 1 calls, 250ns own time, 250ns total time
+20261002 11:27:54 [INFO] precompile/step LlsssMonitorRandomPartial: 1 calls, 208ns own time, 208ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/init: 1 calls, 167ns own time, 167ns total time
+20261002 11:27:54 [INFO] search/Run step LlsssStepExpandRecentering/prune right_edge_long: 1 calls, 125ns own time, 125ns total time
+20261002 11:27:54 [INFO] Total: 81.52025ms
+20261002 11:27:54 [INFO] Final results: 0 normal
+20261002 11:27:54 [INFO] Done

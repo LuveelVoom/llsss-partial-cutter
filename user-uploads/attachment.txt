@@ -1,0 +1,859 @@
+20261006 19:15:34 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:34 [INFO] Results: 0 normal
+20261006 19:15:34 [INFO] Completed w_pos 2[0]: 0 B, 7.071958ms
+20261006 19:15:34 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:34 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:34 [INFO] Cols sizes hash: 0x49FBE6F702D6261E (5331108532502013470)
+20261006 19:15:34 [INFO] Last thinnest partial RLE:
+x = 301, y = 3, rule = LifeHistory
+F49.F49.F49.F.22B3A9BA7BA4B.F.22B3A22B.F.22B3A10BABA9B.F$F.22BA2BA9B
+2A2B2A6B.F.22BA12BA2B4A5B.F.22BA12B7A5B.F.21BA12BA7BA4B.F.21BA3BA9BA
+5B2A4B.F.21BA3BA21B.F$F.22B5A10BA9B.F.22B5A9BA10B.F.21B5A13B2A6B.F49.
+F49.F49.F!
+20261006 19:15:34 [INFO] LlsssStepExpandRecentering: max pre-reify estimated mem: 0 B
+20261006 19:15:34 [INFO] Finish: search proper -> took 25.353167ms
+20261006 19:15:34 [INFO] destruct/step LlsssMonitorDefaultPartial: 1 calls, 18.201ms own time, 18.201ms total time
+20261006 19:15:34 [INFO] precompile/step LlsssStepExpandRecentering: 1 calls, 13.922208ms own time, 13.922208ms total time
+20261006 19:15:34 [INFO] state init: 1 calls, 6.98325ms own time, 10.086875ms total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/step: 41 calls, 1.686334ms own time, 1.686334ms total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/step: 45 calls, 1.659042ms own time, 1.659042ms total time
+20261006 19:15:34 [INFO] state init/filter_clean/r2l_reachable: 1 calls, 1.478833ms own time, 1.478833ms total time
+20261006 19:15:34 [INFO] state init/filter_clean/l2r_reachable: 1 calls, 1.269209ms own time, 1.269209ms total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering: 1 calls, 876.584µs own time, 2.579334ms total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorUniquePartial: 1 calls, 346.458µs own time, 346.458µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/middle expand r2l: 8 calls, 273.416µs own time, 273.416µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path: 1 calls, 217.999µs own time, 1.882041ms total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/right closure: 1 calls, 199.084µs own time, 199.084µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/left closure: 1 calls, 189.958µs own time, 189.958µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorDefaultPartial: 1 calls, 174.584µs own time, 2.056625ms total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/left edge expand: 1 calls, 166.542µs own time, 166.542µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/left expand2: 1 calls, 133.625µs own time, 133.625µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRandomPartial: 1 calls, 133.291µs own time, 2.05275ms total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/right edge expand: 1 calls, 125.5µs own time, 125.5µs total time
+20261006 19:15:34 [INFO] precompile: 1 calls, 115.459µs own time, 14.071958ms total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/reify_col: 1 calls, 113.084µs own time, 113.084µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/construct rcol: 1 calls, 111.625µs own time, 111.625µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/step: 4 calls, 105.293µs own time, 105.293µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/right expand2: 1 calls, 100.875µs own time, 100.875µs total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1/keep_sl1: 1 calls, 97.375µs own time, 97.375µs total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1/col filt1: 1 calls, 93.792µs own time, 93.792µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1: 1 calls, 88.749µs own time, 194.792µs total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1/filter bcol: 1 calls, 83.083µs own time, 83.083µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/middle expand center: 1 calls, 69.583µs own time, 69.583µs total time
+20261006 19:15:34 [INFO] destruct/step LlsssStepExpandRecentering: 1 calls, 56.375µs own time, 56.375µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/assemble final col: 1 calls, 46.958µs own time, 46.958µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol1: 1 calls, 43.541µs own time, 43.541µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/assemble final bcol: 1 calls, 38.417µs own time, 38.417µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/construct lcol: 1 calls, 38.042µs own time, 38.042µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2: 1 calls, 37.875µs own time, 1.724667ms total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol: 1 calls, 34.168µs own time, 37.167µs total time
+20261006 19:15:34 [INFO] search: 1 calls, 30.041µs own time, 7.087084ms total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/ss step: 1 calls, 26.75µs own time, 26.75µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/ss mark: 1 calls, 21.666µs own time, 21.666µs total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1/keep_sl2: 1 calls, 21.125µs own time, 21.125µs total time
+20261006 19:15:34 [INFO] precompile/step LlsssEndsAgar: 1 calls, 14.792µs own time, 14.792µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssEndsAgar: 1 calls, 12.959µs own time, 12.959µs total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1/filter right_edge: 1 calls, 12.416µs own time, 12.416µs total time
+20261006 19:15:34 [INFO] precompile/step LlsssMonitorSpineStats: 1 calls, 9.666µs own time, 9.666µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorSpineStats: 1 calls, 6.959µs own time, 6.959µs total time
+20261006 19:15:34 [INFO] state init/filter_clean: 1 calls, 6.541µs own time, 3.103625ms total time
+20261006 19:15:34 [INFO] precompile/step LlsssMonitorUniquePartial: 1 calls, 4.5µs own time, 4.5µs total time
+20261006 19:15:34 [INFO] precompile/step LlsssMonitorDefaultPartial: 1 calls, 4.083µs own time, 4.083µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/s1_bv: 1 calls, 3.75µs own time, 3.75µs total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol/xmap: 2 calls, 2.999µs own time, 2.999µs total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1: 1 calls, 2.46µs own time, 349.042µs total time
+20261006 19:15:34 [INFO] destruct: 1 calls, 2.416µs own time, 18.264667ms total time
+20261006 19:15:34 [INFO] destruct/step LlsssMonitorColStats: 1 calls, 2.084µs own time, 2.084µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2: 1 calls, 1.542µs own time, 2.917µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorColStats: 1 calls, 1.5µs own time, 1.5µs total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1/filter left_edge: 1 calls, 1.416µs own time, 1.416µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/init: 1 calls, 1.25µs own time, 1.25µs total time
+20261006 19:15:34 [INFO] destruct/step LlsssMonitorRctl: 1 calls, 750ns own time, 750ns total time
+20261006 19:15:34 [INFO] destruct/step LlsssEndsAgar: 1 calls, 750ns own time, 750ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/pre_reify: 1 calls, 708ns own time, 708ns total time
+20261006 19:15:34 [INFO] precompile/step LlsssMonitorRctl: 1 calls, 666ns own time, 666ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s1: 1 calls, 666ns own time, 666ns total time
+20261006 19:15:34 [INFO] destruct/step LlsssMonitorSpineStats: 1 calls, 584ns own time, 584ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s3: 1 calls, 542ns own time, 542ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRctl: 1 calls, 458ns own time, 458ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/init: 1 calls, 375ns own time, 375ns total time
+20261006 19:15:34 [INFO] destruct/step LlsssMonitorUniquePartial: 1 calls, 375ns own time, 375ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/s1_bv: 1 calls, 375ns own time, 375ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/prune left_edge_long: 1 calls, 375ns own time, 375ns total time
+20261006 19:15:34 [INFO] precompile/step LlsssMonitorColStats: 1 calls, 334ns own time, 334ns total time
+20261006 19:15:34 [INFO] destruct/step LlsssMonitorRandomPartial: 1 calls, 333ns own time, 333ns total time
+20261006 19:15:34 [INFO] precompile/step LlsssMonitorRandomPartial: 1 calls, 250ns own time, 250ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/init: 1 calls, 250ns own time, 250ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/s1_bv: 1 calls, 208ns own time, 208ns total time
+20261006 19:15:34 [INFO] state init/filter_clean/filter_x1/col filt_rewrite: 1 calls, 208ns own time, 37.375µs total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s2: 1 calls, 167ns own time, 167ns total time
+20261006 19:15:34 [INFO] search/Run step LlsssStepExpandRecentering/prune right_edge_long: 1 calls, 84ns own time, 84ns total time
+20261006 19:15:34 [INFO] Total: 71.108792ms
+20261006 19:15:34 [INFO] Final results: 0 normal
+20261006 19:15:34 [INFO] Done
+(base) user@mac release % ./rlife llsss-recentering --rule 'B3/S23' --constraint 'grid("minstrel-pre.cstr.txt", none)' c6k-1 minstrel.in.txt 10 | tee out.txt
+20261006 19:15:38 [INFO] Start: compile step LlsssMonitorSpineStats
+20261006 19:15:38 [INFO] Finish: compile step LlsssMonitorSpineStats -> took 80.542µs
+20261006 19:15:38 [INFO] Start: compile step LlsssMonitorColStats
+20261006 19:15:38 [INFO] Finish: compile step LlsssMonitorColStats -> took 1.5µs
+20261006 19:15:38 [INFO] Start: compile step LlsssMonitorUniquePartial
+20261006 19:15:38 [INFO] Finish: compile step LlsssMonitorUniquePartial -> took 4.666µs
+20261006 19:15:38 [INFO] Start: compile step LlsssMonitorDefaultPartial
+20261006 19:15:38 [INFO] Finish: compile step LlsssMonitorDefaultPartial -> took 5.709µs
+20261006 19:15:38 [INFO] Start: compile step LlsssMonitorRandomPartial
+20261006 19:15:38 [INFO] Finish: compile step LlsssMonitorRandomPartial -> took 1.375µs
+20261006 19:15:38 [INFO] Start: compile step LlsssMonitorRctl
+20261006 19:15:38 [INFO] Finish: compile step LlsssMonitorRctl -> took 2µs
+20261006 19:15:38 [INFO] Start: compile step LlsssStepExpandRecentering
+20261006 19:15:38 [INFO] Start: compile tables
+20261006 19:15:38 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:38 [INFO] Finish: compile tables -> took 2.468375ms
+20261006 19:15:38 [INFO] Start: compile tables
+20261006 19:15:38 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:38 [INFO] Finish: compile tables -> took 2.0265ms
+20261006 19:15:38 [INFO] Start: compile tables
+20261006 19:15:38 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:38 [INFO] Finish: compile tables -> took 2.022084ms
+20261006 19:15:38 [INFO] Start: compile tables
+20261006 19:15:38 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:38 [INFO] Finish: compile tables -> took 3.03325ms
+20261006 19:15:38 [INFO] Start: compile tables
+20261006 19:15:38 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:38 [INFO] Finish: compile tables -> took 2.349667ms
+20261006 19:15:38 [INFO] Start: compile tables
+20261006 19:15:38 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:38 [INFO] Finish: compile tables -> took 1.680083ms
+20261006 19:15:38 [INFO] Finish: compile step LlsssStepExpandRecentering -> took 16.393167ms
+20261006 19:15:38 [INFO] Start: compile step LlsssEndsAgar
+20261006 19:15:38 [INFO] Finish: compile step LlsssEndsAgar -> took 14.625µs
+20261006 19:15:38 [INFO] Start: search proper
+20261006 19:15:38 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B)
+20261006 19:15:38 [INFO] Spine store sizes: old_gens [45], cur_gen 45
+20261006 19:15:38 [INFO] Cols sizes: 46 / 47
+20261006 19:15:38 [INFO] Unique:
+20261006 19:15:38 [INFO] |                                             |                                             |                                             | ....................***.........*.......*.. | ....................***.................... | ....................***..........*.*....... |
+20261006 19:15:38 [INFO] | ....................*..*.........**..**.... | ....................*............*..****... | ....................*............*******... | ...................*............*.......*.. | ...................*...*.........*.....**.. | ...................*...*................... |
+20261006 19:15:38 [INFO] | ....................*****..........*....... | ....................*****.........*........ | ...................*****.............**.... |                                             |                                             |                                             |
+20261006 19:15:38 [INFO] Thinnest partial:
+20261006 19:15:38 [INFO] |                                                 |                                                 |                                                 | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR |
+20261006 19:15:38 [INFO] | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | ......................***.........*.......*.... | ......................***...................... | ......................***..........*.*......... |
+20261006 19:15:38 [INFO] | ......................*..*.........**..**...... | ......................*............*..****..... | ......................*............*******..... | .....................*............*.......*.... | .....................*...*.........*.....**.... | .....................*...*..................... |
+20261006 19:15:38 [INFO] | ......................*****..........*......... | ......................*****.........*.......... | .....................*****.............**...... |                                                 |                                                 |                                                 |
+20261006 19:15:38 [INFO] Random[ish] partial:
+20261006 19:15:38 [INFO] |                                                 |                                                 |                                                 |                                SS               |                                SS               |                                SS               |
+20261006 19:15:38 [INFO] |                                SS               |                                SS               |                                SS               | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR |
+20261006 19:15:38 [INFO] | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | ......................***.........*.......*.... | ......................***...................... | ......................***..........*.*......... |
+20261006 19:15:38 [INFO] | ......................*..*.........**..**...... | ......................*............*..****..... | ......................*............*******..... | .....................*............*.......*.... | .....................*...*.........*.....**.... | .....................*...*..................... |
+20261006 19:15:38 [INFO] | ......................*****..........*......... | ......................*****.........*.......... | .....................*****.............**...... |                                                 |                                                 |                                                 |
+20261006 19:15:38 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B)
+20261006 19:15:38 [DEBUG] Memory: total 2.16 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B)
+20261006 19:15:38 [DEBUG] Memory: total 2.89 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B)
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] left edge: 1 -> 1
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] closure [l2r]: bcol 1 -> 20, col 0 -> 20
+20261006 19:15:38 [DEBUG] Memory: total 2.97 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, left_bcol_long 24 B, left_col_long 48 B)
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] right edge: 1 -> 1
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] closure [r2l]: bcol 1 -> 3, col 0 -> 3
+20261006 19:15:38 [DEBUG] Memory: total 3.05 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 3.17 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_frontier.inner 24 B, left_frontier.aggregate.inner 8 B, left_frontier.aggregate.levels 8 B, right_frontier.inner 24 B, right_frontier.aggregate.inner 8 B, right_frontier.aggregate.levels 8 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 3 -> 8, frontier 3 -> 5, col 3 -> 8
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 8 -> 20, frontier 5 -> 12, col 8 -> 20
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 20 -> 24, frontier 12 -> 4, col 20 -> 40
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 24 -> 28, frontier 4 -> 4, col 40 -> 45
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 28 -> 32, frontier 4 -> 4, col 45 -> 50
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 32 -> 36, frontier 4 -> 4, col 50 -> 55
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 36 -> 37, frontier 4 -> 1, col 55 -> 56
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 37 -> 38, frontier 1 -> 1, col 56 -> 57
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 38 -> 39, frontier 1 -> 1, col 57 -> 58
+20261006 19:15:38 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 39 -> 40, frontier 1 -> 1, col 58 -> 59
+20261006 19:15:38 [DEBUG] Memory: total 3.09 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 3.14 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 3.09 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 3.16 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, left_col_long 48 B, left2_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 2.39 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 2.46 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 2.05 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 2.07 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 2.02 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 2.07 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B, final_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 1.93 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, final_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 1.88 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 2.25 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B, final_col_long 48 B)
+20261006 19:15:38 [DEBUG] Memory: total 1.84 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:38 [DEBUG] Memory: total 1.84 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:38 [DEBUG] Memory: total 1.82 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:38 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:38 [DEBUG] Memory: total 1.44 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 24 B)
+20261006 19:15:38 [DEBUG] Memory: total 1.45 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_next_gen 16 B, final_bcol_long 24 B)
+20261006 19:15:38 [DEBUG] Memory: total 432 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 16 B, ss_rewrite.next_gen_acc 24 B, final_bcol_long 24 B)
+20261006 19:15:38 [DEBUG] Memory: total 40 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 16 B, ss_rewrite.next_gen_acc 24 B)
+20261006 19:15:38 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:38 [INFO] Results: 0 normal
+20261006 19:15:38 [INFO] Completed w_pos 2[0]: 0 B, 6.219ms
+20261006 19:15:38 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:38 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:38 [INFO] Cols sizes hash: 0x49FBE6F702D6261E (5331108532502013470)
+20261006 19:15:38 [INFO] Last thinnest partial RLE:
+x = 301, y = 3, rule = LifeHistory
+F49.F49.F49.F.22B3A9BA7BA4B.F.22B3A22B.F.22B3A10BABA9B.F$F.22BA2BA9B
+2A2B2A6B.F.22BA12BA2B4A5B.F.22BA12B7A5B.F.21BA12BA7BA4B.F.21BA3BA9BA
+5B2A4B.F.21BA3BA21B.F$F.22B5A10BA9B.F.22B5A9BA10B.F.21B5A13B2A6B.F49.
+F49.F49.F!
+20261006 19:15:38 [INFO] LlsssStepExpandRecentering: max pre-reify estimated mem: 0 B
+20261006 19:15:38 [INFO] Finish: search proper -> took 18.761875ms
+20261006 19:15:38 [INFO] precompile/step LlsssStepExpandRecentering: 1 calls, 16.391875ms own time, 16.391875ms total time
+20261006 19:15:38 [INFO] destruct/step LlsssMonitorDefaultPartial: 1 calls, 12.464959ms own time, 12.464959ms total time
+20261006 19:15:38 [INFO] state init: 1 calls, 5.667208ms own time, 8.482583ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/step: 45 calls, 1.497086ms own time, 1.497086ms total time
+20261006 19:15:38 [INFO] state init/filter_clean/r2l_reachable: 1 calls, 1.3665ms own time, 1.3665ms total time
+20261006 19:15:38 [INFO] state init/filter_clean/l2r_reachable: 1 calls, 1.275667ms own time, 1.275667ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/step: 31 calls, 830.794µs own time, 830.794µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering: 1 calls, 667.668µs own time, 2.424458ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/step: 14 calls, 465.789µs own time, 465.789µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorUniquePartial: 1 calls, 406.917µs own time, 406.917µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/middle expand r2l: 10 calls, 266.416µs own time, 266.416µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/left closure: 1 calls, 183.166µs own time, 183.166µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/construct rcol: 1 calls, 176.167µs own time, 176.167µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/left expand2: 1 calls, 161.75µs own time, 161.75µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path: 1 calls, 138.872µs own time, 1.641583ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorDefaultPartial: 1 calls, 136.375µs own time, 1.777958ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/left edge expand: 1 calls, 134.666µs own time, 134.666µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/right closure: 1 calls, 131.5µs own time, 131.5µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRandomPartial: 1 calls, 129.584µs own time, 1.569875ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1: 1 calls, 114.956µs own time, 946.541µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/right edge expand: 1 calls, 113.75µs own time, 113.75µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/reify_col: 1 calls, 111.667µs own time, 111.667µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/right expand2: 1 calls, 109.292µs own time, 109.292µs total time
+20261006 19:15:38 [INFO] precompile: 1 calls, 105.168µs own time, 16.527459ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/assemble final col: 1 calls, 95.25µs own time, 95.25µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/middle expand center: 1 calls, 85.333µs own time, 85.333µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/ss step: 1 calls, 68.209µs own time, 68.209µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol1: 1 calls, 62.75µs own time, 62.75µs total time
+20261006 19:15:38 [INFO] destruct/step LlsssStepExpandRecentering: 1 calls, 54.75µs own time, 54.75µs total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol: 1 calls, 37.416µs own time, 38.542µs total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1/keep_sl1: 1 calls, 35.292µs own time, 35.292µs total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1/filter bcol: 1 calls, 33.958µs own time, 33.958µs total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1/col filt1: 1 calls, 32.333µs own time, 32.333µs total time
+20261006 19:15:38 [INFO] search: 1 calls, 31.459µs own time, 6.234ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2: 1 calls, 27.67µs own time, 493.75µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/assemble final bcol: 1 calls, 22.125µs own time, 22.125µs total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1/keep_sl2: 1 calls, 20.125µs own time, 20.125µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/construct lcol: 1 calls, 17.416µs own time, 17.416µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssEndsAgar: 1 calls, 13.791µs own time, 13.791µs total time
+20261006 19:15:38 [INFO] precompile/step LlsssEndsAgar: 1 calls, 13.417µs own time, 13.417µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/ss mark: 1 calls, 11.334µs own time, 11.334µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorSpineStats: 1 calls, 8µs own time, 8µs total time
+20261006 19:15:38 [INFO] precompile/step LlsssMonitorSpineStats: 1 calls, 7.667µs own time, 7.667µs total time
+20261006 19:15:38 [INFO] state init/filter_clean: 1 calls, 5.375µs own time, 2.815375ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/s1_bv: 1 calls, 4.792µs own time, 4.792µs total time
+20261006 19:15:38 [INFO] precompile/step LlsssMonitorDefaultPartial: 1 calls, 4.583µs own time, 4.583µs total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1/filter left_edge: 1 calls, 4.458µs own time, 4.458µs total time
+20261006 19:15:38 [INFO] precompile/step LlsssMonitorUniquePartial: 1 calls, 3.5µs own time, 3.5µs total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1: 1 calls, 2.209µs own time, 167.833µs total time
+20261006 19:15:38 [INFO] destruct/step LlsssMonitorColStats: 1 calls, 2.208µs own time, 2.208µs total time
+20261006 19:15:38 [INFO] destruct: 1 calls, 2.043µs own time, 12.526709ms total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s3: 1 calls, 1.75µs own time, 1.75µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2: 1 calls, 1.5µs own time, 4.5µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorColStats: 1 calls, 1.167µs own time, 1.167µs total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol/xmap: 2 calls, 1.126µs own time, 1.126µs total time
+20261006 19:15:38 [INFO] destruct/step LlsssMonitorSpineStats: 1 calls, 1.083µs own time, 1.083µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s1: 1 calls, 1.042µs own time, 1.042µs total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/init: 1 calls, 833ns own time, 833ns total time
+20261006 19:15:38 [INFO] destruct/step LlsssEndsAgar: 1 calls, 833ns own time, 833ns total time
+20261006 19:15:38 [INFO] precompile/step LlsssMonitorRctl: 1 calls, 750ns own time, 750ns total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/pre_reify: 1 calls, 667ns own time, 667ns total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1/filter right_edge: 1 calls, 583ns own time, 583ns total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/prune left_edge_long: 1 calls, 541ns own time, 541ns total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/init: 1 calls, 458ns own time, 458ns total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRctl: 1 calls, 375ns own time, 375ns total time
+20261006 19:15:38 [INFO] destruct/step LlsssMonitorRctl: 1 calls, 375ns own time, 375ns total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/s1_bv: 1 calls, 333ns own time, 333ns total time
+20261006 19:15:38 [INFO] state init/filter_clean/filter_x1/col filt_rewrite: 1 calls, 333ns own time, 38.875µs total time
+20261006 19:15:38 [INFO] precompile/step LlsssMonitorColStats: 1 calls, 291ns own time, 291ns total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/prune right_edge_long: 1 calls, 291ns own time, 291ns total time
+20261006 19:15:38 [INFO] destruct/step LlsssMonitorRandomPartial: 1 calls, 250ns own time, 250ns total time
+20261006 19:15:38 [INFO] destruct/step LlsssMonitorUniquePartial: 1 calls, 208ns own time, 208ns total time
+20261006 19:15:38 [INFO] precompile/step LlsssMonitorRandomPartial: 1 calls, 208ns own time, 208ns total time
+20261006 19:15:38 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s2: 1 calls, 208ns own time, 208ns total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/init: 1 calls, 166ns own time, 166ns total time
+20261006 19:15:38 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/s1_bv: 1 calls, 125ns own time, 125ns total time
+20261006 19:15:38 [INFO] Total: 59.358084ms
+20261006 19:15:38 [INFO] Final results: 0 normal
+20261006 19:15:38 [INFO] Done
+(base) user@mac release % ./rlife llsss-recentering --rule 'B3/S23' --constraint 'grid("minstrel-pre.cstr.txt", none)' c6k-1 minstrel.in.txt 12 | tee out.txt
+20261006 19:15:42 [INFO] Start: compile step LlsssMonitorSpineStats
+20261006 19:15:42 [INFO] Finish: compile step LlsssMonitorSpineStats -> took 89.541µs
+20261006 19:15:42 [INFO] Start: compile step LlsssMonitorColStats
+20261006 19:15:42 [INFO] Finish: compile step LlsssMonitorColStats -> took 1.625µs
+20261006 19:15:42 [INFO] Start: compile step LlsssMonitorUniquePartial
+20261006 19:15:42 [INFO] Finish: compile step LlsssMonitorUniquePartial -> took 5.541µs
+20261006 19:15:42 [INFO] Start: compile step LlsssMonitorDefaultPartial
+20261006 19:15:42 [INFO] Finish: compile step LlsssMonitorDefaultPartial -> took 4.917µs
+20261006 19:15:42 [INFO] Start: compile step LlsssMonitorRandomPartial
+20261006 19:15:42 [INFO] Finish: compile step LlsssMonitorRandomPartial -> took 1.083µs
+20261006 19:15:42 [INFO] Start: compile step LlsssMonitorRctl
+20261006 19:15:42 [INFO] Finish: compile step LlsssMonitorRctl -> took 1.667µs
+20261006 19:15:42 [INFO] Start: compile step LlsssStepExpandRecentering
+20261006 19:15:42 [INFO] Start: compile tables
+20261006 19:15:42 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:42 [INFO] Finish: compile tables -> took 1.754958ms
+20261006 19:15:42 [INFO] Start: compile tables
+20261006 19:15:42 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:42 [INFO] Finish: compile tables -> took 1.724416ms
+20261006 19:15:42 [INFO] Start: compile tables
+20261006 19:15:42 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:42 [INFO] Finish: compile tables -> took 1.657417ms
+20261006 19:15:42 [INFO] Start: compile tables
+20261006 19:15:42 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:42 [INFO] Finish: compile tables -> took 1.738ms
+20261006 19:15:42 [INFO] Start: compile tables
+20261006 19:15:42 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:42 [INFO] Finish: compile tables -> took 1.6645ms
+20261006 19:15:42 [INFO] Start: compile tables
+20261006 19:15:42 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:42 [INFO] Finish: compile tables -> took 1.735666ms
+20261006 19:15:42 [INFO] Finish: compile step LlsssStepExpandRecentering -> took 13.108542ms
+20261006 19:15:42 [INFO] Start: compile step LlsssEndsAgar
+20261006 19:15:42 [INFO] Finish: compile step LlsssEndsAgar -> took 16.416µs
+20261006 19:15:42 [INFO] Start: search proper
+20261006 19:15:42 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B)
+20261006 19:15:42 [INFO] Spine store sizes: old_gens [45], cur_gen 45
+20261006 19:15:42 [INFO] Cols sizes: 46 / 47
+20261006 19:15:42 [INFO] Unique:
+20261006 19:15:42 [INFO] |                                             |                                             |                                             | ....................***.........*.......*.. | ....................***.................... | ....................***..........*.*....... |
+20261006 19:15:42 [INFO] | ....................*..*.........**..**.... | ....................*............*..****... | ....................*............*******... | ...................*............*.......*.. | ...................*...*.........*.....**.. | ...................*...*................... |
+20261006 19:15:42 [INFO] | ....................*****..........*....... | ....................*****.........*........ | ...................*****.............**.... |                                             |                                             |                                             |
+20261006 19:15:42 [INFO] Thinnest partial:
+20261006 19:15:42 [INFO] |                                                 |                                                 |                                                 | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR |
+20261006 19:15:42 [INFO] | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | ......................***.........*.......*.... | ......................***...................... | ......................***..........*.*......... |
+20261006 19:15:42 [INFO] | ......................*..*.........**..**...... | ......................*............*..****..... | ......................*............*******..... | .....................*............*.......*.... | .....................*...*.........*.....**.... | .....................*...*..................... |
+20261006 19:15:42 [INFO] | ......................*****..........*......... | ......................*****.........*.......... | .....................*****.............**...... |                                                 |                                                 |                                                 |
+20261006 19:15:42 [INFO] Random[ish] partial:
+20261006 19:15:42 [INFO] |                                                 |                                                 |                                                 |                                             SS  |                                             SS  |                                             SS  |
+20261006 19:15:42 [INFO] |                                             SS  |                                             SS  |                                             SS  | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR |
+20261006 19:15:42 [INFO] | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | ......................***.........*.......*.... | ......................***...................... | ......................***..........*.*......... |
+20261006 19:15:42 [INFO] | ......................*..*.........**..**...... | ......................*............*..****..... | ......................*............*******..... | .....................*............*.......*.... | .....................*...*.........*.....**.... | .....................*...*..................... |
+20261006 19:15:42 [INFO] | ......................*****..........*......... | ......................*****.........*.......... | .....................*****.............**...... |                                                 |                                                 |                                                 |
+20261006 19:15:42 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B)
+20261006 19:15:42 [DEBUG] Memory: total 2.16 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B)
+20261006 19:15:42 [DEBUG] Memory: total 2.89 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B)
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] left edge: 1 -> 1
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] closure [l2r]: bcol 1 -> 20, col 0 -> 20
+20261006 19:15:42 [DEBUG] Memory: total 2.97 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, left_bcol_long 24 B, left_col_long 48 B)
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] right edge: 1 -> 1
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] closure [r2l]: bcol 1 -> 3, col 0 -> 3
+20261006 19:15:42 [DEBUG] Memory: total 3.05 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 3.17 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_frontier.inner 24 B, left_frontier.aggregate.inner 8 B, left_frontier.aggregate.levels 8 B, right_frontier.inner 24 B, right_frontier.aggregate.inner 8 B, right_frontier.aggregate.levels 8 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 3 -> 8, frontier 3 -> 5, col 3 -> 8
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 8 -> 20, frontier 5 -> 12, col 8 -> 20
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 20 -> 24, frontier 12 -> 4, col 20 -> 40
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 24 -> 28, frontier 4 -> 4, col 40 -> 45
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 28 -> 32, frontier 4 -> 4, col 45 -> 50
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 32 -> 36, frontier 4 -> 4, col 50 -> 55
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 36 -> 37, frontier 4 -> 1, col 55 -> 56
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 37 -> 38, frontier 1 -> 1, col 56 -> 57
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 38 -> 39, frontier 1 -> 1, col 57 -> 58
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 39 -> 40, frontier 1 -> 1, col 58 -> 59
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 40 -> 42, frontier 1 -> 2, col 59 -> 61
+20261006 19:15:42 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 42 -> 46, frontier 2 -> 4, col 61 -> 65
+20261006 19:15:42 [DEBUG] Memory: total 3.09 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 3.14 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 3.09 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 3.16 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, left_col_long 48 B, left2_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 2.39 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 2.46 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 2.05 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 2.07 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 2.02 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 2.07 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B, final_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 1.93 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, final_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 1.88 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 2.25 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B, final_col_long 48 B)
+20261006 19:15:42 [DEBUG] Memory: total 1.84 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:42 [DEBUG] Memory: total 1.84 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:42 [DEBUG] Memory: total 1.82 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:42 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:42 [DEBUG] Memory: total 1.44 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 24 B)
+20261006 19:15:42 [DEBUG] Memory: total 1.45 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_next_gen 16 B, final_bcol_long 24 B)
+20261006 19:15:42 [DEBUG] Memory: total 432 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 16 B, ss_rewrite.next_gen_acc 24 B, final_bcol_long 24 B)
+20261006 19:15:42 [DEBUG] Memory: total 40 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 16 B, ss_rewrite.next_gen_acc 24 B)
+20261006 19:15:42 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:42 [INFO] Results: 0 normal
+20261006 19:15:42 [INFO] Completed w_pos 2[0]: 0 B, 7.480667ms
+20261006 19:15:42 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:42 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:42 [INFO] Cols sizes hash: 0x49FBE6F702D6261E (5331108532502013470)
+20261006 19:15:42 [INFO] Last thinnest partial RLE:
+x = 301, y = 3, rule = LifeHistory
+F49.F49.F49.F.22B3A9BA7BA4B.F.22B3A22B.F.22B3A10BABA9B.F$F.22BA2BA9B
+2A2B2A6B.F.22BA12BA2B4A5B.F.22BA12B7A5B.F.21BA12BA7BA4B.F.21BA3BA9BA
+5B2A4B.F.21BA3BA21B.F$F.22B5A10BA9B.F.22B5A9BA10B.F.21B5A13B2A6B.F49.
+F49.F49.F!
+20261006 19:15:42 [INFO] LlsssStepExpandRecentering: max pre-reify estimated mem: 0 B
+20261006 19:15:42 [INFO] Finish: search proper -> took 23.630833ms
+20261006 19:15:42 [INFO] destruct/step LlsssMonitorDefaultPartial: 1 calls, 16.076208ms own time, 16.076208ms total time
+20261006 19:15:42 [INFO] precompile/step LlsssStepExpandRecentering: 1 calls, 13.107416ms own time, 13.107416ms total time
+20261006 19:15:42 [INFO] state init: 1 calls, 7.036666ms own time, 10.642916ms total time
+20261006 19:15:42 [INFO] state init/filter_clean/l2r_reachable: 1 calls, 1.871375ms own time, 1.871375ms total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/step: 45 calls, 1.762168ms own time, 1.762168ms total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/step: 44 calls, 1.642205ms own time, 1.642205ms total time
+20261006 19:15:42 [INFO] state init/filter_clean/r2l_reachable: 1 calls, 1.435125ms own time, 1.435125ms total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering: 1 calls, 716.545µs own time, 2.951292ms total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/middle expand r2l: 12 calls, 354.331µs own time, 354.331µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorUniquePartial: 1 calls, 313.625µs own time, 313.625µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/left closure: 1 calls, 275.708µs own time, 275.708µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/left expand2: 1 calls, 223.625µs own time, 223.625µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/left edge expand: 1 calls, 214.166µs own time, 214.166µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/right edge expand: 1 calls, 213.333µs own time, 213.333µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path: 1 calls, 209.165µs own time, 1.979667ms total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/right closure: 1 calls, 162.542µs own time, 162.542µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRandomPartial: 1 calls, 158.834µs own time, 2.042667ms total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorDefaultPartial: 1 calls, 155.583µs own time, 2.13525ms total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/middle expand center: 1 calls, 145.959µs own time, 145.959µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/reify_col: 1 calls, 144.667µs own time, 144.667µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/construct rcol: 1 calls, 143.792µs own time, 143.792µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1: 1 calls, 121.419µs own time, 1.7645ms total time
+20261006 19:15:42 [INFO] precompile: 1 calls, 111.5µs own time, 13.253416ms total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol: 1 calls, 96.791µs own time, 100.791µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/step: 1 calls, 73.708µs own time, 73.708µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol1: 1 calls, 72.875µs own time, 72.875µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/construct lcol: 1 calls, 66.208µs own time, 66.208µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/right expand2: 1 calls, 64.208µs own time, 64.208µs total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1/filter bcol: 1 calls, 58.459µs own time, 58.459µs total time
+20261006 19:15:42 [INFO] destruct/step LlsssStepExpandRecentering: 1 calls, 55.875µs own time, 55.875µs total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1/col filt1: 1 calls, 54.709µs own time, 54.709µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/assemble final col: 1 calls, 52.708µs own time, 52.708µs total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1/keep_sl1: 1 calls, 47.917µs own time, 47.917µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2: 1 calls, 45.084µs own time, 119.333µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/ss step: 1 calls, 40.166µs own time, 40.166µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/assemble final bcol: 1 calls, 36.125µs own time, 36.125µs total time
+20261006 19:15:42 [INFO] search: 1 calls, 27.166µs own time, 7.492208ms total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/ss mark: 1 calls, 20.875µs own time, 20.875µs total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1/keep_sl2: 1 calls, 19.833µs own time, 19.833µs total time
+20261006 19:15:42 [INFO] precompile/step LlsssEndsAgar: 1 calls, 14.875µs own time, 14.875µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssEndsAgar: 1 calls, 12µs own time, 12µs total time
+20261006 19:15:42 [INFO] precompile/step LlsssMonitorSpineStats: 1 calls, 9.833µs own time, 9.833µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorSpineStats: 1 calls, 8.458µs own time, 8.458µs total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1/filter left_edge: 1 calls, 8.375µs own time, 8.375µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/s1_bv: 1 calls, 7.084µs own time, 7.084µs total time
+20261006 19:15:42 [INFO] state init/filter_clean: 1 calls, 5.458µs own time, 3.60625ms total time
+20261006 19:15:42 [INFO] precompile/step LlsssMonitorUniquePartial: 1 calls, 4.417µs own time, 4.417µs total time
+20261006 19:15:42 [INFO] precompile/step LlsssMonitorDefaultPartial: 1 calls, 4.083µs own time, 4.083µs total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol/xmap: 2 calls, 4µs own time, 4µs total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1: 1 calls, 2.791µs own time, 294.292µs total time
+20261006 19:15:42 [INFO] destruct: 1 calls, 1.874µs own time, 16.137292ms total time
+20261006 19:15:42 [INFO] destruct/step LlsssMonitorColStats: 1 calls, 1.459µs own time, 1.459µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorColStats: 1 calls, 1.334µs own time, 1.334µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/init: 1 calls, 1.25µs own time, 1.25µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2: 1 calls, 1.042µs own time, 2.5µs total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s3: 1 calls, 750ns own time, 750ns total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1/col filt_rewrite: 1 calls, 709ns own time, 101.5µs total time
+20261006 19:15:42 [INFO] state init/filter_clean/filter_x1/filter right_edge: 1 calls, 708ns own time, 708ns total time
+20261006 19:15:42 [INFO] precompile/step LlsssMonitorRctl: 1 calls, 667ns own time, 667ns total time
+20261006 19:15:42 [INFO] destruct/step LlsssEndsAgar: 1 calls, 583ns own time, 583ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/pre_reify: 1 calls, 500ns own time, 500ns total time
+20261006 19:15:42 [INFO] destruct/step LlsssMonitorSpineStats: 1 calls, 500ns own time, 500ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/s1_bv: 1 calls, 459ns own time, 459ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/init: 1 calls, 417ns own time, 417ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s1: 1 calls, 417ns own time, 417ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRctl: 1 calls, 416ns own time, 416ns total time
+20261006 19:15:42 [INFO] destruct/step LlsssMonitorRctl: 1 calls, 375ns own time, 375ns total time
+20261006 19:15:42 [INFO] precompile/step LlsssMonitorColStats: 1 calls, 375ns own time, 375ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/s1_bv: 1 calls, 333ns own time, 333ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s2: 1 calls, 291ns own time, 291ns total time
+20261006 19:15:42 [INFO] precompile/step LlsssMonitorRandomPartial: 1 calls, 250ns own time, 250ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/prune left_edge_long: 1 calls, 250ns own time, 250ns total time
+20261006 19:15:42 [INFO] destruct/step LlsssMonitorUniquePartial: 1 calls, 209ns own time, 209ns total time
+20261006 19:15:42 [INFO] destruct/step LlsssMonitorRandomPartial: 1 calls, 209ns own time, 209ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssStepExpandRecentering/prune right_edge_long: 1 calls, 209ns own time, 209ns total time
+20261006 19:15:42 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/init: 1 calls, 208ns own time, 208ns total time
+20261006 19:15:42 [INFO] Total: 72.638792ms
+20261006 19:15:42 [INFO] Final results: 0 normal
+20261006 19:15:42 [INFO] Done
+(base) user@mac release % ./rlife llsss-recentering --rule 'B3/S23' --constraint 'grid("minstrel-pre.cstr.txt", none)' c6k-1 minstrel.in.txt 15 | tee out.txt
+20261006 19:15:45 [INFO] Start: compile step LlsssMonitorSpineStats
+20261006 19:15:45 [INFO] Finish: compile step LlsssMonitorSpineStats -> took 90µs
+20261006 19:15:45 [INFO] Start: compile step LlsssMonitorColStats
+20261006 19:15:45 [INFO] Finish: compile step LlsssMonitorColStats -> took 1.458µs
+20261006 19:15:45 [INFO] Start: compile step LlsssMonitorUniquePartial
+20261006 19:15:45 [INFO] Finish: compile step LlsssMonitorUniquePartial -> took 5.875µs
+20261006 19:15:45 [INFO] Start: compile step LlsssMonitorDefaultPartial
+20261006 19:15:45 [INFO] Finish: compile step LlsssMonitorDefaultPartial -> took 5.167µs
+20261006 19:15:45 [INFO] Start: compile step LlsssMonitorRandomPartial
+20261006 19:15:45 [INFO] Finish: compile step LlsssMonitorRandomPartial -> took 1.084µs
+20261006 19:15:45 [INFO] Start: compile step LlsssMonitorRctl
+20261006 19:15:45 [INFO] Finish: compile step LlsssMonitorRctl -> took 1.583µs
+20261006 19:15:45 [INFO] Start: compile step LlsssStepExpandRecentering
+20261006 19:15:45 [INFO] Start: compile tables
+20261006 19:15:45 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:45 [INFO] Finish: compile tables -> took 1.855ms
+20261006 19:15:45 [INFO] Start: compile tables
+20261006 19:15:45 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:45 [INFO] Finish: compile tables -> took 1.899667ms
+20261006 19:15:45 [INFO] Start: compile tables
+20261006 19:15:45 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:45 [INFO] Finish: compile tables -> took 1.847583ms
+20261006 19:15:45 [INFO] Start: compile tables
+20261006 19:15:45 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:45 [INFO] Finish: compile tables -> took 1.704958ms
+20261006 19:15:45 [INFO] Start: compile tables
+20261006 19:15:45 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:45 [INFO] Finish: compile tables -> took 2.0445ms
+20261006 19:15:45 [INFO] Start: compile tables
+20261006 19:15:45 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:45 [INFO] Finish: compile tables -> took 1.824458ms
+20261006 19:15:45 [INFO] Finish: compile step LlsssStepExpandRecentering -> took 13.921125ms
+20261006 19:15:45 [INFO] Start: compile step LlsssEndsAgar
+20261006 19:15:45 [INFO] Finish: compile step LlsssEndsAgar -> took 16.416µs
+20261006 19:15:45 [INFO] Start: search proper
+20261006 19:15:45 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B)
+20261006 19:15:45 [INFO] Spine store sizes: old_gens [45], cur_gen 45
+20261006 19:15:45 [INFO] Cols sizes: 46 / 47
+20261006 19:15:45 [INFO] Unique:
+20261006 19:15:45 [INFO] |                                             |                                             |                                             | ....................***.........*.......*.. | ....................***.................... | ....................***..........*.*....... |
+20261006 19:15:45 [INFO] | ....................*..*.........**..**.... | ....................*............*..****... | ....................*............*******... | ...................*............*.......*.. | ...................*...*.........*.....**.. | ...................*...*................... |
+20261006 19:15:45 [INFO] | ....................*****..........*....... | ....................*****.........*........ | ...................*****.............**.... |                                             |                                             |                                             |
+20261006 19:15:45 [INFO] Thinnest partial:
+20261006 19:15:45 [INFO] |                                                 |                                                 |                                                 | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR |
+20261006 19:15:45 [INFO] | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | ......................***.........*.......*.... | ......................***...................... | ......................***..........*.*......... |
+20261006 19:15:45 [INFO] | ......................*..*.........**..**...... | ......................*............*..****..... | ......................*............*******..... | .....................*............*.......*.... | .....................*...*.........*.....**.... | .....................*...*..................... |
+20261006 19:15:45 [INFO] | ......................*****..........*......... | ......................*****.........*.......... | .....................*****.............**...... |                                                 |                                                 |                                                 |
+20261006 19:15:45 [INFO] Random[ish] partial:
+20261006 19:15:45 [INFO] |                                                 |                                                 |                                                 |                                  SS             |                                  SS             |                                  SS             |
+20261006 19:15:45 [INFO] |                                  SS             |                                  SS             |                                  SS             | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR |
+20261006 19:15:45 [INFO] | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | ......................***.........*.......*.... | ......................***...................... | ......................***..........*.*......... |
+20261006 19:15:45 [INFO] | ......................*..*.........**..**...... | ......................*............*..****..... | ......................*............*******..... | .....................*............*.......*.... | .....................*...*.........*.....**.... | .....................*...*..................... |
+20261006 19:15:45 [INFO] | ......................*****..........*......... | ......................*****.........*.......... | .....................*****.............**...... |                                                 |                                                 |                                                 |
+20261006 19:15:45 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B)
+20261006 19:15:45 [DEBUG] Memory: total 2.16 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B)
+20261006 19:15:45 [DEBUG] Memory: total 2.89 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B)
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] left edge: 1 -> 1
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] closure [l2r]: bcol 1 -> 20, col 0 -> 20
+20261006 19:15:45 [DEBUG] Memory: total 2.97 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, left_bcol_long 24 B, left_col_long 48 B)
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] right edge: 1 -> 1
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] closure [r2l]: bcol 1 -> 3, col 0 -> 3
+20261006 19:15:45 [DEBUG] Memory: total 3.05 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 3.17 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_frontier.inner 24 B, left_frontier.aggregate.inner 8 B, left_frontier.aggregate.levels 8 B, right_frontier.inner 24 B, right_frontier.aggregate.inner 8 B, right_frontier.aggregate.levels 8 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 3 -> 8, frontier 3 -> 5, col 3 -> 8
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 8 -> 20, frontier 5 -> 12, col 8 -> 20
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 20 -> 24, frontier 12 -> 4, col 20 -> 40
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 24 -> 28, frontier 4 -> 4, col 40 -> 45
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 28 -> 32, frontier 4 -> 4, col 45 -> 50
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 32 -> 36, frontier 4 -> 4, col 50 -> 55
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 36 -> 37, frontier 4 -> 1, col 55 -> 56
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 37 -> 38, frontier 1 -> 1, col 56 -> 57
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 38 -> 39, frontier 1 -> 1, col 57 -> 58
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 39 -> 40, frontier 1 -> 1, col 58 -> 59
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 40 -> 42, frontier 1 -> 2, col 59 -> 61
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 42 -> 46, frontier 2 -> 4, col 61 -> 65
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 46 -> 50, frontier 4 -> 4, col 65 -> 72
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 50 -> 54, frontier 4 -> 4, col 72 -> 79
+20261006 19:15:45 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 54 -> 56, frontier 4 -> 2, col 79 -> 83
+20261006 19:15:45 [DEBUG] Memory: total 3.09 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 3.14 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 3.09 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 3.16 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, left_col_long 48 B, left2_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 2.39 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 2.46 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 2.05 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 2.07 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 2.02 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 2.07 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B, final_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 1.93 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, final_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 1.88 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 2.25 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B, final_col_long 48 B)
+20261006 19:15:45 [DEBUG] Memory: total 1.84 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:45 [DEBUG] Memory: total 1.84 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:45 [DEBUG] Memory: total 1.82 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:45 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:45 [DEBUG] Memory: total 1.44 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 24 B)
+20261006 19:15:45 [DEBUG] Memory: total 1.45 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_next_gen 16 B, final_bcol_long 24 B)
+20261006 19:15:45 [DEBUG] Memory: total 432 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 16 B, ss_rewrite.next_gen_acc 24 B, final_bcol_long 24 B)
+20261006 19:15:45 [DEBUG] Memory: total 40 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 16 B, ss_rewrite.next_gen_acc 24 B)
+20261006 19:15:45 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:45 [INFO] Results: 0 normal
+20261006 19:15:45 [INFO] Completed w_pos 2[0]: 0 B, 7.709041ms
+20261006 19:15:45 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:45 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:45 [INFO] Cols sizes hash: 0x49FBE6F702D6261E (5331108532502013470)
+20261006 19:15:45 [INFO] Last thinnest partial RLE:
+x = 301, y = 3, rule = LifeHistory
+F49.F49.F49.F.22B3A9BA7BA4B.F.22B3A22B.F.22B3A10BABA9B.F$F.22BA2BA9B
+2A2B2A6B.F.22BA12BA2B4A5B.F.22BA12B7A5B.F.21BA12BA7BA4B.F.21BA3BA9BA
+5B2A4B.F.21BA3BA21B.F$F.22B5A10BA9B.F.22B5A9BA10B.F.21B5A13B2A6B.F49.
+F49.F49.F!
+20261006 19:15:45 [INFO] LlsssStepExpandRecentering: max pre-reify estimated mem: 0 B
+20261006 19:15:45 [INFO] Finish: search proper -> took 19.651208ms
+20261006 19:15:45 [INFO] precompile/step LlsssStepExpandRecentering: 1 calls, 13.919958ms own time, 13.919958ms total time
+20261006 19:15:45 [INFO] destruct/step LlsssMonitorDefaultPartial: 1 calls, 11.867958ms own time, 11.867958ms total time
+20261006 19:15:45 [INFO] state init: 1 calls, 6.969708ms own time, 10.359542ms total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/step: 45 calls, 2.709583ms own time, 2.709583ms total time
+20261006 19:15:45 [INFO] state init/filter_clean/l2r_reachable: 1 calls, 1.621917ms own time, 1.621917ms total time
+20261006 19:15:45 [INFO] state init/filter_clean/r2l_reachable: 1 calls, 1.514708ms own time, 1.514708ms total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/step: 33 calls, 871.208µs own time, 871.208µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering: 1 calls, 655.044µs own time, 2.68125ms total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorUniquePartial: 1 calls, 462.708µs own time, 462.708µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/step: 12 calls, 392.251µs own time, 392.251µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/middle expand r2l: 15 calls, 371.876µs own time, 371.876µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/left expand2: 1 calls, 210.125µs own time, 210.125µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/right closure: 1 calls, 208µs own time, 208µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/left closure: 1 calls, 204.875µs own time, 204.875µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorDefaultPartial: 1 calls, 164.709µs own time, 2.997584ms total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/left edge expand: 1 calls, 135.625µs own time, 135.625µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/right edge expand: 1 calls, 134.666µs own time, 134.666µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRandomPartial: 1 calls, 129.209µs own time, 1.532125ms total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path: 1 calls, 117.917µs own time, 2.832875ms total time
+20261006 19:15:45 [INFO] precompile: 1 calls, 114.792µs own time, 14.069167ms total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/middle expand center: 1 calls, 114.541µs own time, 114.541µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/construct rcol: 1 calls, 113.791µs own time, 113.791µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol1: 1 calls, 113µs own time, 113µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/right expand2: 1 calls, 105.625µs own time, 105.625µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1: 1 calls, 102.75µs own time, 974.833µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/assemble final col: 1 calls, 89µs own time, 89µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/reify_col: 1 calls, 79.625µs own time, 79.625µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/construct lcol: 1 calls, 70.083µs own time, 70.083µs total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1/filter bcol: 1 calls, 65.75µs own time, 65.75µs total time
+20261006 19:15:45 [INFO] destruct/step LlsssStepExpandRecentering: 1 calls, 50.292µs own time, 50.292µs total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol: 1 calls, 48.75µs own time, 49.625µs total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1/keep_sl1: 1 calls, 47.791µs own time, 47.791µs total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1/col filt1: 1 calls, 45.458µs own time, 45.458µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2: 1 calls, 35.54µs own time, 428.083µs total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1/keep_sl2: 1 calls, 34.459µs own time, 34.459µs total time
+20261006 19:15:45 [INFO] search: 1 calls, 31.918µs own time, 7.724917ms total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/assemble final bcol: 1 calls, 30.667µs own time, 30.667µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/ss step: 1 calls, 25.625µs own time, 25.625µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/ss mark: 1 calls, 15µs own time, 15µs total time
+20261006 19:15:45 [INFO] precompile/step LlsssEndsAgar: 1 calls, 14.792µs own time, 14.792µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssEndsAgar: 1 calls, 10.542µs own time, 10.542µs total time
+20261006 19:15:45 [INFO] precompile/step LlsssMonitorSpineStats: 1 calls, 9.625µs own time, 9.625µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorSpineStats: 1 calls, 6.791µs own time, 6.791µs total time
+20261006 19:15:45 [INFO] state init/filter_clean: 1 calls, 6.501µs own time, 3.389834ms total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/s1_bv: 1 calls, 4.875µs own time, 4.875µs total time
+20261006 19:15:45 [INFO] precompile/step LlsssMonitorUniquePartial: 1 calls, 4.667µs own time, 4.667µs total time
+20261006 19:15:45 [INFO] precompile/step LlsssMonitorDefaultPartial: 1 calls, 4.291µs own time, 4.291µs total time
+20261006 19:15:45 [INFO] destruct: 1 calls, 2.749µs own time, 11.925042ms total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1: 1 calls, 2.042µs own time, 246.708µs total time
+20261006 19:15:45 [INFO] destruct/step LlsssMonitorColStats: 1 calls, 1.875µs own time, 1.875µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorColStats: 1 calls, 1.541µs own time, 1.541µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2: 1 calls, 1.041µs own time, 2.333µs total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol/xmap: 2 calls, 875ns own time, 875ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/pre_reify: 1 calls, 833ns own time, 833ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/prune left_edge_long: 1 calls, 750ns own time, 750ns total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1/filter left_edge: 1 calls, 750ns own time, 750ns total time
+20261006 19:15:45 [INFO] destruct/step LlsssEndsAgar: 1 calls, 667ns own time, 667ns total time
+20261006 19:15:45 [INFO] precompile/step LlsssMonitorRctl: 1 calls, 625ns own time, 625ns total time
+20261006 19:15:45 [INFO] destruct/step LlsssMonitorSpineStats: 1 calls, 625ns own time, 625ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/init: 1 calls, 542ns own time, 542ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/init: 1 calls, 500ns own time, 500ns total time
+20261006 19:15:45 [INFO] destruct/step LlsssMonitorUniquePartial: 1 calls, 500ns own time, 500ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s1: 1 calls, 500ns own time, 500ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s3: 1 calls, 500ns own time, 500ns total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1/filter right_edge: 1 calls, 500ns own time, 500ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRctl: 1 calls, 458ns own time, 458ns total time
+20261006 19:15:45 [INFO] state init/filter_clean/filter_x1/col filt_rewrite: 1 calls, 333ns own time, 49.958µs total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/s1_bv: 1 calls, 333ns own time, 333ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s2: 1 calls, 292ns own time, 292ns total time
+20261006 19:15:45 [INFO] precompile/step LlsssMonitorColStats: 1 calls, 209ns own time, 209ns total time
+20261006 19:15:45 [INFO] destruct/step LlsssMonitorRctl: 1 calls, 209ns own time, 209ns total time
+20261006 19:15:45 [INFO] precompile/step LlsssMonitorRandomPartial: 1 calls, 208ns own time, 208ns total time
+20261006 19:15:45 [INFO] destruct/step LlsssMonitorRandomPartial: 1 calls, 167ns own time, 167ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/init: 1 calls, 167ns own time, 167ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssStepExpandRecentering/prune right_edge_long: 1 calls, 166ns own time, 166ns total time
+20261006 19:15:45 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/s1_bv: 1 calls, 125ns own time, 125ns total time
+20261006 19:15:45 [INFO] Total: 70.174167ms
+20261006 19:15:45 [INFO] Final results: 0 normal
+20261006 19:15:45 [INFO] Done
+(base) user@mac release % ./rlife llsss-recentering --rule 'B3/S23' --constraint 'grid("minstrel-pre.cstr.txt", none)' c6k-1 minstrel.in.txt 16 | tee out.txt
+20261006 19:15:49 [INFO] Start: compile step LlsssMonitorSpineStats
+20261006 19:15:49 [INFO] Finish: compile step LlsssMonitorSpineStats -> took 85.125µs
+20261006 19:15:49 [INFO] Start: compile step LlsssMonitorColStats
+20261006 19:15:49 [INFO] Finish: compile step LlsssMonitorColStats -> took 1.458µs
+20261006 19:15:49 [INFO] Start: compile step LlsssMonitorUniquePartial
+20261006 19:15:49 [INFO] Finish: compile step LlsssMonitorUniquePartial -> took 5.25µs
+20261006 19:15:49 [INFO] Start: compile step LlsssMonitorDefaultPartial
+20261006 19:15:49 [INFO] Finish: compile step LlsssMonitorDefaultPartial -> took 5.125µs
+20261006 19:15:49 [INFO] Start: compile step LlsssMonitorRandomPartial
+20261006 19:15:49 [INFO] Finish: compile step LlsssMonitorRandomPartial -> took 1.125µs
+20261006 19:15:49 [INFO] Start: compile step LlsssMonitorRctl
+20261006 19:15:49 [INFO] Finish: compile step LlsssMonitorRctl -> took 1.625µs
+20261006 19:15:49 [INFO] Start: compile step LlsssStepExpandRecentering
+20261006 19:15:49 [INFO] Start: compile tables
+20261006 19:15:49 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:49 [INFO] Finish: compile tables -> took 1.882125ms
+20261006 19:15:49 [INFO] Start: compile tables
+20261006 19:15:49 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:49 [INFO] Finish: compile tables -> took 1.764958ms
+20261006 19:15:49 [INFO] Start: compile tables
+20261006 19:15:49 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:49 [INFO] Finish: compile tables -> took 1.65775ms
+20261006 19:15:49 [INFO] Start: compile tables
+20261006 19:15:49 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:49 [INFO] Finish: compile tables -> took 1.987583ms
+20261006 19:15:49 [INFO] Start: compile tables
+20261006 19:15:49 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:49 [INFO] Finish: compile tables -> took 1.993625ms
+20261006 19:15:49 [INFO] Start: compile tables
+20261006 19:15:49 [INFO] Compiling [checks3 1/1] table of 15 + 3 = 18 bits
+20261006 19:15:49 [INFO] Finish: compile tables -> took 2.182083ms
+20261006 19:15:49 [INFO] Finish: compile step LlsssStepExpandRecentering -> took 14.233333ms
+20261006 19:15:49 [INFO] Start: compile step LlsssEndsAgar
+20261006 19:15:49 [INFO] Finish: compile step LlsssEndsAgar -> took 14.5µs
+20261006 19:15:49 [INFO] Start: search proper
+20261006 19:15:49 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B)
+20261006 19:15:49 [INFO] Spine store sizes: old_gens [45], cur_gen 45
+20261006 19:15:49 [INFO] Cols sizes: 46 / 47
+20261006 19:15:49 [INFO] Unique:
+20261006 19:15:49 [INFO] |                                             |                                             |                                             | ....................***.........*.......*.. | ....................***.................... | ....................***..........*.*....... |
+20261006 19:15:49 [INFO] | ....................*..*.........**..**.... | ....................*............*..****... | ....................*............*******... | ...................*............*.......*.. | ...................*...*.........*.....**.. | ...................*...*................... |
+20261006 19:15:49 [INFO] | ....................*****..........*....... | ....................*****.........*........ | ...................*****.............**.... |                                             |                                             |                                             |
+20261006 19:15:49 [INFO] Thinnest partial:
+20261006 19:15:49 [INFO] |                                                 |                                                 |                                                 | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR |
+20261006 19:15:49 [INFO] | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | ......................***.........*.......*.... | ......................***...................... | ......................***..........*.*......... |
+20261006 19:15:49 [INFO] | ......................*..*.........**..**...... | ......................*............*..****..... | ......................*............*******..... | .....................*............*.......*.... | .....................*...*.........*.....**.... | .....................*...*..................... |
+20261006 19:15:49 [INFO] | ......................*****..........*......... | ......................*****.........*.......... | .....................*****.............**...... |                                                 |                                                 |                                                 |
+20261006 19:15:49 [INFO] Random[ish] partial:
+20261006 19:15:49 [INFO] |                                                 |                                                 |                                                 |    SS                                           |    SS                                           |    SS                                           |
+20261006 19:15:49 [INFO] |    SS                                           |    SS                                           |    SS                                           | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR |
+20261006 19:15:49 [INFO] | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | LLuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuRR | ......................***.........*.......*.... | ......................***...................... | ......................***..........*.*......... |
+20261006 19:15:49 [INFO] | ......................*..*.........**..**...... | ......................*............*..****..... | ......................*............*******..... | .....................*............*.......*.... | .....................*...*.........*.....**.... | .....................*...*..................... |
+20261006 19:15:49 [INFO] | ......................*****..........*......... | ......................*****.........*.......... | .....................*****.............**...... |                                                 |                                                 |                                                 |
+20261006 19:15:49 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B)
+20261006 19:15:49 [DEBUG] Memory: total 2.16 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B)
+20261006 19:15:49 [DEBUG] Memory: total 2.89 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B)
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] left edge: 1 -> 1
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] closure [l2r]: bcol 1 -> 20, col 0 -> 20
+20261006 19:15:49 [DEBUG] Memory: total 2.97 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, left_bcol_long 24 B, left_col_long 48 B)
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] right edge: 1 -> 1
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] closure [r2l]: bcol 1 -> 3, col 0 -> 3
+20261006 19:15:49 [DEBUG] Memory: total 3.05 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 3.17 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_frontier.inner 24 B, left_frontier.aggregate.inner 8 B, left_frontier.aggregate.levels 8 B, right_frontier.inner 24 B, right_frontier.aggregate.inner 8 B, right_frontier.aggregate.levels 8 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 3 -> 8, frontier 3 -> 5, col 3 -> 8
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 8 -> 20, frontier 5 -> 12, col 8 -> 20
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 20 -> 24, frontier 12 -> 4, col 20 -> 40
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 24 -> 28, frontier 4 -> 4, col 40 -> 45
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 28 -> 32, frontier 4 -> 4, col 45 -> 50
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 32 -> 36, frontier 4 -> 4, col 50 -> 55
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 36 -> 37, frontier 4 -> 1, col 55 -> 56
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 37 -> 38, frontier 1 -> 1, col 56 -> 57
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 38 -> 39, frontier 1 -> 1, col 57 -> 58
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 39 -> 40, frontier 1 -> 1, col 58 -> 59
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 40 -> 42, frontier 1 -> 2, col 59 -> 61
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 42 -> 46, frontier 2 -> 4, col 61 -> 65
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 46 -> 50, frontier 4 -> 4, col 65 -> 72
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 50 -> 54, frontier 4 -> 4, col 72 -> 79
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 54 -> 56, frontier 4 -> 2, col 79 -> 83
+20261006 19:15:49 [DEBUG] Expanded w_pos 2[0] window [r2l]: bcol 56 -> 57, frontier 2 -> 1, col 83 -> 85
+20261006 19:15:49 [DEBUG] Memory: total 3.09 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, right_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 3.14 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_bcol_long 24 B, right_bcol_long 24 B, left_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 3.09 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 3.16 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, rcol.heads 368 B, rcol.nexts 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, left_col_long 48 B, left2_col_long 48 B, middle_col_long 48 B, right_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 2.39 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 2.46 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, lcol 376 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 2.05 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 2.07 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, left2_bcol_long 24 B, right2_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 2.02 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 2.07 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, middle_col_long 48 B, left2_col_long 48 B, right2_col_long 48 B, final_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 1.93 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, closure_left_bcol_long 24 B, closure_right_bcol_long 24 B, final_bcol_long 24 B, final_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 1.88 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 2.25 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 376 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B, final_col_long 48 B)
+20261006 19:15:49 [DEBUG] Memory: total 1.84 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:49 [DEBUG] Memory: total 1.84 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 8 B, right_edge 8 B, left_edge_long 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:49 [DEBUG] Memory: total 1.82 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 8 B, right_edge_long 8 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:49 [DEBUG] Memory: total 1.80 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 24 B, final_bcol_xmap 376 B)
+20261006 19:15:49 [DEBUG] Memory: total 1.44 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, final_bcol_long 24 B)
+20261006 19:15:49 [DEBUG] Memory: total 1.45 KB (ss.old_gens 360 B, ss.cur_gen 720 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_next_gen 16 B, final_bcol_long 24 B)
+20261006 19:15:49 [DEBUG] Memory: total 432 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 368 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 16 B, ss_rewrite.next_gen_acc 24 B, final_bcol_long 24 B)
+20261006 19:15:49 [DEBUG] Memory: total 40 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B, ss_rewrite.next_gen 16 B, ss_rewrite.next_gen_acc 24 B)
+20261006 19:15:49 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:49 [INFO] Results: 0 normal
+20261006 19:15:49 [INFO] Completed w_pos 2[0]: 0 B, 7.223625ms
+20261006 19:15:49 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:49 [DEBUG] Memory: total 0 B (ss.old_gens 0 B, ss.cur_gen 0 B, bcol 0 B, col 0 B, left_edge 0 B, right_edge 0 B)
+20261006 19:15:49 [INFO] Cols sizes hash: 0x49FBE6F702D6261E (5331108532502013470)
+20261006 19:15:49 [INFO] Last thinnest partial RLE:
+x = 301, y = 3, rule = LifeHistory
+F49.F49.F49.F.22B3A9BA7BA4B.F.22B3A22B.F.22B3A10BABA9B.F$F.22BA2BA9B
+2A2B2A6B.F.22BA12BA2B4A5B.F.22BA12B7A5B.F.21BA12BA7BA4B.F.21BA3BA9BA
+5B2A4B.F.21BA3BA21B.F$F.22B5A10BA9B.F.22B5A9BA10B.F.21B5A13B2A6B.F49.
+F49.F49.F!
+20261006 19:15:49 [INFO] LlsssStepExpandRecentering: max pre-reify estimated mem: 0 B
+20261006 19:15:49 [INFO] Finish: search proper -> took 18.825708ms
+20261006 19:15:49 [INFO] precompile/step LlsssStepExpandRecentering: 1 calls, 14.232375ms own time, 14.232375ms total time
+20261006 19:15:49 [INFO] destruct/step LlsssMonitorDefaultPartial: 1 calls, 11.538959ms own time, 11.538959ms total time
+20261006 19:15:49 [INFO] state init: 1 calls, 6.795792ms own time, 10.118084ms total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/step: 45 calls, 1.662621ms own time, 1.662621ms total time
+20261006 19:15:49 [INFO] state init/filter_clean/l2r_reachable: 1 calls, 1.655667ms own time, 1.655667ms total time
+20261006 19:15:49 [INFO] state init/filter_clean/r2l_reachable: 1 calls, 1.398584ms own time, 1.398584ms total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/step: 42 calls, 1.381083ms own time, 1.381083ms total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering: 1 calls, 835.043µs own time, 2.965166ms total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/middle expand r2l: 16 calls, 507.54µs own time, 507.54µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorUniquePartial: 1 calls, 411.5µs own time, 411.5µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/left edge expand: 1 calls, 323.208µs own time, 323.208µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/right closure: 1 calls, 231.417µs own time, 231.417µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/left closure: 1 calls, 228.125µs own time, 228.125µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path: 1 calls, 208.005µs own time, 1.876042ms total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/construct rcol: 1 calls, 164.125µs own time, 164.125µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorDefaultPartial: 1 calls, 150.333µs own time, 2.026375ms total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRandomPartial: 1 calls, 142.792µs own time, 1.78625ms total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1: 1 calls, 132.791µs own time, 214.416µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/right edge expand: 1 calls, 118.625µs own time, 118.625µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/middle expand center: 1 calls, 116.333µs own time, 116.333µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/reify_col: 1 calls, 113.375µs own time, 113.375µs total time
+20261006 19:15:49 [INFO] precompile: 1 calls, 105.291µs own time, 14.369875ms total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol1: 1 calls, 94.625µs own time, 94.625µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/step: 3 calls, 80.833µs own time, 80.833µs total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1/col filt1: 1 calls, 74.5µs own time, 74.5µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/left expand2: 1 calls, 62.75µs own time, 62.75µs total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1/keep_sl2: 1 calls, 50.333µs own time, 50.333µs total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1/filter bcol: 1 calls, 47.833µs own time, 47.833µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2: 1 calls, 47.584µs own time, 1.429042ms total time
+20261006 19:15:49 [INFO] destruct/step LlsssStepExpandRecentering: 1 calls, 46.208µs own time, 46.208µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/construct lcol: 1 calls, 44.708µs own time, 44.708µs total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1/keep_sl1: 1 calls, 40.542µs own time, 40.542µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/right expand2: 1 calls, 39.459µs own time, 39.459µs total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol: 1 calls, 37.499µs own time, 38.791µs total time
+20261006 19:15:49 [INFO] search: 1 calls, 26.335µs own time, 7.234375ms total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/assemble final bcol: 1 calls, 25.125µs own time, 25.125µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/assemble final col: 1 calls, 23.708µs own time, 23.708µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/ss mark: 1 calls, 18.917µs own time, 18.917µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/ss step: 1 calls, 13.458µs own time, 13.458µs total time
+20261006 19:15:49 [INFO] precompile/step LlsssEndsAgar: 1 calls, 12.959µs own time, 12.959µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssEndsAgar: 1 calls, 9.958µs own time, 9.958µs total time
+20261006 19:15:49 [INFO] precompile/step LlsssMonitorSpineStats: 1 calls, 9.833µs own time, 9.833µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorSpineStats: 1 calls, 7.208µs own time, 7.208µs total time
+20261006 19:15:49 [INFO] state init/filter_clean: 1 calls, 6.416µs own time, 3.322292ms total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1/filter right_edge: 1 calls, 5.875µs own time, 5.875µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/s1_bv: 1 calls, 4.708µs own time, 4.708µs total time
+20261006 19:15:49 [INFO] precompile/step LlsssMonitorDefaultPartial: 1 calls, 4.25µs own time, 4.25µs total time
+20261006 19:15:49 [INFO] precompile/step LlsssMonitorUniquePartial: 1 calls, 4.084µs own time, 4.084µs total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1: 1 calls, 2.5µs own time, 261.625µs total time
+20261006 19:15:49 [INFO] destruct: 1 calls, 2µs own time, 11.59025ms total time
+20261006 19:15:49 [INFO] destruct/step LlsssMonitorColStats: 1 calls, 1.5µs own time, 1.5µs total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1/col filt_rewrite/filter jcol/xmap: 2 calls, 1.292µs own time, 1.292µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorColStats: 1 calls, 1.25µs own time, 1.25µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2: 1 calls, 1.083µs own time, 3.25µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s3: 1 calls, 1µs own time, 1µs total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s1: 1 calls, 1µs own time, 1µs total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1/filter left_edge: 1 calls, 750ns own time, 750ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorDefaultPartial/build_path/init: 1 calls, 708ns own time, 708ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/pre_reify: 1 calls, 625ns own time, 625ns total time
+20261006 19:15:49 [INFO] precompile/step LlsssMonitorRctl: 1 calls, 583ns own time, 583ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/prune left_edge_long: 1 calls, 583ns own time, 583ns total time
+20261006 19:15:49 [INFO] state init/filter_clean/filter_x1/col filt_rewrite: 1 calls, 501ns own time, 39.292µs total time
+20261006 19:15:49 [INFO] destruct/step LlsssEndsAgar: 1 calls, 500ns own time, 500ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/init: 1 calls, 458ns own time, 458ns total time
+20261006 19:15:49 [INFO] destruct/step LlsssMonitorSpineStats: 1 calls, 417ns own time, 417ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path1/s1_bv: 1 calls, 334ns own time, 334ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRctl: 1 calls, 333ns own time, 333ns total time
+20261006 19:15:49 [INFO] destruct/step LlsssMonitorUniquePartial: 1 calls, 291ns own time, 291ns total time
+20261006 19:15:49 [INFO] precompile/step LlsssMonitorColStats: 1 calls, 250ns own time, 250ns total time
+20261006 19:15:49 [INFO] destruct/step LlsssMonitorRctl: 1 calls, 250ns own time, 250ns total time
+20261006 19:15:49 [INFO] precompile/step LlsssMonitorRandomPartial: 1 calls, 250ns own time, 250ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/init: 1 calls, 208ns own time, 208ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/prune right_edge_long: 1 calls, 167ns own time, 167ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssMonitorRandomPartial/build_path path2/s1_bv: 1 calls, 167ns own time, 167ns total time
+20261006 19:15:49 [INFO] search/Run step LlsssStepExpandRecentering/reify_bcol2/s2: 1 calls, 167ns own time, 167ns total time
+20261006 19:15:49 [INFO] destruct/step LlsssMonitorRandomPartial: 1 calls, 125ns own time, 125ns total time
+20261006 19:15:49 [INFO] Total: 63.51375ms
+20261006 19:15:49 [INFO] Final results: 0 normal
+20261006 19:15:49 [INFO] Done
+(base) user@mac release % 
