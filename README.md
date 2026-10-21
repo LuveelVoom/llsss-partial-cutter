@@ -9,8 +9,9 @@ Open `tool/llsss-partial-builder-offline.html` in a browser. It is one self-cont
 | Path | What it is |
 |---|---|
 | `tool/llsss-partial-builder-offline.html` | The tool (source of truth) |
-| `tool/llsss-partial-builder.html` | Online build: different fonts, adds `.txt` to saved files |
-| `tool/core.js` | The cutter logic for Node: `const C = require('./core.js')` |
+| `tool/llsss-partial-builder.html` | Online build: different fonts, adds `.txt` to saved files. Made by `tool/sync.py` |
+| `tool/core.js` | The cutter logic for Node: `const C = require('./core.js')`. Made by `tool/sync.py` |
+| `tool/sync.py` | Run after editing the offline page; `--check` tells whether the copies are up to date |
 | `docs/llsss-notes.md` | Development record: amling's statements, terminology, test rounds, bugs, plan |
 | `docs/partial-cutter-text.md` | All user-facing text, by location |
 | `test-packs/` | Test packs with READMEs |

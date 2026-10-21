@@ -133,6 +133,13 @@ Last updated: 30 September 2026 (page 24; terminology checked against rlife's so
 - *Applied:* the mode picker now has four main choices (Recentering from the first error, Fixed width, Extend one branch beside its sibling, Back only) and a collapsed **More options** list (drawn line, the two marked-region modes, and the two axis splits with their edge menu). Back only is a main choice because it is the one other mode with a clear result in rlife: the sprayer search went from blowing up past 30 GB at full width to finishing in seconds at about 100 MB.
 - *Applied:* a **Where to cut** panel for Recentering, Fixed width and Back only (front-to-back orthogonal and knightwise). It draws the partial, its errors and the cut; clicking or dragging moves the cut higher and sets Backtrack to match, with Undo and "Back to the first error". The cut comes from the writer's own `keep` (orthogonal: W = N·y + K·t; knightwise: row·N), so no rebuild is needed while dragging. Checked: the cells drawn above the line match the live cells kept in the start file, per generation, for orthogonal and knightwise partials at several backtracks. *Applied (diagonal):* the diagonal writer now reports its lattice, cells and `keep`; the panel lines its picture up with them (every live cell must match, or no panel) and draws the cut as the staircase it is. Clicking a cell makes its tile row the first one searched; checked on asymmetric and symmetric diagonal partials and a diagonal log grid, and the kept cells match the file for every full-width diagonal file tested. Backtrack now resets to 0 when a new partial is pasted.
 
+### Cleanup (20 Oct)
+
+- **Bug:** "Re-search a marked region" stayed clickable for diagonal ships and for half grids, then failed with an error when picked. Its availability check skipped every error that mentioned "marked region", which included the "not built for diagonal" and "needs full width" ones. *Applied:* only errors about the default box (too close to the front, errors outside it) leave the choice on.
+- **Speed:** every option change, mode change and cut click analysed the partial again (about 0.5 s for a 55×122 log grid). *Applied:* the analysis is reused until the pattern, rule or generation count changes.
+- **Copies:** `tool/sync.py` now makes the online copy and `core.js` from the offline page, so only the offline page is edited.
+- Unused nav-bar styles and a stale comment about the old two-choice picker removed.
+
 ## Plan (1 Oct)
 
 ### 1. Clear up the modes
