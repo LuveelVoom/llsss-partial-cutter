@@ -1387,7 +1387,6 @@ function build(L, rule, opt){
     alone.close = close;
   }
   if (tailMode && !aloneMode){
-    if (half !== "none") throw new Error("Back-only mode needs the partial at full width, not a half cut at the axis.");
     // a partial that ends in empty rows: step back to the last row that has a live cell
     let lastLive = -Infinity; for (let t = 0; t < N; t++) for (let y = 0; y < L.h; y++){ const Wv = N*y + K*t; if (Wv > keep || Wv <= lastLive) continue; if (L.known && !L.known[t][y]) continue; for (let x = 0; x < L.w; x++) if (L.lab[t].a[y*L.w+x]){ lastLive = Wv; break; } }
     if (lastLive < keep) keep = lastLive - (((lastLive % g) + g) % g);
@@ -1401,7 +1400,9 @@ function build(L, rule, opt){
   }
   // symmetry
   let sym = half !== "none" ? { type: half, axis: 0, lo: 0 } : symmetry(L, keep);
-  if (tailMode) sym = { type: "none", lo: sym.lo };
+  // Back only keeps a mirror edge: the window then starts at the axis (as in recentering) and rlife reflects there.
+  // Without one, a symmetric tail is searched as an asymmetric pattern and a half from a log can't be used at all.
+  if (aloneMode || (tailMode && sym.type !== "odd" && sym.type !== "even")) sym = { type: "none", lo: sym.lo };
   const KX = L.KX || 0;
   if (opt.mode === "fixed" && half !== "none") throw new Error("This grid is already a half cut at the axis, and the cutter can't make a symmetric fixed-board file yet (amling's way uses !! markers and a symmetry edge). Use recentering for half grids.");
   let fullWidthNote = false;
@@ -1410,8 +1411,11 @@ function build(L, rule, opt){
   // column mapping: half starts at axis (odd) / axis (even: duplicate column first); asym keeps full width
   const cols = [];
   const ex = extentsX(L, keep);
-  const plan = tailMode ? tailPlan(tailInfo.ext, tailInfo.driftDir, opt) : null;
-  if (tailMode) for (let x = tailInfo.ext.lo - plan.roomL; x <= tailInfo.ext.hi + plan.roomR; x++) cols.push(x);
+  const tailSym = tailMode && !aloneMode && sym.type !== "none" && opt.symmetry !== "none" && !KX;
+  if (tailSym){ tailInfo.ext = { lo: sym.axis, hi: Math.max(tailInfo.ext.hi, sym.axis + 1) }; tailInfo.driftDir = 0; }
+  const plan = tailMode ? tailPlan(tailInfo.ext, tailInfo.driftDir, opt, tailSym) : null;
+  if (tailSym) for (let x = sym.axis; x <= tailInfo.ext.hi + plan.roomR; x++) cols.push(x);
+  else if (tailMode) for (let x = tailInfo.ext.lo - plan.roomL; x <= tailInfo.ext.hi + plan.roomR; x++) cols.push(x);
   else if (sym.type === "odd") for (let x = sym.axis; x <= ex.hi; x++) cols.push(x);
   else if (sym.type === "even") for (let x = sym.axis; x <= ex.hi; x++) cols.push(x);
   else for (let x = ex.lo; x <= ex.hi; x++) cols.push(x);
@@ -1708,12 +1712,16 @@ function buildRegionOrtho(L, rule, opt){
    src/llsss/cli/common.rs). room* = extra ? columns beside the tail's own extent; edges = whether the ? box reaches
    the L and R root columns (amling: it must reach one for the board to be able to widen; without them it is a fixed
    board of exactly the box). */
-function tailPlan(ext, driftDir, opt){
+function tailPlan(ext, driftDir, opt, mirror){
   const tailW = ext.hi - ext.lo + 1;
   const auto = (side) => driftDir === 0 ? 4 : (driftDir === side ? 10 : 3);
   const roomL = opt.roomL === undefined || opt.roomL === "" || opt.roomL === null ? auto(-1) : Math.max(0, opt.roomL | 0);
   const roomR = opt.roomR === undefined || opt.roomR === "" || opt.roomR === null ? auto(1) : Math.max(0, opt.roomR | 0);
   const edges = opt.edges !== false;
+  // mirror edge (half searched from the axis): the window's left edge is the axis, so no room or L columns there; the
+  // ? box still starts at column 2, since split_picture needs two columns left of it, and the window starts there
+  if (mirror){ const S = tailW + roomR;
+    return { tailW, roomL: 0, roomR, edges, S, left: 0, width: S + (edges ? 3 : 2), roots: "u".repeat(S) + (edges ? "RRR" : "uu"), qCols: null, mirror: true }; }
   const S = tailW + roomL + roomR;
   return { tailW, roomL, roomR, edges, S, left: edges ? 3 : 2, width: (edges ? 3 : 2) + S + (edges ? 3 : 2),
            roots: edges ? "LLL" + "u".repeat(S) + "RRR" : null, qCols: null };
@@ -1825,7 +1833,7 @@ function command(info, opt){
     lines.push(`./rlife llsss-recentering ${rule}${le}${cs} ${g} ${opt.file} ${mid} > out.txt`); }
   else if (opt.mode === "tail" || opt.mode === "alone"){
     const tw = info.tail ? info.tail.tailW : info.pw;
-    lines.push(`./rlife llsss-recentering ${rule} ${g} ${opt.file} ${midSteps(tw + 2)} > out.txt`);
+    lines.push(`./rlife llsss-recentering ${rule}${opt.mode === "tail" ? le : ""} ${g} ${opt.file} ${midSteps(tw + 2)} > out.txt`);
   }
   else if (opt.mode === "region"){
     const base = opt.file.replace(/\.in$/, "");
@@ -2171,7 +2179,7 @@ function run(){
     cutFill(a.L.N); cutCtx = { a, I, errs: (() => { try { return Core.errors(a.L, a.rule, "none").list; } catch (e){ return []; } })() }; drawCut();
   }
   if (I.tail && !I.alone){
-    stat("Back only", "last " + I.rowsKept + " lines kept; question marks " + (I.qCols[1] - I.qCols[0] + 1) + " columns wide (back " + I.tail.tailW + " + padding " + I.tail.roomL + " left, " + I.tail.roomR + " right)" + (I.tail.driftDir ? "; back drifts " + (I.tail.driftDir > 0 ? "right" : "left") : "") + "; partial is " + I.tail.pwFull + " wide");
+    stat("Back only", "last " + I.rowsKept + " lines kept; question marks " + (I.qCols[1] - I.qCols[0] + 1) + (I.tail.mirror ? " columns wide; window starts at the " + I.sym.type + " mirror axis (back " + I.tail.tailW + " columns from the axis + padding " + I.tail.roomR + " right; padding left doesn't apply)" : " columns wide (back " + I.tail.tailW + " + padding " + I.tail.roomL + " left, " + I.tail.roomR + " right)") + (I.tail.driftDir ? "; back drifts " + (I.tail.driftDir > 0 ? "right" : "left") : "") + "; partial is " + I.tail.pwFull + " wide");
     stat("Edges", I.tail.edges ? "can grow wider than the question marks" : "stay inside the question marks");
     banner("warn", "This file holds just the back of the partial. The search output covers only the search window. It will have to be joined with the frontend when completed.");
   }

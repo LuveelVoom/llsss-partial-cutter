@@ -140,6 +140,12 @@ Last updated: 30 September 2026 (page 24; terminology checked against rlife's so
 - **Copies:** `tool/sync.py` now makes the online copy and `core.js` from the offline page, so only the offline page is edited.
 - Unused nav-bar styles and a stale comment about the old two-choice picker removed.
 
+### Symmetric Back only (21 Oct)
+
+- **Bug:** Back only refused half grids ("needs the partial at full width") and searched symmetric full-width partials as asymmetric patterns, with no mirror edge. Found on a 3c/8 B36/S245 even half (`3c8.in`).
+- *Applied:* Back only keeps an odd/even mirror. The window starts at the axis, the question marks start at column 2 (`split_picture` needs two columns left of them, `src/lat/geom.rs`), roots are `u…uRRR`, Padding left doesn't apply, and the command gets `--left-edge odd|even`. A half and its full-width unfolding give the same file. Asymmetric Back only and the other modes are unchanged (916 old/new outputs over the test packs are identical).
+- **rlife run (21 Oct, 4 min each, 7 threads):** the symmetric Back-only file was accepted and searched 47 lines; partials fill the axis columns with columns 0 and 1 equal. On this partial it ran at the same speed and memory as plain recentering of `3c8.in` (48 lines), because the back is as wide as the whole half (11 columns), so there is nothing to narrow.
+
 ## Plan (1 Oct)
 
 ### 1. Clear up the modes
