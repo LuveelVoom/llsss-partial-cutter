@@ -1807,7 +1807,7 @@ function officialCommand(info, opt, kind, file){
   const lines = ["# Made with the LLSSS partial cutter (designed by LuveelVoom, coded with AI, NOT PART OF LLSSS).",
     "# Here the cutter only writes one generation of your partial; @yolo_1gp builds the start file.",
     "# If something goes wrong, say you used the partial cutter and include your partial, its options, this command, rlife's log, and as much additional info as possible.",
-    "export LLSSS_HALT_ON_ENDS=true"];
+    "export LLSSS_HALT_ON_ENDS=true", "export LLSSS_RLE_ENDS=both"];
   const mid = midSteps(info.pw + 2);
   lines.push(kind === "fixed" ? `./rlife llsss ${rule} ${info.geom} '@yolo_1gp("${file}", ${pad}, ${pad})' > out.txt`
                               : `./rlife llsss-recentering ${rule} ${info.geom} '@yolo_1gp("${file}")' ${mid} > out.txt`);
@@ -1815,7 +1815,7 @@ function officialCommand(info, opt, kind, file){
 }
 function command(info, opt){
   // one command per start file; mid_steps is roughly the pattern width + 1 (amling)
-  const rule = "--rule '" + opt.rule + "'", lines = ["# Made with the LLSSS partial cutter (designed by LuveelVoom, coded with AI, NOT PART OF LLSSS).", "# If something goes wrong, say you used the partial cutter and include your partial, its options, this command, rlife's log, and as much additional info as possible.", "export LLSSS_HALT_ON_ENDS=true"];
+  const rule = "--rule '" + opt.rule + "'", lines = ["# Made with the LLSSS partial cutter (designed by LuveelVoom, coded with AI, NOT PART OF LLSSS).", "# If something goes wrong, say you used the partial cutter and include your partial, its options, this command, rlife's log, and as much additional info as possible.", "export LLSSS_HALT_ON_ENDS=true", "export LLSSS_RLE_ENDS=both"];
   if (info.generic){
     const ends = info.order === "s2s" ? " --ends '[bg, even, odd]'" : "", mid = midSteps(info.pw + 2);
     lines.push(opt.mode === "fixed" ? `./rlife llsss ${rule}${ends} ${info.geom} ${opt.file} > out.txt`
