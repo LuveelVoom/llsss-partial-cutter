@@ -635,7 +635,7 @@ function build(L, rule, opt){
   if (opt.mode === "region"){
     if (L.KX && L.KX === L.K) throw new Error("Re-searching a marked region is built for orthogonal and knightwise ships, not diagonal ones yet.");
     if (order !== "f2b") throw new Error("Re-searching a marked region is only available f2b.");
-    if ((opt.inputHalf || L.half || "none") !== "none") throw new Error("Re-searching a marked region needs the partial at full width, not a half cut at the axis.");
+    if ((opt.inputHalf || L.half || "none") !== "none") throw new Error("Re-searching a marked region needs the partial at full width, not a half cut at the axis. Set Symmetry to \"Ignore symmetry\" to unfold it.");
     return L.KX ? buildOblique(L, rule, opt) : buildRegionOrtho(L, rule, opt);
   }
   if (L.KX && L.KX === L.K) return buildGeneric(L, rule, opt, (L.K === 1 ? "" : L.K) + "c" + L.N + "d-f2b", "back");
@@ -656,7 +656,7 @@ function build(L, rule, opt){
   const aloneMode = opt.mode === "alone", tailMode = opt.mode === "tail" || aloneMode;
   let Wfirst = null, tailInfo = null, alone = null;
   if (aloneMode){
-    if (half !== "none") throw new Error("Searching a marked part alone needs the partial at full width, not a half cut at the axis.");
+    if (half !== "none") throw new Error("Searching a marked part alone needs the partial at full width, not a half cut at the axis. Set Symmetry to \"Ignore symmetry\" to unfold it.");
     const rowOfO = (y, t) => y + Math.floor(K * t / N);
     alone = markedBox(opt, errs, N, rowOfO, x => x);
     if (!alone) throw new Error("This partial has no errors; mark the part to search alone.");
@@ -856,7 +856,7 @@ function addGapConstraint(o, gapCols){
 function buildLine(L, rule, opt){
   if ((opt.order || "f2b") !== "f2b") throw new Error("Cut-line mode is only available f2b.");
   if (L.KX) throw new Error("Cut-line mode is only built for orthogonal ships.");
-  if ((opt.inputHalf || L.half || "none") !== "none") throw new Error("Cut-line mode needs the full-width partial, not a half cut at the axis.");
+  if ((opt.inputHalf || L.half || "none") !== "none") throw new Error("Cut-line mode needs the full-width partial, not a half cut at the axis. Set Symmetry to \"Ignore symmetry\" to unfold it.");
   const N = L.N, K = L.K, g = gcd(N, K) || N, span = N + K;
   const errs = opt._skipCheck ? [] : errors(L, rule, "none").list;
   const Wf = [];
@@ -1277,7 +1277,15 @@ function analyze(text, ruleText, opt){
   }
   return { L, rule, how, inputRule: inp.rule };
 }
-return { parseRule, parseInput, analyze, build, command, official, officialCommand, errors, symmetry, HENSEL, _G: G, tornSide, orderFor, lattice, decodeRLE, detectMotion };
+/* A half cut at the axis (a log grid from a symmetric search), unfolded to the whole ship. Even: columns 0 and 1 are
+   copies and column -1 mirrors column 2; odd: column 0 is the axis (as in valFn). */
+function unfoldHalf(L){
+  const half = L.half || "none"; if (half !== "odd" && half !== "even") return L;
+  const p = L.w - (half === "odd" ? 1 : 2), w = p + L.w;
+  const lab = L.lab.map(g => { const n = G(w, L.h); for (let y = 0; y < L.h; y++) for (let j = 0; j < w; j++) n.a[y*w+j] = g.a[y*L.w + (j < p ? L.w - 1 - j : j - p)]; return n; });
+  return Object.assign({}, L, { lab, w, half: "none", unfolded: half });
+}
+return { parseRule, parseInput, analyze, build, unfoldHalf, command, official, officialCommand, errors, symmetry, HENSEL, _G: G, tornSide, orderFor, lattice, decodeRLE, detectMotion };
 })();
 
 if (typeof module !== "undefined") module.exports = Core;
