@@ -384,12 +384,50 @@ function buildOblique(L, rule, opt){
   }
   const pw = Uhi - Ulo + 1, extra = Math.max(0, opt.extra | 0);
   if (opt.mode === "branch") throw new Error("Branch mode needs a mirror-symmetric partial, and ships that move sideways can't be mirror-symmetric.");
-  let width, left, roots = null, qFrom = null, qCols = null;
+  let width, left, roots = null, qFrom = null, qCols = null, outerInfo = null;
   if (tailMode){ width = plan.width; left = plan.left; roots = plan.roots || "u".repeat(width); qFrom = keepR + 1; qCols = [2, width - 3]; }
   else if (regionMode){ width = 3 + pw + 3; left = 3; roots = "LLL" + "u".repeat(pw) + "RRR"; qFrom = reg.r0; qCols = [2, width - 3]; }
   else if (opt.mode === "fixed"){ width = 2 + extra + pw + extra + 2; left = 2 + extra; qFrom = keepR + 1; qCols = [2, width - 3]; }   // extra columns on both sides
+  else if (opt.mode === "outer"){
+    // One branch of a split back, fuzzy edge on the sibling's side: the layout of build()'s orthogonal version, in this
+    // writer's rows (one per line) and columns U = x + sh(t)
+    const occIn = n => { const occ = new Array(pw).fill(0);
+      for (let t = 0; t < N; t++) for (let y = 0; y < L.h; y++){ const rw = rowOf(y, t); if (rw > keepR || rw <= keepR - n) continue;
+        for (let x = 0; x < L.w; x++) if (get(t, y, x)){ const j = x + sh(t) - Ulo; if (j >= 0 && j < pw) occ[j] = 1; } }
+      return occ; };
+    const gapIn = n => { const occ = occIn(n);
+      for (let j = pw - 1, run = 0; j >= 0; j--){ if (!occ[j]) run++; else { if (run >= 2 && occ.slice(j + run + 1).some(v => v)) return j + run; run = 0; } }
+      return -1; };
+    const side = opt.fuzzySide === "left" ? "left" : "right", room = Math.max(extra, 8);
+    left = side === "right" ? 0 : 3 + room;
+    const c1 = outerSplit(opt, left, pw, () => { const e = gapIn(2); return e >= 0 ? e : gapIn(1); });
+    if (side === "right"){
+      const qs = Math.max(2, c1 - 1);
+      width = pw + room + 4; roots = "u".repeat(width - 3) + "RRR"; qCols = [qs, width - 4];
+      outerInfo = { side, c1, col: c1, qs, leftPad: Math.min(qs - 2, 9), rightPad: 1, sibling: true, branchW: pw - c1 };
+    } else {
+      const qe = c1 - 2;
+      width = left + pw + 4; roots = "LLL" + "u".repeat(width - 6) + "RRR"; qCols = [3, left + qe];
+      outerInfo = { side, c1, col: left + c1, qs: left + qe, leftPad: 1, rightPad: Math.min(width - 1 - (left + qe) - 2, 9), sibling: true, branchW: qe + 1 };
+    }
+    qFrom = keepR + 1;
+    outerInfo.isSib = i => side === "right" ? i < qCols[0] : i > qCols[1];
+    // the sibling's known rows are carried below the cut, down to just above its first error (or left out: "empty")
+    const sibErr = errs.filter(e => { const i = e.x + sh(e.t) - (Ulo - left); return i >= left && i < left + pw && outerInfo.isSib(i); });
+    const empty = opt.sibling === "empty";
+    // A sibling that dies out stops being carried at its end (two empty lines): below that, cells in its columns
+    // belong to the searched branch spreading sideways, and carrying them would pin the search to the original back.
+    const sibLive = new Set();
+    for (let t = 0; t < N; t++) for (let y = 0; y < L.h; y++){ const rw = rowOf(y, t); if (rw < qFrom) continue;
+      for (let x = 0; x < L.w; x++) if (get(t, y, x)){ const i = x + sh(t) - (Ulo - left); if (i >= left && i < left + pw && outerInfo.isSib(i)){ sibLive.add(rw); break; } } }
+    let sibEnd = qFrom - 1; for (let r = qFrom; r <= lastRow && (sibLive.has(r) || sibLive.has(r + 1)); r++) if (sibLive.has(r)) sibEnd = r;
+    outerInfo.carryTo = empty ? -Infinity : Math.min(sibEnd, sibErr.length ? Math.floor((sibErr[0].W - (N + K)) / N) - 1 : Infinity);
+    outerInfo.sibEnded = !empty && sibEnd < lastRow - 1;
+    outerInfo.sibErrors = empty ? 0 : sibErr.length;
+    outerInfo.sibEmpty = empty;
+  }
   else { width = 3 + pw + 3; left = 3; roots = "LLL" + "u".repeat(pw) + "RRR"; }
-  const R0 = tailMode ? r0 : top - 2, lastR = regionMode ? keepR : qFrom !== null ? qFrom + 1 : keepR;
+  const R0 = tailMode ? r0 : top - 2, lastR = regionMode ? keepR : qFrom !== null ? Math.max(qFrom + 1, outerInfo && isFinite(outerInfo.carryTo) ? outerInfo.carryTo + 2 : -Infinity) : keepR;
   const maxsh = sh(N - 1), totW = width + maxsh, U0 = Ulo - left;
   const map = new Map(), pmap = new Map(); let pinned = 0, freed = 0;
   const nearB = regionMode ? nearBody(L, (t, y, x) => { const rr = rowOf(y, t), uu = x + sh(t); return rr >= reg.r0 && rr <= reg.r1 && uu >= reg.u0 && uu <= reg.u1; }, opt.growOutside) : null;
@@ -403,6 +441,7 @@ function buildOblique(L, rule, opt){
       if (roots && r === R0 - 1){ s += roots[i]; if (regionMode) p += roots[i]; continue; }
       if (qFrom !== null && r >= qFrom){
         const inQ = i >= qCols[0] && i <= qCols[1];
+        if (outerInfo && !inQ && outerInfo.isSib(i) && r <= outerInfo.carryTo){ s += get(t, y, U0 + i - sh(t)) ? "*" : "."; continue; }
         s += inQ ? "?" : ".";
         if (regionMode){
           const U = U0 + i;                                   // U = x + sh(t)
@@ -436,7 +475,7 @@ function buildOblique(L, rule, opt){
   if (regionMode){ const pl = []; for (let y = ymin; y <= ymax; y++){ const secs = []; for (let t = 0; t < N; t++) secs.push(pmap.get(y + ":" + t) || " ".repeat(totW)); pl.push("| " + secs.join(" | ") + " |"); } pre = pl.join("\n") + "\n"; }
   return {
     xyt: xyt.join("\n") + "\n", uwi: null, pre,
-    info: { N, K, KX, g: N, geom: geomName(K, KX, N), orient: L.orient || "as given", Werr, keep: keepR * N, Wtop: top * N, sym: { type: "none" }, pw, width, errs: errs.length, qFrom, qCols, gap: null, rowsKept: keepR - r0 + 1,
+    info: { N, K, KX, g: N, geom: geomName(K, KX, N), orient: L.orient || "as given", Werr, keep: keepR * N, Wtop: top * N, sym: { type: "none" }, pw, width, outer: outerInfo, errs: errs.length, qFrom, qCols, gap: null, rowsKept: keepR - r0 + 1,
             tail: tailMode ? Object.assign({ rows: tRows, driftDir: tailDrift, pwFull: UhiFull - UloFull + 1, alone: aloneMode }, plan) : null,
             alone: aloneMode ? { r0: alone.r0, r1: alone.r1, u0: alone.u0, u1: alone.u1, drawn: alone.drawn, close: alone.close, sh: Array.from({ length: N }, (_, t) => sh(t)), rowShift: Array.from({ length: N }, (_, t) => Math.floor(K * t / N)) } : null,
             region: regionMode ? { r0: reg.r0, r1: reg.r1, u0: Math.max(reg.u0, U0 + 2), u1: Math.min(reg.u1, U0 + width - 3), drawn: reg.drawn, back: !!reg.back, pinned, freed, errs: errs.length, top, lastRow, sh: Array.from({ length: N }, (_, t) => sh(t)), rowShift: Array.from({ length: N }, (_, t) => Math.floor(K * t / N)) } : null }
@@ -613,6 +652,15 @@ function buildGeneric(L, rule, opt, geomName0, side, shiftX){
   const xyt = grid.map(r => "| " + r.map(a => a.join("")).join(" | ") + " |").join("\n") + "\n";
   return { xyt, uwi: null, info: { keep, cutLat: { lat, live }, N, K: Math.abs(VY) || Math.abs(VX), KX: (VX && VY) ? Math.abs(VX) : 0, g: 1, errRow: errLw === Infinity ? null : errLw - top, geom: geomName0, orient: tname, Werr: errLw === Infinity ? Infinity : errLw * lat.adet, keep, Wtop: top, sym: symC !== null ? { type: "odd", diag: true, c: symC } : { type: "none" }, pw, width: cw, errs: nErr, qFrom, gap: null, rowsKept: keep - top + 1, generic: true, nhW: lat.nhW, order: geomName0.includes("s2s") ? "s2s" : geomName0.includes("b2f") ? "b2f" : "f2b" } };
 }
+/* Fuzzy-edge mode: the first pattern column right of the split. A split column set by hand is a start-file column,
+   counted from the first root marker (0 up); left is the start-file column of pattern column 0. */
+function outerSplit(opt, left, pw, auto){
+  let c1;
+  if (Number.isInteger(opt.fuzzyCol) && opt.fuzzyCol >= 0) c1 = opt.fuzzyCol - left;
+  else { const e = auto(); if (e < 0) throw new Error("You're using multi-branch mode on a single branch: near the cut there is only one branch, not two separated by at least 2 empty columns. If you can see two branches, set the split column by hand."); c1 = e + 1; }
+  if (c1 < 3 || c1 > pw - 1) throw new Error("The split column must be between " + (left + 3) + " and " + (left + pw - 1) + " here (start-file columns, counted from the first root marker).");
+  return c1;
+}
 function build(L, rule, opt){
   if (opt.mode === "line") return buildLine(L, rule, opt);
   if (opt.mode === "axis") return buildAxisConstraint(L, rule, opt);
@@ -630,8 +678,8 @@ function build(L, rule, opt){
     return buildGeneric(L, rule, opt, (L.K === 1 ? "" : L.K) + "c" + L.N + "-" + order, side);
   }
   // the diagonal and knightwise writers only build these; refuse the rest instead of quietly writing a recentering file
-  if (L.KX && !(opt.mode === "rc" || opt.mode === "fixed" || opt.mode === "region" || ((opt.mode === "tail" || opt.mode === "alone") && L.KX !== L.K)))
-    throw new Error((L.KX === L.K ? "Diagonal" : "Knightwise") + " partials can only be extended (recentering, fixed width" + (L.KX !== L.K ? " or back only" : "") + "); this mode is only built for orthogonal ships.");
+  if (L.KX && !(opt.mode === "rc" || opt.mode === "fixed" || opt.mode === "region" || ((opt.mode === "tail" || opt.mode === "alone" || opt.mode === "outer") && L.KX !== L.K)))
+    throw new Error((L.KX === L.K ? "Diagonal" : "Knightwise") + " partials can only be extended (recentering, fixed width" + (L.KX !== L.K ? ", back only or one branch beside its sibling" : "") + "); this mode is only built for orthogonal ships.");
   if (opt.mode === "region"){
     if (L.KX && L.KX === L.K) throw new Error("Re-searching a marked region is built for orthogonal and knightwise ships, not diagonal ones yet.");
     if (order !== "f2b") throw new Error("Re-searching a marked region is only available f2b.");
@@ -737,22 +785,18 @@ function build(L, rule, opt){
     const gapIn = span => { const occ = occIn(span);
       for (let i = pw - 1, run = 0; i >= 0; i--){ if (!occ[i]) run++; else { if (run >= 2 && occ.slice(0, i + 1).some(v => v) && occ.slice(i + run + 1).some(v => v)) return i + run; run = 0; } }
       return -1; };
-    const manual = Number.isInteger(opt.fuzzyCol) && opt.fuzzyCol >= 0;
-    let gapEnd = manual ? opt.fuzzyCol - 1 : gapIn(2 * N);        // a gap across two lines, else across one
-    if (gapEnd < 0) gapEnd = gapIn(N);
-    if (gapEnd < 0) throw new Error("You're using multi-branch mode on a single branch: near the cut there is only one branch, not two separated by at least 2 empty columns. If you can see two branches, set the split column by hand.");
-    const c1 = gapEnd + 1;                       // first column of the piece on the right
-    if (c1 < 3 || c1 > pw - 1) throw new Error("The split column must be between 3 and " + (pw - 1) + " here (columns count from the left edge of the start file).");
     const side = opt.fuzzySide === "left" ? "left" : "right";   // the side of the split that is searched
     const span = N + K;
     const lastKnown = maxKnownW(L);
     const room = Math.max(extra, 8);   // a picture can't grow past its ? block plus pads, and a branch spreads: 4 stopped 232P7H3V0's arm
+    // first pattern column of the piece on the right: a gap across two lines, else across one
+    const c1 = outerSplit(opt, side === "right" || symEdge ? 0 : 3 + room, pw, () => { const e = gapIn(2 * N); return e >= 0 ? e : gapIn(N); });
     if (side === "right"){
       const qs = Math.max(2, c1 - 1), leftPad = Math.min(qs - 2, 9);
       width = pw + room + 4; left = 0;
       roots = "u".repeat(width - 3) + "RRR";
       qFrom = cutW + g; qCols = [qs, width - 4];
-      outerInfo = { side, c1, qs, leftPad, rightPad: 1, sibling: true, branchW: pw - c1 };
+      outerInfo = { side, c1, col: c1, qs, leftPad, rightPad: 1, sibling: true, branchW: pw - c1 };
     } else {
       const qe = c1 - 2;
       left = symEdge ? 0 : 3 + room;
@@ -761,12 +805,14 @@ function build(L, rule, opt){
       roots = (symEdge ? "" : "LLL") + "u".repeat(width - (symEdge ? 3 : 6)) + "RRR";
       qFrom = cutW + g; qCols = [q0, left + qe];
       const rightPad = Math.min(width - 1 - (left + qe) - 2, 9);
-      outerInfo = { side, c1, qs: left + qe, leftPad: symEdge ? 0 : 1, rightPad, sibling: true, branchW: qe + 1 };
+      outerInfo = { side, c1, col: left + c1, qs: left + qe, leftPad: symEdge ? 0 : 1, rightPad, sibling: true, branchW: qe + 1 };
     }
     // the sibling's known rows go on being carried below the cut, down to just above its first error
     const sibErr = errs.filter(e => { const hx = cols.indexOf(e.x) + left; return hx >= left && (side === "right" ? hx < qCols[0] : hx > qCols[1]); });
     // "empty": nothing of the sibling below the cut, so the edge sees empty space there (for a sibling unrelated to the branch)
     const empty = opt.sibling === "empty";
+    // NOTE: carried to the last known row even when the sibling dies out first, unlike the knightwise writer; below the
+    // sibling's end, cells in its columns may belong to the searched branch. Kept: the 232P7H3V0 test files depend on it.
     outerInfo.carryTo = empty ? -Infinity : sibErr.length ? Math.min(lastKnown, sibErr[0].W - span - 1) : lastKnown;
     outerInfo.sibErrors = empty ? 0 : sibErr.length;
     outerInfo.sibEmpty = empty;

@@ -58,7 +58,7 @@ A previous session built rlife with cargo and ran tests directly. A new environm
 - **Card 2 picker, four main choices:**
   1. Recentering from the first error (default)
   2. Fixed width
-  3. Extend one branch beside its sibling (fuzzy edge; either side, symmetric or not, orthogonal f2b only)
+  3. Extend one branch beside its sibling (fuzzy edge; either side, symmetric or not, f2b, orthogonal and knightwise)
   4. Back only
 - **"More options"** (collapsed):
   - cut along a drawn line;
