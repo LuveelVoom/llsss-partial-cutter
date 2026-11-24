@@ -33,7 +33,7 @@ Last updated: 20 October 2026.
 | `docs/partial-cutter-text.md` | Every piece of user-facing text in the program, labelled by where it appears (`<header>`, card 2, `TASK_HINT`, `banner()`, `throw new Error`, etc.). |
 | `docs/new-text.md`, `docs/tests-to-run.md` | Text added after the user's rewrite, and a prioritised bug-test list (20 tests). |
 | `test-packs/` | Every test pack sent to the user, with READMEs: diagonal tests, region test, known-answer copperhead test, next-tests, sprayer back-only files, and others. |
-| `latest-work/` | The most recent task: a 3c/8 B3678/S34678 partial (`p.rle`) cut at its neck (`narrow.in`). |
+| `latest-work/` | The most recent task: a 3c/8 B3678/S34678 partial (`p.rle`) cut at its neck (`narrow.in`). Also the later start files from 19–21 Oct (`3c8.in`, `3c8-alone.in`, `3c8-back.in`: the 3c/8 B36/S245 half in `docs/llsss-notes.md`; `sqrt.in`), moved here from the top folder on 26 Oct. |
 | `user-uploads/` | Everything the user uploaded: rlife source (`rlife-master.zip`), forum thread pages 22–24, the user's rlife logs (in the archives and `attachment-*.txt`), partials, and the user's rewritten text (`partial-cutter-text.md`). |
 | `archive/` | The paused grid workbench (development stopped on request). |
 
@@ -58,7 +58,7 @@ A previous session built rlife with cargo and ran tests directly. A new environm
 - **Card 2 picker, four main choices:**
   1. Recentering from the first error (default)
   2. Fixed width
-  3. Extend one branch beside its sibling (fuzzy left edge)
+  3. Extend one branch beside its sibling (fuzzy edge; either side, symmetric or not, orthogonal f2b only)
   4. Back only
 - **"More options"** (collapsed):
   - cut along a drawn line;

@@ -250,7 +250,7 @@ details.gd[open] summary{margin-bottom:6px}
       <div class="goals" role="radiogroup" aria-label="What the search should do">
         <label class="goal"><input type="radio" name="pick" value="rc" checked><b>Recentering from the first error</b><span>Continues the partial from where it stops being valid; the search can widen. Click on the partial (right) to cut higher up.</span></label>
         <label class="goal" id="pickFixed"><input type="radio" name="pick" value="fixed"><b>Fixed width</b><span>Continues the partial on a board of fixed width (a la qfind). Click on the partial to cut higher up.</span></label>
-        <label class="goal" id="pickOuter"><input type="radio" name="pick" value="outer"><b>Extend one branch beside its sibling (fuzzy left edge)</b><span>For a symmetric partial whose back has split into two branches: keeps the inner branch as it is and searches the outer one.</span></label>
+        <label class="goal" id="pickOuter"><input type="radio" name="pick" value="outer"><b>Extend one branch beside its sibling (fuzzy edge)</b><span>For a partial whose back has split into two branches, symmetric or not: searches one branch and lets the search window leave the other out.</span></label>
         <label class="goal" id="pickTail"><input type="radio" name="pick" value="tail"><b>Back only</b><span>Searches just the back of the partial, so a long ship with a narrow back gives a much smaller search.</span></label>
       </div>
       <details class="more" id="moreModes"><summary>More options</summary>
@@ -270,7 +270,7 @@ details.gd[open] summary{margin-bottom:6px}
       <div class="goals" role="radiogroup" aria-label="Search goal (internal)" hidden>
         <label class="goal"><input type="radio" name="goal" value="rc" checked><b>Recentering: extend and let it widen</b><span>Recentering search from the last valid row. The back can grow sideways; width is limited only by mid_steps.</span></label>
         <label class="goal"><input type="radio" name="goal" value="fixed"><b>Fixed board: extend at a fixed width</b><span>Fixed-board search. Question marks replace the back, where the errors are; the board is the pattern plus the extra columns below. Always full width, so symmetry isn't enforced.</span></label>
-        <label class="goal" id="goalOuter"><input type="radio" name="goal" value="outer"><b>Solve a branch beside its sibling (fuzzy left edge)</b><span>Symmetric partials whose back has split into two branches. Keeps everything up to the first error, solves only the branch further from the axis, and carries the sibling branch along unchanged (amling's --fuzzy-left-edge recipe).</span></label>
+        <label class="goal" id="goalOuter"><input type="radio" name="goal" value="outer"><b>Solve a branch beside its sibling (fuzzy edge)</b><span>Partials whose back has split into two branches, symmetric or not. Keeps everything up to the first error, solves one branch, and carries the sibling's known rows along (amling's --fuzzy-left-edge recipe).</span></label>
         <label class="goal" id="goalAxis"><input type="radio" name="goal" value="axis"><b>Split into branches, axis constraint</b><span>Symmetric partials only. Keeps everything up to the first error and tells rlife (--constraint) that only the axis column must stay empty from there on, so branches may come within one column of the axis. Writes the start file plus two small constraint files.</span></label>
         <label class="goal" id="goalBranch"><input type="radio" name="goal" value="branch"><b>Split into branches, empty columns at the axis</b><span>Symmetric partials only. Finds the last stretch where the two columns next to the axis are empty, cuts there, and holds that gap open for the whole search (symmetry edge plus two small constraint files), so each half continues as its own branch (like 232P7H3V0). Searches both halves with a symmetry edge, or the branch alone if you tick that option.</span></label>
         <label class="goal" id="goalTail"><input type="radio" name="goal" value="tail"><b>Back only (narrow question marks)</b><span>Front to back; orthogonal or knightwise. Keeps the last few lines and puts question marks just wide enough for the back, so the search window is that wide instead of as wide as the whole partial. For a long or drifting partial with a thin end.</span></label>
@@ -287,6 +287,11 @@ details.gd[open] summary{margin-bottom:6px}
           <input type="number" id="extra" min="0" value="4"></div>
         <div><label class="f" for="back">Backtrack (rows) <small class="sub">(W rows for orthogonal and diagonal ships, whole lines for knightwise ones)</small></label>
           <input type="number" id="back" min="0" value="0"></div>
+        <div id="fuzzyOpts" hidden>
+          <label class="f" for="fuzzySide">Branch to search</label><select id="fuzzySide"><option value="right">Right of the split (outer branch)</option><option value="left">Left of the split (inner branch)</option></select>
+          <label class="f" for="fuzzyCol">Split column <small class="sub">(first column right of the split, counted in the start file; empty = find it)</small></label><input type="number" id="fuzzyCol" min="0" placeholder="auto">
+          <label class="f" for="sibling">Sibling below the cut</label><select id="sibling"><option value="carry">Keep its known rows</option><option value="empty">Leave it empty (ignore the sibling)</option></select>
+        </div>
         <div id="tailOpts" hidden>
           <label class="f" for="tailrows">Lines to keep</label><input type="number" id="tailrows" min="4" value="8">
           <label class="f" for="roomL">Padding left</label><input type="number" id="roomL" min="0" placeholder="auto">
@@ -395,7 +400,7 @@ details.gd[open] summary{margin-bottom:6px}
 <dl>
   <dt>Recentering from the first error</dt><dd>The usual choice. The search continues from the cut and can widen as it goes.</dd>
   <dt>Fixed width</dt><dd>The search continues on a board of fixed width: the partial plus the Extra columns on each side. Bounded and predictable, but a ship that needs to be wider can't be found.</dd>
-  <dt>Extend one branch beside its sibling (fuzzy left edge)</dt><dd>For a symmetric partial whose back has split into two branches near the cut: keeps the branch next to the axis as it is and searches the outer one (amling's <code>--fuzzy-left-edge</code> method).</dd>
+  <dt>Extend one branch beside its sibling (fuzzy edge)</dt><dd>For a partial whose back has split into two branches near the cut, symmetric or not: searches one branch and lets the window leave the other out (amling's <code>--fuzzy-left-edge</code> method). Check every result against the whole ship: the search doesn't guarantee the two sides join up, and finding nothing proves nothing.</dd>
   <dt>Back only</dt><dd>Keeps only the last few lines and searches a window just wide enough for the back. For a long ship with a narrow back it makes the search far smaller: a sprayer search that blew up past 30 GB at full width finished in seconds at about 100 MB.</dd>
 </dl>
 <details class="gd"><summary>More options (in the collapsed list under the four main choices)</summary>
@@ -463,9 +468,8 @@ details.gd[open] summary{margin-bottom:6px}
 
 <h3 id="g-after">After a result</h3>
 <ul>
-  <li><b>Halves:</b> results of a symmetric search are halves; unfold them at the axis (Golly's mirror tools work).</li>
+  <li><b>Halves:</b> results of a symmetric search are halves; unfold them at the axis.</li>
   <li><b>Back only, marked part alone:</b> results cover only the search window; join them onto the rest of the ship by hand.</li>
-  <li>Check every result in Golly before posting it.</li>
 </ul>
 <details class="gd"><summary>Unfolding a half</summary>
 <p>Odd: the first column of the half is the axis; mirror the other columns around it. Even: the first two columns are copies of each other; the axis lies between them, so drop one copy and mirror. Diagonal halves mirror across the line of travel.</p>
@@ -1438,23 +1442,49 @@ function build(L, rule, opt){
     width = (symEdge ? 0 : 3) + pw + 3; left = symEdge ? 0 : 3;   // recentering grows sideways by itself; extra columns aren't needed
     roots = (symEdge ? "" : "LLL") + "u".repeat(pw) + "RRR";
   } else if (mode === "outer"){
-    if (sym.type !== "odd" && sym.type !== "even") throw new Error("Fuzzy-left-edge mode only works on symmetric partials: it keeps the branch next to the axis as it is and searches the one further out.");
-    // occupancy of half columns over the last two physical rows before the cut
-    const occ = new Array(pw).fill(0);
-    for (let Wv = keep - 2 * N + 1; Wv <= keep; Wv++) for (const { t, y } of rowsFor(Wv)) for (let i = 0; i < pw; i++) if (get(t, y, cols[i])) occ[i] = 1;
-    let gapEnd = -1;
-    for (let i = pw - 1, run = 0; i >= 0; i--){ if (!occ[i]) run++; else { if (run >= 2 && occ.slice(0, i + 1).some(v => v) && occ.slice(i + run + 1).some(v => v)){ gapEnd = i + run; break; } run = 0; } }
-    if (gapEnd < 0) throw new Error("You're using multi-branch mode on a single branch: near the cut there is only one branch, not two separated by at least 2 empty columns.");
-    const c1 = gapEnd + 1;                       // first column of the outer piece
-    // the inner piece is carried as-is, so it must not break the rule anywhere we keep it
-    const qs = Math.max(2, c1 - 1);
-    // only the sibling columns (left of the ? block) in the rows we write are carried unchanged
-    const innerBreaks = errs.filter(e => { const hx = cols.indexOf(e.x); return hx >= 0 && hx < qs && e.W <= keep + qrows; }).length;
-    if (innerBreaks) throw new Error("The sibling branch isn't complete, go fix it using recentering or fixed-width.");
-    width = pw + extra + 3; left = 0;
-    roots = "u".repeat(pw + extra) + "RRR";
-    qFrom = cutW + g; qCols = [qs, pw + extra];
-    outerInfo = { c1, qs, leftPad: qs - 2, sibling: true };
+    // One branch of a split back, with the fuzzy edge on the sibling's side (amling's 3c/7 recipe). Mirror symmetry is
+    // not needed. Tested on 232P7H3V0 (see docs/llsss-notes.md): the window can leave the sibling out, so mid_steps can
+    // be far smaller than the board needs without it. Rows below the cut in the sibling's columns may even be unknown.
+    const occIn = span => { const occ = new Array(pw).fill(0);
+      for (let Wv = keep - span + 1; Wv <= keep; Wv++) for (const { t, y } of rowsFor(Wv)) for (let i = 0; i < pw; i++) if (get(t, y, cols[i])) occ[i] = 1;
+      return occ; };
+    const gapIn = span => { const occ = occIn(span);
+      for (let i = pw - 1, run = 0; i >= 0; i--){ if (!occ[i]) run++; else { if (run >= 2 && occ.slice(0, i + 1).some(v => v) && occ.slice(i + run + 1).some(v => v)) return i + run; run = 0; } }
+      return -1; };
+    const manual = Number.isInteger(opt.fuzzyCol) && opt.fuzzyCol >= 0;
+    let gapEnd = manual ? opt.fuzzyCol - 1 : gapIn(2 * N);        // a gap across two lines, else across one
+    if (gapEnd < 0) gapEnd = gapIn(N);
+    if (gapEnd < 0) throw new Error("You're using multi-branch mode on a single branch: near the cut there is only one branch, not two separated by at least 2 empty columns. If you can see two branches, set the split column by hand.");
+    const c1 = gapEnd + 1;                       // first column of the piece on the right
+    if (c1 < 3 || c1 > pw - 1) throw new Error("The split column must be between 3 and " + (pw - 1) + " here (columns count from the left edge of the start file).");
+    const side = opt.fuzzySide === "left" ? "left" : "right";   // the side of the split that is searched
+    const span = N + K;
+    const lastKnown = maxKnownW(L);
+    const room = Math.max(extra, 8);   // a picture can't grow past its ? block plus pads, and a branch spreads: 4 stopped 232P7H3V0's arm
+    if (side === "right"){
+      const qs = Math.max(2, c1 - 1), leftPad = Math.min(qs - 2, 9);
+      width = pw + room + 4; left = 0;
+      roots = "u".repeat(width - 3) + "RRR";
+      qFrom = cutW + g; qCols = [qs, width - 4];
+      outerInfo = { side, c1, qs, leftPad, rightPad: 1, sibling: true, branchW: pw - c1 };
+    } else {
+      const qe = c1 - 2;
+      left = symEdge ? 0 : 3 + room;
+      width = left + pw + (symEdge ? 7 : 4);
+      const q0 = symEdge ? 2 : 3;                 // from the file's edge, mirroring the right-hand case
+      roots = (symEdge ? "" : "LLL") + "u".repeat(width - (symEdge ? 3 : 6)) + "RRR";
+      qFrom = cutW + g; qCols = [q0, left + qe];
+      const rightPad = Math.min(width - 1 - (left + qe) - 2, 9);
+      outerInfo = { side, c1, qs: left + qe, leftPad: symEdge ? 0 : 1, rightPad, sibling: true, branchW: qe + 1 };
+    }
+    // the sibling's known rows go on being carried below the cut, down to just above its first error
+    const sibErr = errs.filter(e => { const hx = cols.indexOf(e.x) + left; return hx >= left && (side === "right" ? hx < qCols[0] : hx > qCols[1]); });
+    // "empty": nothing of the sibling below the cut, so the edge sees empty space there (for a sibling unrelated to the branch)
+    const empty = opt.sibling === "empty";
+    outerInfo.carryTo = empty ? -Infinity : sibErr.length ? Math.min(lastKnown, sibErr[0].W - span - 1) : lastKnown;
+    outerInfo.sibErrors = empty ? 0 : sibErr.length;
+    outerInfo.sibEmpty = empty;
+    outerInfo.isSib = i => side === "right" ? i < qCols[0] : i > qCols[1];
   } else if (mode === "branch"){
     if (KX) throw new Error("Branch mode needs a mirror-symmetric partial, and ships that move sideways can't be mirror-symmetric.");
     if (sym.type !== "odd" && sym.type !== "even") throw new Error("Branch mode needs a symmetric partial.");
@@ -1465,7 +1495,7 @@ function build(L, rule, opt){
     roots = "u".repeat(pw + extra) + "RRR";
     qFrom = cutW + g; qCols = [gapWidth(sym), pw + extra];
   }
-  const lastW = qFrom !== null ? qFrom + qrows - g : cutW;
+  const lastW = qFrom !== null ? Math.max(qFrom + qrows - g, outerInfo && isFinite(outerInfo.carryTo) ? outerInfo.carryTo - ((outerInfo.carryTo % g + g) % g) + qrows : -Infinity) : cutW;
   const uwi = [];
   const lines = []; // UWI rows by W
   for (let Wv = Wlo - (roots ? g : 0); Wv <= lastW; Wv += g){
@@ -1474,7 +1504,7 @@ function build(L, rule, opt){
     else for (let i = 0; i < width; i++){
       const ci = i - left;
       if (qFrom !== null && Wv >= qFrom && i >= qCols[0] && i <= qCols[1]) { s += "?"; continue; }
-      if (qFrom !== null && Wv >= qFrom && !(outerInfo && i < qCols[0])){ s += "."; continue; }
+      if (qFrom !== null && Wv >= qFrom && !(outerInfo && outerInfo.isSib(i) && Wv <= outerInfo.carryTo)){ s += "."; continue; }
       const rs = rowsFor(Wv); const r0 = rs[0];
       s += (ci >= 0 && ci < pw && r0 && get(r0.t, r0.y, cols[ci])) ? "*" : ".";
     }
@@ -1487,7 +1517,7 @@ function build(L, rule, opt){
     if (!(roots && l.W === Wlo - g) && !(qFrom !== null && l.W >= qFrom)){
       s = ""; for (let i = 0; i < width; i++){ const ci = i - left; s += (ci >= 0 && ci < pw && get(t, y, cols[ci])) ? "*" : "."; }
     } else if (outerInfo && qFrom !== null && l.W >= qFrom){
-      s = ""; for (let i = 0; i < width; i++){ if (i >= qCols[0] && i <= qCols[1]) s += "?"; else if (i < qCols[0]) s += (i < pw && get(t, y, cols[i])) ? "*" : "."; else s += "."; }
+      s = ""; for (let i = 0; i < width; i++){ const ci = i - left; if (i >= qCols[0] && i <= qCols[1]) s += "?"; else if (outerInfo.isSib(i) && l.W <= outerInfo.carryTo) s += (ci >= 0 && ci < pw && get(t, y, cols[ci])) ? "*" : "."; else s += "."; }
     }
     map.set(y + ":" + t, s);
   }); });
@@ -1847,8 +1877,11 @@ function command(info, opt){
     lines.push(`./rlife llsss-recentering ${rule}${cs} ${g} ${opt.file} ${midSteps(info.pw + 2)} > out.txt`);
   }
   else if (opt.mode === "outer"){
-    const o = info.outer, lp = String(o.leftPad).padStart(2, "0"), mo = midSteps(info.pw - o.c1 + 5);
-    lines.push(`./rlife llsss-recentering ${rule} --left-pad ${lp} --fuzzy-left-edge ${g} ${opt.file} ${mo} > out.txt`);
+    // 232P7H3V0: mid_steps 8 lost the ship, 9 found it, 11 and up were far slower. Too small dies; raise it by 1.
+    const o = info.outer, pad = n => String(n).padStart(2, "0"), mo = pad(Math.min(12, Math.max(9, o.branchW + 1)));
+    const flags = o.side === "right" ? `--left-pad ${pad(o.leftPad)} --right-pad ${pad(o.rightPad)} --fuzzy-left-edge`
+      : `${info.sym.type !== "none" ? "--left-edge " + info.sym.type : "--left-pad " + pad(o.leftPad)} --right-pad ${pad(o.rightPad)} --fuzzy-right-edge`;
+    lines.push(`./rlife llsss-recentering ${rule} ${flags} ${g} ${opt.file} ${mo} > out.txt`);
   }
   else { const base = opt.file.replace(/\.in$/, ""), cs = wantConstraint(opt) ? ` --constraint 'grid("${base}-pre.cstr", grid_loop("${base}-axis.cstr"))'` : "";
     // ? gap: mirror edge unless one branch alone; the gap is held by constraint files unless they are switched off
@@ -2084,7 +2117,7 @@ function run(){
   const mode0 = goal();
   // amling cuts the ? gap file no wider than the pattern (his 2c/5 example: 8 u columns, not 12), so that mode starts at 0
   if (!$("extra").dataset.touched) $("extra").value = (mode0 === "branch" || mode0 === "line") ? 0 : 4;
-  const opt = { mode: mode0, extra: +$("extra").value || 0, backtrack: +$("back").value || 0, symmetry: $("sym").value, tailRows: +$("tailrows").value || 8, roomL: $("roomL").value, roomR: $("roomR").value, edges: $("edges").checked, solo: $("solo").checked, keepOff: $("keepoff").checked };
+  const opt = { mode: mode0, extra: +$("extra").value || 0, backtrack: +$("back").value || 0, symmetry: $("sym").value, fuzzySide: $("fuzzySide").value, fuzzyCol: $("fuzzyCol").value === "" ? -1 : +$("fuzzyCol").value, sibling: $("sibling").value, tailRows: +$("tailrows").value || 8, roomL: $("roomL").value, roomR: $("roomR").value, edges: $("edges").checked, solo: $("solo").checked, keepOff: $("keepoff").checked };
   $("soloWrap").hidden = !(opt.mode === "branch" || opt.mode === "axis");
   $("keepoffWrap").hidden = $("solo").checked;
   $("tailOpts").hidden = opt.mode !== "tail" && opt.mode !== "alone";
@@ -2122,6 +2155,7 @@ function run(){
   if (!axisOk && opt.mode === "axis"){ document.querySelector('input[name=goal][value=rc]').checked = true; opt.mode = "rc"; banner("warn", "Axis column hold isn't available for this partial: " + axisWhy); }
   let outerOk = true, outerWhy = "";
   try { if (opt.order !== "f2b") throw new Error("Outer-branch mode is only available front to back."); Core.build(a.L, a.rule, Object.assign({}, opt, { mode: "outer" })); } catch (e){ outerOk = false; outerWhy = e.message; }
+  $("fuzzyOpts").hidden = !!a.L.KX || opt.order !== "f2b" || !(opt.mode === "outer" || !outerOk);   // refused for want of a gap: the split column can still be set by hand
   $("goalOuter").classList.toggle("off", !outerOk);
   $("goalOuter").querySelector("input").disabled = !outerOk;
   $("goalOuter").title = outerOk ? "" : outerWhy;
@@ -2166,7 +2200,8 @@ function run(){
   else {
   stat("First error", I.Werr === Infinity ? "none" : "row " + Math.floor((I.Werr - I.Wtop) / I.g) + " (~line " + Math.floor((I.Werr - I.Wtop) / I.N) + ")");
   stat("Lines kept", "~" + I.rowsKept + " of the partial"); }
-  if (I.outer) stat("Branch", "searching the branch further from the axis; the one next to it is kept as it is (--left-pad " + I.outer.leftPad + ")");
+  if (I.outer){ const O = I.outer; stat("Branch", "searching the " + O.side + " piece, split at file column " + O.c1 + "; the sibling is on the " + (O.side === "right" ? "left" : "right") + " (fuzzy " + (O.side === "right" ? "left" : "right") + " edge, pad " + (O.side === "right" ? O.leftPad : O.rightPad) + ")" + (O.sibEmpty ? "; sibling left empty below the cut" : ""));
+    if (O.sibErrors) banner("warn", "The sibling branch has errors, so its rows are only carried down to just above the first one. A result is then the searched branch only: check it against the whole ship."); }
   if (I.axisMode){ stat("Branches", "axis column kept empty"); if (I.axisMode.axisLive) banner("warn", "You are using branching mode while the middle column is still alive, so the search is going to kill your middle column. If this starts causing your runs to fail, use empty axis columns mode instead."); }
   if (I.gap){ stat("Empty columns at the axis", "open from ~row " + Math.floor((I.gap.open - I.Wtop) / I.N) + ", held from ~row " + Math.floor((I.gap.cut - I.Wtop) / I.N) + ""); }
   if (I.region){
@@ -2415,7 +2450,7 @@ $("go").onclick = run;
 $("extra").addEventListener("input", () => { $("extra").dataset.touched = "1"; });
 // one branch alone: no constraint files unless asked for (amling's command has none); the symmetric whole keeps them
 $("solo").addEventListener("change", () => { $("keepoffWrap").hidden = $("solo").checked; });
-["extra", "back", "tailrows", "roomL", "roomR", "edges", "sym", "fname", "order", "solo", "keepoff", "official"].forEach(id => $(id).addEventListener("change", () => { if (last) run(); }));
+["fuzzySide", "fuzzyCol", "sibling", "extra", "back", "tailrows", "roomL", "roomR", "edges", "sym", "fname", "order", "solo", "keepoff", "official"].forEach(id => $(id).addEventListener("change", () => { if (last) run(); }));
 document.querySelectorAll("input[name=goal]").forEach(r => r.addEventListener("change", () => { if (last || built) run(); }));
 $("ex7").onclick = () => { cutState.pts = []; cutState.hist = []; $("rule").value = "B3/S23-q4i"; $("pat").value = EX7; $("phases").value = ""; run(); };
 $("ex1").onclick = () => { cutState.pts = []; cutState.hist = [];

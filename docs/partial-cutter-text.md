@@ -400,9 +400,8 @@ A partial that is mirror-symmetric across its line of travel is searched as one 
 
 ##### After a result
 
-- **Halves:** results of a symmetric search are halves; unfold them at the axis (Golly's mirror tools work).
+- **Halves:** results of a symmetric search are halves; unfold them at the axis.
 - **Back only, marked part alone:** results cover only the search window; join them onto the rest of the ship by hand.
-- Check every result in Golly before posting it.
 
 Unfolding a half
 

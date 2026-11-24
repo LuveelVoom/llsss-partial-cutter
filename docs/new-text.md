@@ -66,3 +66,8 @@ For a partial that is valid except for one patch, such as a broken side branch n
 - **Re-search a marked region (keeps the rest of the partial fixed).** Every row of the partial is kept. The start file has question marks from the top of your rectangle to the bottom, across the full width (rlife allows only one solid rectangle of question marks, reaching the bottom). A constraint file, `NAME-pre.cstr`, passed with `--constraint 'grid("NAME-pre.cstr", none)'`, fixes the rest of the partial plus a two-cell border of empty cells around it. Everything else is free, so the part can grow into empty space in any direction, but nothing new can come close enough to change the rest of the ship. The rectangle must cover every error. Slower than searching alone, but the result always fits the ship.
 
 Both work for orthogonal (front to back) and knightwise ships, not yet for diagonal ones. **Neither has been tested in rlife yet.** The files pass the layout checks, the constraint file matches the start file exactly, and every fixed cell follows the rule; whether rlife treats the fixed cells as intended needs a run.
+
+## Fuzzy edge rework (31 Oct): text Claude changed, for LuveelVoom to rewrite
+- Picker, hidden picker and Guide entry for the fuzzy mode: now "Extend one branch beside its sibling (fuzzy edge)", no longer symmetric only.
+- New controls: "Branch to search", "Split column". New `stat("Branch")` text and a warning when the sibling has errors.
+- The `outer` entry in `TASK_HINT` is unchanged.

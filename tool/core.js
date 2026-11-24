@@ -728,23 +728,49 @@ function build(L, rule, opt){
     width = (symEdge ? 0 : 3) + pw + 3; left = symEdge ? 0 : 3;   // recentering grows sideways by itself; extra columns aren't needed
     roots = (symEdge ? "" : "LLL") + "u".repeat(pw) + "RRR";
   } else if (mode === "outer"){
-    if (sym.type !== "odd" && sym.type !== "even") throw new Error("Fuzzy-left-edge mode only works on symmetric partials: it keeps the branch next to the axis as it is and searches the one further out.");
-    // occupancy of half columns over the last two physical rows before the cut
-    const occ = new Array(pw).fill(0);
-    for (let Wv = keep - 2 * N + 1; Wv <= keep; Wv++) for (const { t, y } of rowsFor(Wv)) for (let i = 0; i < pw; i++) if (get(t, y, cols[i])) occ[i] = 1;
-    let gapEnd = -1;
-    for (let i = pw - 1, run = 0; i >= 0; i--){ if (!occ[i]) run++; else { if (run >= 2 && occ.slice(0, i + 1).some(v => v) && occ.slice(i + run + 1).some(v => v)){ gapEnd = i + run; break; } run = 0; } }
-    if (gapEnd < 0) throw new Error("You're using multi-branch mode on a single branch: near the cut there is only one branch, not two separated by at least 2 empty columns.");
-    const c1 = gapEnd + 1;                       // first column of the outer piece
-    // the inner piece is carried as-is, so it must not break the rule anywhere we keep it
-    const qs = Math.max(2, c1 - 1);
-    // only the sibling columns (left of the ? block) in the rows we write are carried unchanged
-    const innerBreaks = errs.filter(e => { const hx = cols.indexOf(e.x); return hx >= 0 && hx < qs && e.W <= keep + qrows; }).length;
-    if (innerBreaks) throw new Error("The sibling branch isn't complete, go fix it using recentering or fixed-width.");
-    width = pw + extra + 3; left = 0;
-    roots = "u".repeat(pw + extra) + "RRR";
-    qFrom = cutW + g; qCols = [qs, pw + extra];
-    outerInfo = { c1, qs, leftPad: qs - 2, sibling: true };
+    // One branch of a split back, with the fuzzy edge on the sibling's side (amling's 3c/7 recipe). Mirror symmetry is
+    // not needed. Tested on 232P7H3V0 (see docs/llsss-notes.md): the window can leave the sibling out, so mid_steps can
+    // be far smaller than the board needs without it. Rows below the cut in the sibling's columns may even be unknown.
+    const occIn = span => { const occ = new Array(pw).fill(0);
+      for (let Wv = keep - span + 1; Wv <= keep; Wv++) for (const { t, y } of rowsFor(Wv)) for (let i = 0; i < pw; i++) if (get(t, y, cols[i])) occ[i] = 1;
+      return occ; };
+    const gapIn = span => { const occ = occIn(span);
+      for (let i = pw - 1, run = 0; i >= 0; i--){ if (!occ[i]) run++; else { if (run >= 2 && occ.slice(0, i + 1).some(v => v) && occ.slice(i + run + 1).some(v => v)) return i + run; run = 0; } }
+      return -1; };
+    const manual = Number.isInteger(opt.fuzzyCol) && opt.fuzzyCol >= 0;
+    let gapEnd = manual ? opt.fuzzyCol - 1 : gapIn(2 * N);        // a gap across two lines, else across one
+    if (gapEnd < 0) gapEnd = gapIn(N);
+    if (gapEnd < 0) throw new Error("You're using multi-branch mode on a single branch: near the cut there is only one branch, not two separated by at least 2 empty columns. If you can see two branches, set the split column by hand.");
+    const c1 = gapEnd + 1;                       // first column of the piece on the right
+    if (c1 < 3 || c1 > pw - 1) throw new Error("The split column must be between 3 and " + (pw - 1) + " here (columns count from the left edge of the start file).");
+    const side = opt.fuzzySide === "left" ? "left" : "right";   // the side of the split that is searched
+    const span = N + K;
+    const lastKnown = maxKnownW(L);
+    const room = Math.max(extra, 8);   // a picture can't grow past its ? block plus pads, and a branch spreads: 4 stopped 232P7H3V0's arm
+    if (side === "right"){
+      const qs = Math.max(2, c1 - 1), leftPad = Math.min(qs - 2, 9);
+      width = pw + room + 4; left = 0;
+      roots = "u".repeat(width - 3) + "RRR";
+      qFrom = cutW + g; qCols = [qs, width - 4];
+      outerInfo = { side, c1, qs, leftPad, rightPad: 1, sibling: true, branchW: pw - c1 };
+    } else {
+      const qe = c1 - 2;
+      left = symEdge ? 0 : 3 + room;
+      width = left + pw + (symEdge ? 7 : 4);
+      const q0 = symEdge ? 2 : 3;                 // from the file's edge, mirroring the right-hand case
+      roots = (symEdge ? "" : "LLL") + "u".repeat(width - (symEdge ? 3 : 6)) + "RRR";
+      qFrom = cutW + g; qCols = [q0, left + qe];
+      const rightPad = Math.min(width - 1 - (left + qe) - 2, 9);
+      outerInfo = { side, c1, qs: left + qe, leftPad: symEdge ? 0 : 1, rightPad, sibling: true, branchW: qe + 1 };
+    }
+    // the sibling's known rows go on being carried below the cut, down to just above its first error
+    const sibErr = errs.filter(e => { const hx = cols.indexOf(e.x) + left; return hx >= left && (side === "right" ? hx < qCols[0] : hx > qCols[1]); });
+    // "empty": nothing of the sibling below the cut, so the edge sees empty space there (for a sibling unrelated to the branch)
+    const empty = opt.sibling === "empty";
+    outerInfo.carryTo = empty ? -Infinity : sibErr.length ? Math.min(lastKnown, sibErr[0].W - span - 1) : lastKnown;
+    outerInfo.sibErrors = empty ? 0 : sibErr.length;
+    outerInfo.sibEmpty = empty;
+    outerInfo.isSib = i => side === "right" ? i < qCols[0] : i > qCols[1];
   } else if (mode === "branch"){
     if (KX) throw new Error("Branch mode needs a mirror-symmetric partial, and ships that move sideways can't be mirror-symmetric.");
     if (sym.type !== "odd" && sym.type !== "even") throw new Error("Branch mode needs a symmetric partial.");
@@ -755,7 +781,7 @@ function build(L, rule, opt){
     roots = "u".repeat(pw + extra) + "RRR";
     qFrom = cutW + g; qCols = [gapWidth(sym), pw + extra];
   }
-  const lastW = qFrom !== null ? qFrom + qrows - g : cutW;
+  const lastW = qFrom !== null ? Math.max(qFrom + qrows - g, outerInfo && isFinite(outerInfo.carryTo) ? outerInfo.carryTo - ((outerInfo.carryTo % g + g) % g) + qrows : -Infinity) : cutW;
   const uwi = [];
   const lines = []; // UWI rows by W
   for (let Wv = Wlo - (roots ? g : 0); Wv <= lastW; Wv += g){
@@ -764,7 +790,7 @@ function build(L, rule, opt){
     else for (let i = 0; i < width; i++){
       const ci = i - left;
       if (qFrom !== null && Wv >= qFrom && i >= qCols[0] && i <= qCols[1]) { s += "?"; continue; }
-      if (qFrom !== null && Wv >= qFrom && !(outerInfo && i < qCols[0])){ s += "."; continue; }
+      if (qFrom !== null && Wv >= qFrom && !(outerInfo && outerInfo.isSib(i) && Wv <= outerInfo.carryTo)){ s += "."; continue; }
       const rs = rowsFor(Wv); const r0 = rs[0];
       s += (ci >= 0 && ci < pw && r0 && get(r0.t, r0.y, cols[ci])) ? "*" : ".";
     }
@@ -777,7 +803,7 @@ function build(L, rule, opt){
     if (!(roots && l.W === Wlo - g) && !(qFrom !== null && l.W >= qFrom)){
       s = ""; for (let i = 0; i < width; i++){ const ci = i - left; s += (ci >= 0 && ci < pw && get(t, y, cols[ci])) ? "*" : "."; }
     } else if (outerInfo && qFrom !== null && l.W >= qFrom){
-      s = ""; for (let i = 0; i < width; i++){ if (i >= qCols[0] && i <= qCols[1]) s += "?"; else if (i < qCols[0]) s += (i < pw && get(t, y, cols[i])) ? "*" : "."; else s += "."; }
+      s = ""; for (let i = 0; i < width; i++){ const ci = i - left; if (i >= qCols[0] && i <= qCols[1]) s += "?"; else if (outerInfo.isSib(i) && l.W <= outerInfo.carryTo) s += (ci >= 0 && ci < pw && get(t, y, cols[ci])) ? "*" : "."; else s += "."; }
     }
     map.set(y + ":" + t, s);
   }); });
@@ -1137,8 +1163,11 @@ function command(info, opt){
     lines.push(`./rlife llsss-recentering ${rule}${cs} ${g} ${opt.file} ${midSteps(info.pw + 2)} > out.txt`);
   }
   else if (opt.mode === "outer"){
-    const o = info.outer, lp = String(o.leftPad).padStart(2, "0"), mo = midSteps(info.pw - o.c1 + 5);
-    lines.push(`./rlife llsss-recentering ${rule} --left-pad ${lp} --fuzzy-left-edge ${g} ${opt.file} ${mo} > out.txt`);
+    // 232P7H3V0: mid_steps 8 lost the ship, 9 found it, 11 and up were far slower. Too small dies; raise it by 1.
+    const o = info.outer, pad = n => String(n).padStart(2, "0"), mo = pad(Math.min(12, Math.max(9, o.branchW + 1)));
+    const flags = o.side === "right" ? `--left-pad ${pad(o.leftPad)} --right-pad ${pad(o.rightPad)} --fuzzy-left-edge`
+      : `${info.sym.type !== "none" ? "--left-edge " + info.sym.type : "--left-pad " + pad(o.leftPad)} --right-pad ${pad(o.rightPad)} --fuzzy-right-edge`;
+    lines.push(`./rlife llsss-recentering ${rule} ${flags} ${g} ${opt.file} ${mo} > out.txt`);
   }
   else { const base = opt.file.replace(/\.in$/, ""), cs = wantConstraint(opt) ? ` --constraint 'grid("${base}-pre.cstr", grid_loop("${base}-axis.cstr"))'` : "";
     // ? gap: mirror edge unless one branch alone; the gap is held by constraint files unless they are switched off
